@@ -1,0 +1,37 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const groups = [
+	{ title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS'] },
+	{ title: 'Backend', items: ['Node.js', 'REST APIs', 'API Design', 'Authentication', 'Database Integration'] },
+	{ title: 'Cloud & Infrastructure', items: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions'] },
+	{
+		title: 'Engineering',
+		items: ['Automated Testing', 'Performance Optimization', 'Internationalization', 'Application Architecture', 'Code Quality'],
+	},
+];
+---
+
+<section id="capabilities" aria-labelledby="capabilities-heading" class="bg-paper-2">
+	<div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+		<SectionHeading
+			id="capabilities-heading"
+			heading="What we work with"
+			copy="The technologies and practices we reach for by default — not because they're trendy, but because they hold up in production."
+		/>
+		<dl class="mt-12 border-b border-rule">
+			{
+				groups.map((group) => (
+					<div class="grid gap-3 border-t border-rule py-5 sm:grid-cols-12 sm:gap-8">
+						<dt class="label pt-1 sm:col-span-4 lg:col-span-3">{group.title}</dt>
+						<dd class="sm:col-span-8 lg:col-span-9">
+							<ul class="flex flex-wrap gap-x-7 gap-y-2 text-ink-2">
+								{group.items.map((item) => <li>{item}</li>)}
+							</ul>
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</section>

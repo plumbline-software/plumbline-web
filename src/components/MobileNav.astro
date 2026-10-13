@@ -1,0 +1,124 @@
+---
+const links = [
+	{ href: '/services', label: 'Services' },
+	{ href: '/approach', label: 'Approach' },
+	{ href: '/about', label: 'About' },
+];
+---
+
+<button
+	id="mobile-nav-trigger"
+	type="button"
+	aria-haspopup="dialog"
+	aria-controls="mobile-nav-dialog"
+	class="inline-flex h-10 w-10 items-center justify-center border border-ink text-ink md:hidden"
+>
+	<span class="sr-only">Open menu</span>
+	<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+		<path d="M4 6h16M4 12h16M4 18h16" />
+	</svg>
+</button>
+
+<dialog
+	id="mobile-nav-dialog"
+	aria-label="Site navigation"
+	class="nav-dialog m-0 ml-auto h-full max-h-none w-80 max-w-[85vw] border-l border-ink bg-paper p-6 text-ink backdrop:bg-ink/40 open:flex open:flex-col"
+>
+	<div class="mb-8 flex items-center justify-between">
+		<span class="font-semibold">Menu</span>
+		<button
+			id="mobile-nav-close"
+			type="button"
+			class="inline-flex h-10 w-10 items-center justify-center border border-ink"
+		>
+			<span class="sr-only">Close menu</span>
+			<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+				<path d="M6 6l12 12M18 6L6 18" />
+			</svg>
+		</button>
+	</div>
+	<nav>
+		<ul class="flex flex-col border-t border-ink">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class="display block border-b border-rule py-4 text-3xl hover:bg-paper-2"
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+			<li class="mt-6">
+				<a
+					href="/contact"
+					class="btn btn-ink w-full"
+				>
+					Start a project
+				</a>
+			</li>
+		</ul>
+	</nav>
+</dialog>
+
+<style>
+	.nav-dialog {
+		transition:
+			transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+			opacity 0.25s ease,
+			overlay 0.25s allow-discrete,
+			display 0.25s allow-discrete;
+		transform: translateX(100%);
+		opacity: 0;
+	}
+	.nav-dialog[open] {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	@starting-style {
+		.nav-dialog[open] {
+			transform: translateX(100%);
+			opacity: 0;
+		}
+	}
+	.nav-dialog::backdrop {
+		transition:
+			opacity 0.25s ease,
+			overlay 0.25s allow-discrete,
+			display 0.25s allow-discrete;
+		opacity: 0;
+	}
+	.nav-dialog[open]::backdrop {
+		opacity: 1;
+	}
+	@starting-style {
+		.nav-dialog[open]::backdrop {
+			opacity: 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.nav-dialog {
+			transition: none;
+			transform: none;
+		}
+	}
+</style>
+
+<script is:inline>
+	(() => {
+		const trigger = document.getElementById('mobile-nav-trigger');
+		const dialog = document.getElementById('mobile-nav-dialog');
+		const closeBtn = document.getElementById('mobile-nav-close');
+		if (!(dialog instanceof HTMLDialogElement)) return;
+
+		trigger?.addEventListener('click', () => dialog.showModal());
+		closeBtn?.addEventListener('click', () => dialog.close());
+		dialog.addEventListener('click', (event) => {
+			if (event.target === dialog) dialog.close();
+		});
+		dialog.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => dialog.close()));
+		dialog.addEventListener('close', () => trigger?.focus());
+	})();
+</script>

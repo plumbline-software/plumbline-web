@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Approach from '../components/Approach.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+	title="Approach | Northline Technologies"
+	description="How Northline Technologies works with clients: understand, plan, build, and deliver."
+>
+	<Header />
+	<main>
+		<Approach as="h1" />
+		<ContactCTA />
+	</main>
+	<Footer />
+</Layout>

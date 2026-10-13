@@ -1,0 +1,52 @@
+---
+import StaffGlyph from './StaffGlyph.astro';
+import { SITE, FOUNDER } from '../data';
+
+const navLinks = [
+	{ href: '/services', label: 'Services' },
+	{ href: '/approach', label: 'Approach' },
+	{ href: '/about', label: 'About' },
+	{ href: '/contact', label: 'Contact' },
+];
+
+// Links without a URL are not rendered.
+const socialLinks = [
+	{ label: 'LinkedIn', href: FOUNDER.linkedin },
+	{ label: 'GitHub', href: FOUNDER.github },
+].filter((link) => link.href);
+---
+
+<footer class="bg-paper text-ink">
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="grid gap-10 border-b border-rule py-12 sm:grid-cols-12">
+			<div class="flex gap-4 sm:col-span-5">
+				<StaffGlyph class="h-12 w-auto shrink-0" />
+				<div>
+					<p class="label text-[0.75rem] tracking-[0.2em]">Northline Technologies</p>
+					<p class="mt-2 text-sm text-muted">Software Development &amp; Technology Consulting</p>
+					<p class="text-sm text-muted">{SITE.location}</p>
+				</div>
+			</div>
+			<nav aria-label="Footer" class="sm:col-span-3">
+				<p class="label text-muted">Pages</p>
+				<ul class="mt-3 space-y-2 text-sm">
+					{navLinks.map((link) => <li><a href={link.href} class="hover:underline">{link.label}</a></li>)}
+				</ul>
+			</nav>
+			<div class="text-sm sm:col-span-4">
+				<p class="label text-muted">Contact</p>
+				<a href={`mailto:${SITE.email}`} class="link mt-3 inline-block break-all">{SITE.email}</a>
+				{
+					socialLinks.length > 0 && (
+						<ul class="mt-3 flex gap-6">
+							{socialLinks.map((link) => (
+								<li><a href={link.href} rel="me noopener" target="_blank" class="hover:underline">{link.label}</a></li>
+							))}
+						</ul>
+					)
+				}
+			</div>
+		</div>
+		<p class="py-6 text-xs text-muted">© 2026 Northline Technologies. All rights reserved.</p>
+	</div>
+</footer>

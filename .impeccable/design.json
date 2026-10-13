@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-12T21:04:21+00:00",
+  "title": "Design System: Northline Technologies",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Score Ink",
+        "canonical": "#10141a",
+        "tonalRamp": [
+          "oklch(15% 0.015 260)",
+          "oklch(27% 0.015 260)",
+          "oklch(39% 0.015 260)",
+          "oklch(51% 0.015 260)",
+          "oklch(63% 0.015 260)",
+          "oklch(75% 0.015 260)",
+          "oklch(86% 0.015 260)",
+          "oklch(95% 0.015 260)"
+        ]
+      },
+      "now": {
+        "role": "tertiary",
+        "displayName": "Playhead Blue",
+        "canonical": "#2453d4",
+        "tonalRamp": [
+          "oklch(15% 0.17 265)",
+          "oklch(27% 0.17 265)",
+          "oklch(39% 0.17 265)",
+          "oklch(51% 0.17 265)",
+          "oklch(63% 0.17 265)",
+          "oklch(75% 0.17 265)",
+          "oklch(86% 0.17 265)",
+          "oklch(95% 0.17 265)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Second Ink",
+        "canonical": "#353b45",
+        "tonalRamp": [
+          "oklch(15% 0.018 260)",
+          "oklch(27% 0.018 260)",
+          "oklch(39% 0.018 260)",
+          "oklch(51% 0.018 260)",
+          "oklch(63% 0.018 260)",
+          "oklch(75% 0.018 260)",
+          "oklch(86% 0.018 260)",
+          "oklch(95% 0.018 260)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Score Paper",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Quiet Paper",
+        "canonical": "#f6f6f5",
+        "tonalRamp": [
+          "oklch(15% 0.002 100)",
+          "oklch(27% 0.002 100)",
+          "oklch(39% 0.002 100)",
+          "oklch(51% 0.002 100)",
+          "oklch(63% 0.002 100)",
+          "oklch(75% 0.002 100)",
+          "oklch(86% 0.002 100)",
+          "oklch(95% 0.002 100)"
+        ]
+      },
+      "band": {
+        "role": "neutral",
+        "displayName": "Pressed Paper",
+        "canonical": "#ececec",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(27% 0 0)",
+          "oklch(39% 0 0)",
+          "oklch(51% 0 0)",
+          "oklch(63% 0 0)",
+          "oklch(75% 0 0)",
+          "oklch(86% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Margin Grey",
+        "canonical": "#5a616c",
+        "tonalRamp": [
+          "oklch(15% 0.018 260)",
+          "oklch(27% 0.018 260)",
+          "oklch(39% 0.018 260)",
+          "oklch(51% 0.018 260)",
+          "oklch(63% 0.018 260)",
+          "oklch(75% 0.018 260)",
+          "oklch(86% 0.018 260)",
+          "oklch(95% 0.018 260)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d5d7db",
+        "tonalRamp": [
+          "oklch(15% 0.006 260)",
+          "oklch(27% 0.006 260)",
+          "oklch(39% 0.006 260)",
+          "oklch(51% 0.006 260)",
+          "oklch(63% 0.006 260)",
+          "oklch(75% 0.006 260)",
+          "oklch(86% 0.006 260)",
+          "oklch(95% 0.006 260)"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Field Stroke",
+        "canonical": "#8a909a",
+        "tonalRamp": [
+          "oklch(15% 0.014 260)",
+          "oklch(27% 0.014 260)",
+          "oklch(39% 0.014 260)",
+          "oklch(51% 0.014 260)",
+          "oklch(63% 0.014 260)",
+          "oklch(75% 0.014 260)",
+          "oklch(86% 0.014 260)",
+          "oklch(95% 0.014 260)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home headline and page titles, seven columns wide."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings under an ink rule; the closing band question."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Row titles in the left four columns of ruled rows."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Section ledes and hero copy in Second Ink."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading copy; tabular numerals site-wide."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Tracked caps for the wordmark, footer heads and definition terms only."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Button colour transitions (160ms) and the mobile menu slide (250ms)."
+      },
+      {
+        "name": "duration-state",
+        "value": "160ms",
+        "purpose": "Button background and colour changes."
+      },
+      {
+        "name": "duration-sheet",
+        "value": "250ms",
+        "purpose": "Mobile menu sheet and scrim."
+      },
+      {
+        "name": "duration-disclosure",
+        "value": "200ms",
+        "purpose": "FAQ plus icon rotating to a cross."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Primary action; one per action group.",
+      "html": "<a class=\"ds-btn ds-btn-ink\" href=\"#\">Start a conversation</a>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.75rem; min-height:3rem; padding:0 1.25rem; border:1px solid var(--ink, #10141a); border-radius:0; font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); font-size:0.9375rem; font-weight:600; text-decoration:none; cursor:pointer; transition: background-color 160ms cubic-bezier(0.16,1,0.3,1), color 160ms cubic-bezier(0.16,1,0.3,1); } .ds-btn:focus-visible { outline:2px solid var(--now, #2453d4); outline-offset:3px; } .ds-btn-ink { background: var(--ink, #10141a); color: var(--paper, #ffffff); } .ds-btn-ink:hover { background: var(--ink-2, #353b45); }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Secondary action beside the ink button, and the header CTA.",
+      "html": "<a class=\"ds-btn ds-btn-line\" href=\"#\">See what we build</a>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.75rem; min-height:3rem; padding:0 1.25rem; border:1px solid var(--ink, #10141a); border-radius:0; font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); font-size:0.9375rem; font-weight:600; text-decoration:none; cursor:pointer; transition: background-color 160ms cubic-bezier(0.16,1,0.3,1), color 160ms cubic-bezier(0.16,1,0.3,1); } .ds-btn:focus-visible { outline:2px solid var(--now, #2453d4); outline-offset:3px; } .ds-btn-line { background: var(--paper, #ffffff); color: var(--ink, #10141a); } .ds-btn-line:hover { background: var(--band, #ececec); }"
+    },
+    {
+      "name": "Paper Button",
+      "kind": "button",
+      "refersTo": "button-paper",
+      "description": "The action on the ink closing band.",
+      "html": "<div class=\"ds-onink\"><a class=\"ds-btn ds-btn-paper\" href=\"#\">Get in touch</a></div>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.75rem; min-height:3rem; padding:0 1.25rem; border:1px solid var(--ink, #10141a); border-radius:0; font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); font-size:0.9375rem; font-weight:600; text-decoration:none; cursor:pointer; transition: background-color 160ms cubic-bezier(0.16,1,0.3,1), color 160ms cubic-bezier(0.16,1,0.3,1); } .ds-btn:focus-visible { outline:2px solid var(--now, #2453d4); outline-offset:3px; } .ds-onink { background: var(--ink, #10141a); padding: 24px; } .ds-btn-paper { background: var(--paper, #ffffff); color: var(--ink, #10141a); border-color: var(--paper, #ffffff); } .ds-btn-paper:hover { background: var(--band, #ececec); }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Square paper field with a grey stroke that goes ink on hover and focus.",
+      "html": "<label class=\"ds-field-label\">Work email<input class=\"ds-field\" type=\"email\"></label>",
+      "css": ".ds-field-label { display:block; font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); font-size:0.875rem; font-weight:600; color: var(--ink, #10141a); } .ds-field { display:block; width:100%; margin-top:0.5rem; padding:0.75rem 0.875rem; border:1px solid var(--field, #8a909a); border-radius:0; background: var(--paper, #ffffff); color: var(--ink, #10141a); caret-color: var(--now, #2453d4); font: inherit; font-weight:400; } .ds-field:hover { border-color: var(--ink, #10141a); } .ds-field:focus-visible { border-color: var(--ink, #10141a); outline:2px solid var(--now, #2453d4); outline-offset:0; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "North-line mark and tracked wordmark, grey links with an ink current-page underline, ink rule below.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><svg viewBox=\"0 0 12 44\" width=\"9\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 4v38M2.5 7.5 6 2.5l3.5 5\"/></svg><span>Northline Technologies</span></a><nav><a href=\"#\" aria-current=\"page\">Services</a><a href=\"#\">Approach</a><a href=\"#\">About</a></nav></header>",
+      "css": ".ds-nav { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; height:4rem; padding:0 2rem; border-bottom:1px solid var(--ink, #10141a); background: rgb(255 255 255 / 0.95); font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); } .ds-nav-brand { display:flex; align-items:center; gap:0.75rem; color: var(--ink, #10141a); text-decoration:none; } .ds-nav-brand span { font-size:0.75rem; font-weight:650; letter-spacing:0.2em; text-transform:uppercase; } .ds-nav nav { display:flex; gap:2.25rem; } .ds-nav nav a { padding:0.5rem 0; font-size:0.875rem; font-weight:500; color: var(--muted, #5a616c); text-decoration:none; transition: color 150ms; } .ds-nav nav a:hover { color: var(--ink, #10141a); } .ds-nav nav a[aria-current] { color: var(--ink, #10141a); text-decoration: underline; text-decoration-thickness:2px; text-underline-offset:0.6em; } .ds-nav a:focus-visible { outline:2px solid var(--now, #2453d4); outline-offset:3px; }"
+    },
+    {
+      "name": "Ruled Row",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "The system's core layout unit: display title, lead-in and detail across a twelve-column row, closed by a hairline.",
+      "html": "<article class=\"ds-row\"><h3>Frontend Engineering</h3><div><p class=\"ds-row-lead\">Fast, accessible interfaces that hold up on any device and any input.</p><p class=\"ds-row-detail\">Component systems, performance budgets and WCAG from the first commit.</p></div><a class=\"ds-link\" href=\"#\">Discuss a project like this</a></article>",
+      "css": ".ds-row { display:grid; grid-template-columns: 4fr 5fr 3fr; gap:2.5rem; padding:2.5rem 0; border-bottom:1px solid var(--rule, #d5d7db); font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); color: var(--ink, #10141a); } .ds-row h3 { margin:0; font-family: var(--font-display, 'Big Shoulders Display Variable', 'Arial Narrow', sans-serif); font-weight:560; font-size:2.25rem; line-height:0.9; letter-spacing:0.015em; text-transform:uppercase; } .ds-row-lead { margin:0; font-size:1.125rem; font-weight:600; line-height:1.375; } .ds-row-detail { margin:0.75rem 0 0; line-height:1.625; color: var(--ink-2, #353b45); } .ds-link { align-self:start; font-size:0.875rem; font-weight:600; color: var(--ink, #10141a); text-decoration: underline; text-decoration-thickness:1px; text-underline-offset:0.22em; text-decoration-color: var(--field, #8a909a); } .ds-link:hover { text-decoration-color: var(--ink, #10141a); } .ds-link:focus-visible { outline:2px solid var(--now, #2453d4); outline-offset:3px; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Ink rule, headline across seven columns, lede bottom-aligned in five.",
+      "html": "<div class=\"ds-sechead\"><h2>What we build</h2><p>Five kinds of work, usually in some combination.</p></div>",
+      "css": ".ds-sechead { display:grid; grid-template-columns: 7fr 5fr; gap:2.5rem; padding-top:1.25rem; border-top:1px solid var(--ink, #10141a); } .ds-sechead h2 { margin:0; font-family: var(--font-display, 'Big Shoulders Display Variable', 'Arial Narrow', sans-serif); font-weight:560; font-size:4rem; line-height:0.9; letter-spacing:0.015em; text-transform:uppercase; color: var(--ink, #10141a); } .ds-sechead p { margin:0; align-self:end; font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); font-size:1.125rem; line-height:1.625; color: var(--ink-2, #353b45); }"
+    },
+    {
+      "name": "Closing Band",
+      "kind": "custom",
+      "refersTo": "cta-band",
+      "description": "Full-bleed ink section that ends every page except contact.",
+      "html": "<section class=\"ds-band\"><h2>Have a project in mind?</h2><p>Tell us what you're trying to build, improve, or solve.</p><a class=\"ds-band-btn\" href=\"#\">Get in touch</a></section>",
+      "css": ".ds-band { background: var(--ink, #10141a); color: var(--paper, #ffffff); padding:7rem 2rem; font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); } .ds-band h2 { margin:0; max-width:48rem; font-family: var(--font-display, 'Big Shoulders Display Variable', 'Arial Narrow', sans-serif); font-weight:560; font-size:5.5rem; line-height:0.9; letter-spacing:0.015em; text-transform:uppercase; } .ds-band p { margin:1.5rem 0 0; max-width:36rem; font-size:1.125rem; line-height:1.625; color: rgb(255 255 255 / 0.8); } .ds-band-btn { display:inline-flex; align-items:center; min-height:3rem; margin-top:2.5rem; padding:0 1.25rem; border:1px solid var(--paper, #ffffff); background: var(--paper, #ffffff); color: var(--ink, #10141a); font-size:0.9375rem; font-weight:600; text-decoration:none; transition: background-color 160ms cubic-bezier(0.16,1,0.3,1); } .ds-band-btn:hover { background: var(--band, #ececec); } .ds-band-btn:focus-visible { outline:2px solid var(--now, #2453d4); outline-offset:3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Score",
+    "overview": "A quiet rendition of Systems Labanotation: the discipline of a dance score without its symbols. Pages are white score paper ruled in ink; titles are set in tall condensed caps like a score's title lettering; content sits in plain ruled rows on a twelve-column staff. The only drawn mark is the north line, one vertical stroke with a north tick, used as the wordmark's companion in header and footer.\n\nDensity is calm and editorial. Each section opens on a full-width ink rule with a display heading in the left seven columns and a lede bottom-aligned in the right five. Rows below are separated by light hairlines, never boxed. Colour is almost absent: ink, greys, and a single blue reserved for \"now\" (focus and caret). Motion is limited to state transitions.\n\nThe owner rejected the full notation (score diagram, patterned blocks, legend) as too busy. Keep the score's discipline; do not reintroduce its symbols.",
+    "keyCharacteristics": [
+      "Ink on white paper, one functional blue.",
+      "Tall condensed uppercase display over a plain humanist sans for reading.",
+      "Twelve-column ruled rows; no cards as structure.",
+      "Square corners, 1px rules, no shadows.",
+      "One mark: the north line.",
+      "A dark ink closing band on every page except the contact page."
+    ],
+    "rules": [
+      {
+        "name": "The Playhead Rule",
+        "body": "Blue marks \"now\" (focus ring and caret) and does no other job. Never use it for links, buttons, fills, icons, or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Rules Rule",
+        "body": "Ink rules open and close structure (section heads, page titles, header, form sub-heads); hairline rules separate rows within it. Never swap them.",
+        "section": "colors"
+      },
+      {
+        "name": "The Title Lettering Rule",
+        "body": "The condensed display face is always uppercase at 0.9 leading, and appears only in headings, row titles, step numerals and the mobile menu links. Never set body copy, buttons, or form labels in it.",
+        "section": "typography"
+      },
+      {
+        "name": "The Margin Note Rule",
+        "body": "Tracked caps are margin notes, not headlines' introductions. They label the wordmark, footer columns, and definition terms; never put a small caps line above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Row Rule",
+        "body": "Content is ruled rows on the twelve-column grid. Never group items into bordered, filled or shadowed cards.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Score Rule",
+        "body": "No box-shadows, no lifted surfaces. If something needs separation, rule it or change its ground.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do open each section with a full-width ink rule, the headline in seven columns and the lede in five.",
+      "Do lay content out as hairline-separated rows on the twelve-column grid.",
+      "Do keep the condensed display face uppercase at 0.9 leading, and keep reading text in Public Sans.",
+      "Do close every page except contact with the ink band and its paper button.",
+      "Do pair one ink button with at most one line button in any action group."
+    ],
+    "donts": [
+      "Don't use Playhead Blue for anything except focus and caret.",
+      "Don't build card grids, rounded corners, or shadows.",
+      "Don't add a second mark, logo device, or decorative notation (score diagrams, patterned blocks, legends).",
+      "Don't put tracked caps above headings as kickers or eyebrows; tracked caps belong to the wordmark, footer heads, and definition terms.",
+      "Don't set split heroes with a product image beside the headline, or rows of icon cards."
+    ]
+  }
+}

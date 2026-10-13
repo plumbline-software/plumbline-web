@@ -1,0 +1,23 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import ServiceCard from './ServiceCard.astro';
+import { services } from '../data';
+
+interface Props {
+	as?: 'h1' | 'h2';
+}
+
+const { as = 'h2' } = Astro.props;
+---
+
+<section id="services" aria-labelledby="services-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+	<SectionHeading
+		as={as}
+		id="services-heading"
+		heading="What we build"
+		copy="Five kinds of work, usually in some combination — most projects touch more than one of these at once."
+	/>
+	<div class="mt-2">
+		{services.map((service) => <ServiceCard {...service} />)}
+	</div>
+</section>
