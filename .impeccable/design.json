@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-10-12T21:04:21+00:00",
-  "title": "Design System: Northline Technologies",
+  "title": "Design System: Plumbline Software",
   "extensions": {
     "colorMeta": {
       "ink": {
@@ -241,8 +241,8 @@
       "name": "Header Navigation",
       "kind": "nav",
       "refersTo": "",
-      "description": "North-line mark and tracked wordmark, grey links with an ink current-page underline, ink rule below.",
-      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><svg viewBox=\"0 0 12 44\" width=\"9\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M6 4v38M2.5 7.5 6 2.5l3.5 5\"/></svg><span>Northline Technologies</span></a><nav><a href=\"#\" aria-current=\"page\">Services</a><a href=\"#\">Approach</a><a href=\"#\">About</a></nav></header>",
+      "description": "Plumb-line mark and tracked wordmark, grey links with an ink current-page underline, ink rule below.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><svg viewBox=\"0 0 12 44\" width=\"9\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" aria-hidden=\"true\"><path d=\"M3 2.5h6M6 2.5V31M6 30.5 9.5 35 6 43 2.5 35z\"/></svg><span>Plumbline Software</span></a><nav><a href=\"#\" aria-current=\"page\">Services</a><a href=\"#\">Approach</a><a href=\"#\">About</a></nav></header>",
       "css": ".ds-nav { display:flex; align-items:center; justify-content:space-between; gap:1.5rem; height:4rem; padding:0 2rem; border-bottom:1px solid var(--ink, #10141a); background: rgb(255 255 255 / 0.95); font-family: var(--font-sans, 'Public Sans Variable', system-ui, sans-serif); } .ds-nav-brand { display:flex; align-items:center; gap:0.75rem; color: var(--ink, #10141a); text-decoration:none; } .ds-nav-brand span { font-size:0.75rem; font-weight:650; letter-spacing:0.2em; text-transform:uppercase; } .ds-nav nav { display:flex; gap:2.25rem; } .ds-nav nav a { padding:0.5rem 0; font-size:0.875rem; font-weight:500; color: var(--muted, #5a616c); text-decoration:none; transition: color 150ms; } .ds-nav nav a:hover { color: var(--ink, #10141a); } .ds-nav nav a[aria-current] { color: var(--ink, #10141a); text-decoration: underline; text-decoration-thickness:2px; text-underline-offset:0.6em; } .ds-nav a:focus-visible { outline:2px solid var(--now, #2453d4); outline-offset:3px; }"
     },
     {
@@ -272,13 +272,13 @@
   ],
   "narrative": {
     "northStar": "The Quiet Score",
-    "overview": "A quiet rendition of Systems Labanotation: the discipline of a dance score without its symbols. Pages are white score paper ruled in ink; titles are set in tall condensed caps like a score's title lettering; content sits in plain ruled rows on a twelve-column staff. The only drawn mark is the north line, one vertical stroke with a north tick, used as the wordmark's companion in header and footer.\n\nDensity is calm and editorial. Each section opens on a full-width ink rule with a display heading in the left seven columns and a lede bottom-aligned in the right five. Rows below are separated by light hairlines, never boxed. Colour is almost absent: ink, greys, and a single blue reserved for \"now\" (focus and caret). Motion is limited to state transitions.\n\nThe owner rejected the full notation (score diagram, patterned blocks, legend) as too busy. Keep the score's discipline; do not reintroduce its symbols.",
+    "overview": "A quiet rendition of Systems Labanotation: the discipline of a dance score without its symbols. Pages are white score paper ruled in ink; titles are set in tall condensed caps like a score's title lettering; content sits in plain ruled rows on a twelve-column staff. The only drawn mark is the plumb line (a short bar, a vertical string and a kite-shaped bob), used as the wordmark's companion in header and footer.\n\nDensity is calm and editorial. Each section opens on a full-width ink rule with a display heading in the left seven columns and a lede bottom-aligned in the right five. Rows below are separated by light hairlines, never boxed. Colour is almost absent: ink, greys, and a single blue reserved for \"now\" (focus and caret). Motion is limited to state transitions.\n\nThe owner rejected the full notation (score diagram, patterned blocks, legend) as too busy. Keep the score's discipline; do not reintroduce its symbols.",
     "keyCharacteristics": [
       "Ink on white paper, one functional blue.",
       "Tall condensed uppercase display over a plain humanist sans for reading.",
       "Twelve-column ruled rows; no cards as structure.",
       "Square corners, 1px rules, no shadows.",
-      "One mark: the north line.",
+      "One mark: the plumb line.",
       "A dark ink closing band on every page except the contact page."
     ],
     "rules": [

@@ -1,0 +1,13 @@
+{
+  "name": "Plumbline Software",
+  "short_name": "Plumbline",
+  "description": "Founder-led software development and technology consulting in Vancouver, BC.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#10141a",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

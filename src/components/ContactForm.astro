@@ -1,13 +1,18 @@
 ---
-import { SITE, FOUNDER, services, timelines } from '../data';
+import { SITE, services, timelines } from '../data';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import SelectField from './SelectField';
 
 const nextSteps = [
 	{ title: 'You send a short note', copy: 'What you are building or fixing, and roughly when. A few sentences is plenty.' },
-	{ title: `${FOUNDER.firstName} replies personally`, copy: `Within ${SITE.replyTime}, with questions or a time to talk. No sales handoff.` },
+	{ title: 'The founder replies personally', copy: `Within ${SITE.replyTime}, with questions or a time to talk. No sales handoff.` },
 	{ title: 'A short call to scope it', copy: 'We talk through the problem and you leave with an honest view of what it would take.' },
 ];
 
-// TODO(owner): review these answers — they describe how Northline works, so they must stay true.
+// TODO(owner): review these answers — they describe how Plumbline works, so they must stay true.
 const faqs = [
 	{
 		q: 'Can you work on an existing codebase?',
@@ -27,20 +32,29 @@ const faqs = [
 	},
 ];
 
-const field =
-	'mt-2 block w-full border border-field bg-paper px-3.5 py-3 text-ink placeholder:text-muted hover:border-ink focus-visible:border-ink focus-visible:outline-offset-0';
 ---
 
 <section aria-labelledby="contact-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
 	<div class="grid gap-5 border-b border-ink pb-10 lg:grid-cols-12 lg:gap-10 lg:pb-14">
-		<h1 id="contact-heading" class="display text-[clamp(3.5rem,11vw,6rem)] lg:col-span-7">Have a project in mind?</h1>
+		<h1 id="contact-heading" class="display text-[clamp(3.5rem,11vw,6rem)] lg:col-span-7">Start a conversation.</h1>
 		<p class="max-w-xl text-lg leading-relaxed text-ink-2 lg:col-span-5 lg:self-end">
 			Tell us what you're trying to build, improve, or solve. You don't need a spec — rough is fine.
 		</p>
 	</div>
 	<div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-10">
 		<div class="lg:col-span-7">
-			<form id="contact-form" class="bg-paper-2 p-6 sm:p-10" novalidate>
+			<form
+				id="contact-form"
+				class="bg-paper-2 p-6 sm:p-10"
+				novalidate
+				data-email={SITE.email}
+				data-reply={SITE.replyTime}
+			>
+				<p class="mb-6 border-b border-rule pb-5 text-sm leading-relaxed text-ink lg:hidden">
+					The founder replies personally within {SITE.replyTime}. No sales handoff. Prefer email?
+					<a href={`mailto:${SITE.email}`} class="link">{SITE.email}</a>
+				</p>
+				<p class="mb-6 text-sm text-ink-2">All fields are required unless marked optional.</p>
 				<div class="hidden" aria-hidden="true">
 					<label for="website">Website</label>
 					<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
@@ -48,56 +62,69 @@ const field =
 
 				<div class="grid gap-6 sm:grid-cols-2">
 					<div>
-						<label for="name" class="block text-sm font-semibold">Name</label>
-						<input type="text" id="name" name="name" required autocomplete="name" class={field} />
+						<Label htmlFor="name">Name</Label>
+						<Input type="text" id="name" name="name" required autoComplete="name" maxLength={200} className="mt-2" />
+						<p id="name-error" class="mt-1.5 text-sm font-medium text-error" hidden></p>
 					</div>
 					<div>
-						<label for="email" class="block text-sm font-semibold">Work email</label>
-						<input type="email" id="email" name="email" required autocomplete="email" class={field} />
+						<Label htmlFor="email">Email</Label>
+						<Input type="email" id="email" name="email" required autoComplete="email" maxLength={200} className="mt-2" />
+						<p id="email-error" class="mt-1.5 text-sm font-medium text-error" hidden></p>
 					</div>
 					<div class="sm:col-span-2">
-						<label for="organization" class="block text-sm font-semibold">
-							Organization <span class="font-normal text-muted">(optional)</span>
-						</label>
-						<input type="text" id="organization" name="organization" autocomplete="organization" class={field} />
+						<Label htmlFor="organization">
+							Organization <span class="font-normal text-muted-foreground">(optional)</span>
+						</Label>
+						<Input type="text" id="organization" name="organization" autoComplete="organization" maxLength={200} className="mt-2" />
 					</div>
 					<div>
-						<label for="service" class="block text-sm font-semibold">What do you need?</label>
-						<select id="service" name="service" class={field}>
-							<option value="">Not sure yet</option>
-							{services.map((s) => <option value={s.slug}>{s.name}</option>)}
-						</select>
+						<Label htmlFor="service">What do you need?</Label>
+						<SelectField id="service" name="service" className="mt-2" options={[{ value: '', label: 'Not sure yet' }, ...services.map((s) => ({ value: s.slug, label: s.name }))]} />
 					</div>
 					<div>
-						<label for="timeline" class="block text-sm font-semibold">Timeline</label>
-						<select id="timeline" name="timeline" class={field}>
-							<option value="">No fixed date</option>
-							{timelines.map((t) => <option>{t}</option>)}
-						</select>
+						<Label htmlFor="timeline">Timeline</Label>
+						<SelectField id="timeline" name="timeline" className="mt-2" options={[{ value: '', label: 'No fixed date' }, ...timelines.map((t) => ({ value: t, label: t }))]} />
 					</div>
 					<div class="sm:col-span-2">
-						<label for="message" class="block text-sm font-semibold">Project details</label>
-						<textarea
+						<Label htmlFor="message">Project details</Label>
+						<Textarea
 							id="message"
+							maxLength={5000}
 							name="message"
 							required
-							rows="6"
+							rows={6}
 							placeholder="What are you building, what stage is it at, and what's getting in the way?"
-							class={field}
-						></textarea>
+							className="mt-2"
+						/>
+						<p id="message-error" class="mt-1.5 text-sm font-medium text-error" hidden></p>
 					</div>
 				</div>
 
 				<div class="mt-8">
 					<p id="contact-form-status" class="mb-4 text-sm" role="status" aria-live="polite" hidden></p>
-					<button type="submit" class="btn btn-ink w-full disabled:pointer-events-none disabled:opacity-60">Send message</button>
-					<p class="mt-3 text-center text-xs text-muted">Your details are only used to reply to you.</p>
+					<Button type="submit" className="w-full">Send message</Button>
+					<p class="mt-3 text-center text-xs text-muted-foreground">
+						Your details are only used to reply to you. <a href="/privacy" class="link">Privacy</a>
+					</p>
 				</div>
 			</form>
+
+			<div id="contact-success" class="border border-ink p-6 sm:p-10" hidden>
+				<h2 class="display text-5xl" tabindex="-1">Message sent.</h2>
+				<p class="mt-4 text-lg leading-relaxed text-ink">
+					Thanks, <span data-out="name"></span>. You'll get a personal reply at{' '}
+					<span data-out="email" class="font-semibold"></span> within <span data-out="reply"></span>.
+				</p>
+				<p class="mt-4 leading-relaxed text-ink-2">
+					While you wait, see <a href="/approach" class="link text-ink">how an engagement runs</a>.
+				</p>
+				<Button type="button" id="contact-again" variant="outline" className="mt-8">Send another message</Button>
+			</div>
 		</div>
 
 		<aside class="lg:col-span-5">
 			<h2 class="border-b border-ink pb-3 font-semibold">What happens next</h2>
+			<p class="mt-4 text-sm text-ink-2">These steps come before stage 1 of <a href="/approach" class="link text-ink">how an engagement runs</a>.</p>
 			<ol class="relative mt-6 space-y-7 pl-12">
 				<span class="absolute bottom-1 left-[0.95rem] top-1 w-0.5 bg-ink" aria-hidden="true"></span>
 				{
@@ -124,8 +151,8 @@ const field =
 						<details class="group py-4">
 							<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink [&::-webkit-details-marker]:hidden">
 								{faq.q}
-								<svg viewBox="0 0 16 16" class="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-45" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-									<path d="M8 2v12M2 8h12" />
+								<svg viewBox="0 0 16 16" class="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+									<path d="m3 6 5 5 5-5" />
 								</svg>
 							</summary>
 							<p class="mt-2 text-sm leading-relaxed text-ink-2">{faq.a}</p>
@@ -141,7 +168,9 @@ const field =
 	(() => {
 		const form = document.getElementById('contact-form');
 		const status = document.getElementById('contact-form-status');
-		if (!(form instanceof HTMLFormElement) || !status) return;
+		const success = document.getElementById('contact-success');
+		if (!(form instanceof HTMLFormElement) || !status || !success) return;
+		const { email: inbox, reply } = form.dataset;
 
 		// Links like /contact?service=frontend preselect the service.
 		const service = new URLSearchParams(location.search).get('service');
@@ -150,15 +179,70 @@ const field =
 			select.value = service;
 		}
 
+		const checks = {
+			name: (v) => (v ? '' : 'Enter your name.'),
+			email: (v, el) =>
+				!v ? 'Enter your email address.' : el.validity.typeMismatch ? 'Enter an email address like name@company.com.' : '',
+			message: (v) => (v ? '' : 'Tell us a little about the project. A few sentences is enough.'),
+		};
+
+		const setError = (id, message) => {
+			const field = form.elements.namedItem(id);
+			const note = document.getElementById(`${id}-error`);
+			if (!(field instanceof HTMLElement) || !note) return;
+			note.textContent = message;
+			note.hidden = !message;
+			if (message) {
+				field.setAttribute('aria-invalid', 'true');
+				field.setAttribute('aria-describedby', note.id);
+			} else {
+				field.removeAttribute('aria-invalid');
+				field.removeAttribute('aria-describedby');
+			}
+		};
+
+		// Clear a field's error as soon as it's fixed.
+		for (const id of Object.keys(checks)) {
+			const field = form.elements.namedItem(id);
+			field?.addEventListener('input', () => {
+				if (field.getAttribute('aria-invalid') && !checks[id](field.value.trim(), field)) setError(id, '');
+			});
+		}
+
+		const showStatus = (text, tone, withEmail = false) => {
+			status.hidden = false;
+			status.replaceChildren(text);
+			if (withEmail) {
+				const link = document.createElement('a');
+				link.href = `mailto:${inbox}`;
+				link.className = 'link';
+				link.textContent = inbox;
+				status.append(link, '.');
+			}
+			status.className =
+				tone === 'error' ? 'mb-4 border border-error px-3 py-2 text-sm text-error' : 'mb-4 text-sm text-ink-2';
+		};
+
 		form.addEventListener('submit', async (event) => {
 			event.preventDefault();
+			let firstInvalid = null;
+			for (const [id, check] of Object.entries(checks)) {
+				const field = form.elements.namedItem(id);
+				const message = check(field.value.trim(), field);
+				setError(id, message);
+				if (message && !firstInvalid) firstInvalid = field;
+			}
+			if (firstInvalid) {
+				status.hidden = true;
+				firstInvalid.focus();
+				return;
+			}
+
 			const submitButton = form.querySelector('button[type="submit"]');
 			const data = Object.fromEntries(new FormData(form).entries());
-
-			status.hidden = false;
-			status.textContent = 'Sending…';
-			status.className = 'mb-4 text-sm text-ink-2';
-			if (submitButton instanceof HTMLButtonElement) submitButton.disabled = true;
+			showStatus('Sending…', 'info');
+			submitButton.disabled = true;
+			submitButton.textContent = 'Sending…';
 
 			try {
 				const response = await fetch('/api/contact', {
@@ -166,22 +250,34 @@ const field =
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(data),
 				});
-				const result = await response.json();
+				const result = await response.json().catch(() => ({}));
 
 				if (result.ok) {
+					for (const el of success.querySelectorAll('[data-out]')) {
+						el.textContent = { name: data.name, email: data.email, reply }[el.dataset.out] ?? '';
+					}
+					form.hidden = true;
+					status.hidden = true;
+					success.hidden = false;
+					success.querySelector('h2').focus();
 					form.reset();
-					status.textContent = 'Message sent. You will get a reply at the email you gave.';
-					status.className = 'mb-4 border border-ink px-3 py-2 text-sm font-semibold text-ink';
+				} else if (response.status < 500 && result.error) {
+					showStatus(result.error, 'error');
 				} else {
-					status.textContent = result.error || 'The message could not be sent. Try again, or email us directly.';
-					status.className = 'mb-4 border border-red-700 px-3 py-2 text-sm text-red-700';
+					showStatus("The form couldn't send your message. Nothing you typed is lost: copy it and email ", 'error', true);
 				}
 			} catch {
-				status.textContent = 'The message could not be sent. Check your connection and try again, or email us directly.';
-				status.className = 'mb-4 border border-red-700 px-3 py-2 text-sm text-red-700';
+				showStatus("Your connection dropped before the message sent. Nothing you typed is lost: try again, or email ", 'error', true);
 			} finally {
-				if (submitButton instanceof HTMLButtonElement) submitButton.disabled = false;
+				submitButton.disabled = false;
+				submitButton.textContent = 'Send message';
 			}
+		});
+
+		document.getElementById('contact-again')?.addEventListener('click', () => {
+			success.hidden = true;
+			form.hidden = false;
+			form.elements.namedItem('name')?.focus();
 		});
 	})();
 </script>

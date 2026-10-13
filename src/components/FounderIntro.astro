@@ -1,0 +1,26 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import { SITE } from '../data';
+---
+
+<section aria-labelledby="founder-intro-heading" class="bg-paper-2">
+	<div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
+		<SectionHeading id="founder-intro-heading" heading="You'll work with the founder" />
+		<div class="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-10">
+			<p class="text-xl font-medium leading-relaxed text-ink lg:col-span-7">
+				I scope your project and I write the code. {SITE.name} is founder-led: one engineer, no account managers,
+				no handoffs, so nothing you tell me gets lost on the way to the build.
+			</p>
+			<div class="lg:col-span-5">
+				<p class="leading-relaxed text-ink-2">
+					Before {SITE.shortName}, I spent 4+ years as a software engineer at Samsung Canada. Now that same
+					engineering goes straight into your project.
+				</p>
+				<div class="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+					<a href="/how-this-site-was-built" class="link">See how this site was built</a>
+					<a href="/about#founder" class="link">Why Plumbline exists</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

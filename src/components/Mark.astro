@@ -1,0 +1,13 @@
+---
+// The plumb-line mark: a string hung from a short bar, pulled true by its weight.
+interface Props {
+	class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<svg viewBox="0 0 12 44" class={className} aria-hidden="true">
+	<path d="M3 2.5h6M6 2.5V31" fill="none" stroke="currentColor" stroke-width="1.5" />
+	<path d="M6 30.5 9.5 35 6 43 2.5 35z" fill="currentColor" />
+</svg>

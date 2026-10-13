@@ -1,5 +1,6 @@
 ---
-import { SITE, FOUNDER } from '../data';
+import { buttonVariants } from '@/components/ui/button';
+import { SITE } from '../data';
 
 interface Props {
 	heading?: string;
@@ -17,10 +18,10 @@ const {
 	<div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
 		<h2 id="cta-heading" class="display max-w-3xl text-[clamp(3rem,8vw,5.5rem)]">{heading}</h2>
 		<p class="mt-6 max-w-xl text-lg leading-relaxed text-paper/80">
-			{copy} You'll hear back from {FOUNDER.firstName} within {SITE.replyTime}.
+			{copy} You'll hear back from the founder within {SITE.replyTime}.
 		</p>
 		<div class="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-8">
-			<a href="/contact" class="btn btn-paper">Get in touch</a>
+			<a href="/contact" class={buttonVariants({ variant: 'paper' })}>Start a conversation</a>
 			<a href={`mailto:${SITE.email}`} class="text-sm text-paper/80 underline decoration-paper/40 hover:text-paper hover:decoration-paper">
 				{SITE.email}
 			</a>

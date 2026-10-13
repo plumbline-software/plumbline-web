@@ -1,6 +1,6 @@
-# Northline Technologies — Marketing Website
+# Plumbline Software — Marketing Website
 
-Marketing site for Northline Technologies, a Vancouver-based software
+Marketing site for Plumbline Software, a Vancouver-based software
 development and technology consulting company. Built with Astro, TypeScript,
 and Tailwind CSS; almost entirely static, with one server route for the
 contact form. See `PRODUCT_SPEC.md` for the full product spec.
@@ -51,10 +51,10 @@ through the [Resend](https://resend.com) transactional email API (see
   the only required variable.
 - `RESEND_FROM_EMAIL` — optional. Defaults to Resend's shared test sender
   `onboarding@resend.dev`, which only delivers to the Resend account owner's
-  own email — fine for now since Northline has no domain yet. Once a domain
+  own email — fine for now since Plumbline has no domain yet. Once a domain
   is registered and verified in Resend, set this to an address on it.
 - `RESEND_TO_EMAIL` — optional. Defaults to
-  `northline.technologies@gmail.com`.
+  `plumbline.software@gmail.com`.
 
 Without `RESEND_API_KEY` set, the form fails gracefully with an inline
 "Contact form is not configured yet" message instead of throwing.

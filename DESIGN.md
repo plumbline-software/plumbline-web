@@ -1,6 +1,6 @@
 ---
-name: Northline Technologies
-description: Black ink on white score paper; tall condensed title lettering, ruled rows, and one vertical north line as the only mark.
+name: Plumbline Software
+description: Black ink on white score paper; tall condensed title lettering, ruled rows, and one vertical plumb line as the only mark.
 colors:
   ink: "#10141a"
   ink-2: "#353b45"
@@ -11,6 +11,7 @@ colors:
   muted: "#5a616c"
   rule: "#d5d7db"
   field: "#8a909a"
+  error: "#b42318"
 typography:
   display:
     fontFamily: "Big Shoulders Display Variable, Arial Narrow, sans-serif"
@@ -41,6 +42,15 @@ typography:
     fontWeight: 400
     lineHeight: 1.625
     fontFeature: "tnum"
+  button:
+    fontFamily: "Public Sans Variable, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 600
+  wordmark:
+    fontFamily: "Public Sans Variable, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 650
+    letterSpacing: "0.2em"
   label:
     fontFamily: "Public Sans Variable, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif"
     fontSize: "0.6875rem"
@@ -91,13 +101,13 @@ components:
     padding: "112px 32px"
 ---
 
-# Design System: Northline Technologies
+# Design System: Plumbline Software
 
 ## Overview
 
 **Creative North Star: "The Quiet Score"**
 
-A quiet rendition of Systems Labanotation: the discipline of a dance score without its symbols. Pages are white score paper ruled in ink; titles are set in tall condensed caps like a score's title lettering; content sits in plain ruled rows on a twelve-column staff. The only drawn mark is the north line, one vertical stroke with a north tick, used as the wordmark's companion in header and footer.
+A quiet rendition of Systems Labanotation: the discipline of a dance score without its symbols. Pages are white score paper ruled in ink; titles are set in tall condensed caps like a score's title lettering; content sits in plain ruled rows on a twelve-column staff. The only drawn mark is the plumb line (a short bar, a vertical string and a kite-shaped bob). At page scale it hangs from the header mark down the hero's left edge to the bob, and the /approach stages hang on the same string; error red (#b42318) is reserved for form errors and always paired with text. It is otherwise used as the wordmark's companion in header and footer.
 
 Density is calm and editorial. Each section opens on a full-width ink rule with a display heading in the left seven columns and a lede bottom-aligned in the right five. Rows below are separated by light hairlines, never boxed. Colour is almost absent: ink, greys, and a single blue reserved for "now" (focus and caret). Motion is limited to state transitions.
 
@@ -108,7 +118,7 @@ The owner rejected the full notation (score diagram, patterned blocks, legend) a
 - Tall condensed uppercase display over a plain humanist sans for reading.
 - Twelve-column ruled rows; no cards as structure.
 - Square corners, 1px rules, no shadows.
-- One mark: the north line.
+- One mark: the plumb line.
 - A dark ink closing band on every page except the contact page.
 
 ## Colors
@@ -175,7 +185,7 @@ Flat. There are no shadows anywhere. Depth is conveyed by rules (ink and hairlin
 
 ## Shapes
 
-Square everything: 0px radius on buttons, inputs, panels, menu, and step markers. Borders are 1px (ink for interactive edges, hairline for separators); the vertical progress line in the contact steps is 2px ink. The north-line mark (a 1.5px stroke, 12 by 44 viewBox) is the only drawn form; the inline icons that exist (check, arrow, plus, menu, close) are 16 to 24px stroked line icons in currentColor, matching its weight.
+Square everything: 0px radius on buttons, inputs, panels, menu, and step markers. Borders are 1px (ink for interactive edges, hairline for separators); the vertical progress line in the contact steps is 2px ink. The plumb-line mark (a 1.5px stroke, 12 by 44 viewBox) is the only drawn form; the inline icons that exist (check, arrow, plus, menu, close) are 16 to 24px stroked line icons in currentColor, matching its weight.
 
 ## Components
 
@@ -197,7 +207,7 @@ Plain, square and confident.
 - **Panel:** the form sits on a Quiet Paper ground with 24 to 40px padding and no border.
 
 ### Navigation
-- **Desktop:** north-line mark plus tracked-caps wordmark at left; 0.875rem medium links in Margin Grey, ink on hover; the current page is ink with a 2px underline offset 0.6em.
+- **Desktop:** plumb-line mark plus tracked-caps wordmark at left; 0.875rem medium links in Margin Grey, ink on hover; the current page is ink with a 2px underline offset 0.6em.
 - **Mobile:** a 40px square ink-bordered menu button opens a right-hand sheet (320px, max 85vw) that slides in over 250ms; links are display-face rows at 1.875rem separated by hairlines, with an ink "Start a project" button below.
 
 ### Section Heading
@@ -209,8 +219,8 @@ The workhorse: a twelve-column row with a display-face title at left, semibold l
 ### Closing Band
 A full-bleed ink section that ends every page except contact: a headline-scale question, a lede in 80% paper, a paper button and a mailto link. The contact page ends on its form instead.
 
-### North Line Mark
-One vertical stroke with a north tick, drawn in currentColor at 1.5px: 32px tall in the header, 48px in the footer. It is the system's only mark.
+### Plumb Line Mark
+A short top bar and a vertical string at 1.5px with a solid kite-shaped plumb bob, drawn in currentColor: 32px tall in the header, 48px in the footer. It is the system's only mark.
 
 ## Do's and Don'ts
 

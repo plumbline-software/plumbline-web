@@ -1,13 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data';
 import Header from '../components/Header.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-	title="Contact | Northline Technologies"
-	description="Get in touch with Northline Technologies to talk about a software development or technology consulting project."
+	title={`Contact ${SITE.name} | Start a Conversation`}
+	description={`Tell ${SITE.name} what you're building or fixing. The founder replies personally within ${SITE.replyTime}, with no sales handoff.`}
 >
 	<Header />
 	<main>

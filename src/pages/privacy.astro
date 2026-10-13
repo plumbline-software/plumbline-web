@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import DocSection from '../components/DocSection.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data';
+
+// TODO(owner): review before launch. This describes how inquiries are handled, so it must stay true.
+const updated = 'October 12, 2026';
+---
+
+<Layout title={`Privacy | ${SITE.name}`} description={`How ${SITE.name} handles the personal information you send through this site.`}>
+	<Header />
+	<main class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+		<SectionHeading
+			as="h1"
+			id="privacy-heading"
+			heading="Privacy"
+			copy={`What ${SITE.name} collects when you get in touch, why, and how to have it removed. Last updated ${updated}.`}
+		/>
+
+		<DocSection heading="What we collect">
+			<p>
+				Only what you type into the contact form: your name, email address, organization (optional), the kind
+				of help you need, your timeline and your message. The site does not use tracking cookies.
+			</p>
+		</DocSection>
+
+		<DocSection heading="How it's used">
+			<p>
+				To reply to you and to discuss the project you described. It is never sold, shared for marketing, or
+				added to a mailing list.
+			</p>
+		</DocSection>
+
+		<DocSection heading="Who handles it">
+			<ul>
+				<li><strong>Resend</strong> delivers the form to our inbox by email.</li>
+				<li><strong>Gmail</strong> (Google) hosts that inbox.</li>
+				<li><strong>Vercel</strong> hosts this site and counts page views without cookies or identifying you.</li>
+			</ul>
+			<p>These providers may store or process data outside Canada.</p>
+		</DocSection>
+
+		<DocSection heading="How long we keep it">
+			<p>
+				As long as needed to respond and, if we work together, for the length of that work. After that it is
+				deleted. You can ask us to delete it sooner at any time.
+			</p>
+		</DocSection>
+
+		<DocSection heading="Your choices">
+			<p>
+				To see, correct or delete what we hold about you, email{' '}
+				<a href={`mailto:${SITE.email}`} class="link">{SITE.email}</a>. We reply within {SITE.replyTime}.
+			</p>
+		</DocSection>
+	</main>
+	<Footer />
+</Layout>

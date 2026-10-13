@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import DocSection from '../components/DocSection.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data';
+
+// Re-measure and update these when the site changes (Lighthouse, mobile settings, production build).
+const measuredOn = 'October 12, 2026';
+const scores = [
+	{ label: 'Performance', value: '98' },
+	{ label: 'Accessibility', value: '100' },
+	{ label: 'Best practices', value: '100' },
+	{ label: 'SEO', value: '100' },
+];
+---
+
+<Layout
+	title={`How this site was built | ${SITE.name}`}
+	description="The site itself as a case study: measured performance, accessibility and the documentation behind it."
+>
+	<Header />
+	<main class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+		<SectionHeading
+			as="h1"
+			id="built-heading"
+			heading="How this site was built"
+			copy={`The clearest evidence of how ${SITE.shortName} works is the site you're reading. Here is what went into it, with numbers you can check yourself.`}
+		/>
+
+		<DocSection heading="Measured">
+			<dl class="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
+				{
+					scores.map((s) => (
+						<div class="border-t border-ink pt-3">
+							<dt class="text-sm text-muted-foreground">{s.label}</dt>
+							<dd class="display mt-1 text-5xl text-ink">{s.value}</dd>
+						</div>
+					))
+				}
+			</dl>
+			<p>
+				Lighthouse scores for the homepage on Google's mobile settings (a mid-range phone on a slow 4G
+				connection), measured {measuredOn}. Run the same test on any page with Chrome DevTools or{' '}
+				<a href="https://pagespeed.web.dev" class="link" rel="noopener" target="_blank">PageSpeed Insights</a>.
+			</p>
+			<ul>
+				<li><strong>About 122 KB</strong> to load the homepage, including both typefaces.</li>
+				<li><strong>Under 1 KB of JavaScript</strong> on most pages; about 5 KB on the contact page, for form validation. No framework code is sent to the browser.</li>
+				<li><strong>No tracking cookies</strong>, so there is no consent banner to click through.</li>
+			</ul>
+		</DocSection>
+
+		<DocSection heading="How it's put together">
+			<ul>
+				<li>Every page is pre-built static HTML (Astro), so there is nothing to compute when you visit.</li>
+				<li>The only server code is the contact form: one small function that validates your message and sends it by email.</li>
+				<li>Interface components from shadcn/ui, rendered to plain HTML ahead of time rather than in your browser.</li>
+				<li>Two typefaces, hosted with the site instead of loaded from a third party.</li>
+			</ul>
+		</DocSection>
+
+		<DocSection heading="Accessibility">
+			<p>
+				Headings in order on every page, a label on every form field, visible keyboard focus, error messages
+				tied to the field they describe, colour contrast at WCAG AA, and reduced motion respected.{' '}
+				<a href="/accessibility" class="link">Read the accessibility statement</a>.
+			</p>
+		</DocSection>
+
+		<DocSection heading="Documentation">
+			<p>
+				A handover includes the documentation, not just the code. This site's repository has the same set a
+				client project would:
+			</p>
+			<ul>
+				<li><strong>Product specification</strong>: what the site must do, with every change recorded as a dated revision and the reason for it.</li>
+				<li><strong>Design system</strong>: colours, type, spacing and components, written down so the next person keeps them consistent.</li>
+				<li><strong>README</strong>: how to run it locally, configure email and deploy, step by step.</li>
+				<li><strong>Environment template</strong>: every setting the site needs, with none of the secrets.</li>
+			</ul>
+		</DocSection>
+	</main>
+	<ContactCTA heading="Want software built like this?" copy="Tell us what you're trying to build, improve, or solve." />
+	<Footer />
+</Layout>

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, FOUNDER } from '../data';
+import { SITE, services } from '../data';
 
 interface Props {
   title?: string;
@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = 'Northline Technologies | Software Development & Technology Consulting',
-  description = 'Northline Technologies is a Vancouver-based software development and technology consulting company building modern web applications, digital platforms, APIs, and cloud solutions.',
+  title = `Vancouver Software Development & Consulting | ${SITE.name}`,
+  description = 'Founder-led software development and technology consulting in Vancouver, BC: web apps, internal tools, APIs and cloud infrastructure built to last.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -22,34 +22,59 @@ const bingVerification = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
 // Vercel Web Analytics: cookieless page views, enabled only on Vercel builds.
 const vercelAnalytics = Boolean(import.meta.env.VERCEL);
 
-// Lets search engines connect the founder's name to the company.
+// Describes the business, its services and the website to search engines.
+// The founder is deliberately not named here.
+const businessId = new URL('/#business', Astro.site).href;
 const structuredData = {
 	'@context': 'https://schema.org',
-	'@type': 'ProfessionalService',
-	name: 'Northline Technologies',
-	url: Astro.site?.href,
-	logo: new URL('/apple-touch-icon.png', Astro.site).href,
-	image: ogImage.href,
-	areaServed: 'Canada',
-	email: SITE.email,
-	address: { '@type': 'PostalAddress', addressLocality: 'Vancouver', addressRegion: 'BC', addressCountry: 'CA' },
-	founder: {
-		'@type': 'Person',
-		name: FOUNDER.name,
-		jobTitle: FOUNDER.title,
-		sameAs: [FOUNDER.linkedin, FOUNDER.github].filter(Boolean),
-	},
+	'@graph': [
+		{
+			'@type': 'ProfessionalService',
+			'@id': businessId,
+			name: SITE.name,
+			description: 'Founder-led software development and technology consulting in Vancouver, BC.',
+			url: Astro.site?.href,
+			logo: new URL('/apple-touch-icon.png', Astro.site).href,
+			image: ogImage.href,
+			email: SITE.email,
+			address: { '@type': 'PostalAddress', addressLocality: 'Vancouver', addressRegion: 'BC', addressCountry: 'CA' },
+			areaServed: 'Canada',
+			knowsAbout: ['Web application development', 'Frontend engineering', 'API development', 'Cloud infrastructure', 'Technology consulting'],
+			hasOfferCatalog: {
+				'@type': 'OfferCatalog',
+				name: 'Software development services',
+				itemListElement: services.map((s) => ({
+					'@type': 'Offer',
+					itemOffered: {
+						'@type': 'Service',
+						name: s.name,
+						description: s.summary,
+						url: new URL(`/services#${s.slug}`, Astro.site).href,
+						provider: { '@id': businessId },
+					},
+				})),
+			},
+		},
+		{
+			'@type': 'WebSite',
+			name: SITE.name,
+			url: Astro.site?.href,
+			inLanguage: 'en-CA',
+			publisher: { '@id': businessId },
+		},
+	],
 };
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-CA">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" href="/favicon.ico" sizes="48x48" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="theme-color" content="#10141a" />
 		<meta name="generator" content={Astro.generator} />
 
@@ -58,12 +83,12 @@ const structuredData = {
 		<link rel="canonical" href={canonicalURL} />
 
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Northline Technologies" />
+		<meta property="og:site_name" content={SITE.name} />
 		<meta property="og:locale" content="en_CA" />
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content="Northline Technologies: Software that still makes sense in two years." />
+		<meta property="og:image:alt" content={`${SITE.name}: Software that still makes sense in two years.`} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />

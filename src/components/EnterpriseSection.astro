@@ -1,34 +1,45 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 
-const capabilities = [
-	'Security-conscious development',
-	'API integration',
-	'Cloud infrastructure',
-	'CI/CD',
-	'Testing',
-	'Documentation',
-	'Maintainability',
-	'Accessibility',
+// Four claims, each one a buyer can check. Keep them true: this site is the sample.
+const commitments: { title: string; copy: string; href?: string }[] = [
+	{
+		title: 'Accessibility',
+		copy: 'Semantic markup, full keyboard support and WCAG AA colour contrast are part of the build, not a later audit. This site is built the same way; read its accessibility statement.',
+		href: '/accessibility',
+	},
+	{
+		title: 'Security',
+		copy: 'Secrets stay on the server, input is validated at every boundary, and dependencies are kept to what the project actually needs.',
+	},
+	{
+		title: 'Documentation & handover',
+		copy: 'You get architecture notes, setup instructions and the full repository, so your team can run it without us.',
+	},
+	{
+		title: 'Existing systems',
+		copy: 'We integrate with the APIs, databases and identity providers you already have, rather than assuming a rewrite.',
+	},
 ];
 ---
 
 <section aria-labelledby="enterprise-heading">
-	<div class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-28 lg:px-8">
+	<div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
 		<SectionHeading
 			id="enterprise-heading"
-			heading="Ready for complex environments."
+			heading="Built for organizations with real constraints."
 			copy="Enterprise and public-sector projects come with real constraints — procurement processes, accessibility requirements, security review, legacy systems that can't simply be replaced overnight. We build with those constraints in mind from the start, not as a compliance pass before launch."
 		/>
-		<ul class="mt-12 grid gap-x-10 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
+		<dl class="mt-12 grid gap-x-10 md:grid-cols-2">
 			{
-				capabilities.map((item) => (
-					<li class="flex items-start gap-3 border-t border-rule pt-4 font-medium text-ink">
-						<svg viewBox="0 0 16 16" class="mt-1 h-4 w-4 shrink-0 text-ink" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="m3 8.5 3 3 7-7" /></svg>
-						{item}
-					</li>
+				commitments.map((item) => (
+					<div class="border-t border-ink pb-8 pt-5">
+						<dt class="display text-3xl">{item.title}</dt>
+						<dd class="mt-3 max-w-xl leading-relaxed text-ink-2">{item.copy}</dd>
+						{item.href && <dd class="mt-3"><a href={item.href} class="link text-sm">Accessibility statement</a></dd>}
+					</div>
 				))
 			}
-		</ul>
+		</dl>
 	</div>
 </section>

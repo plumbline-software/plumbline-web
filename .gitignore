@@ -25,3 +25,15 @@ pnpm-debug.log*
 
 # Vercel build output and project link
 .vercel/
+
+# Impeccable (project-level design skill): commit the skill, not its engine binary.
+# The launcher downloads the pinned engine on first run.
+.claude/skills/impeccable/scripts/bin/
+.impeccable/review/
+.impeccable/config.local.json
+
+# Personal Claude Code settings (shared ones live in .claude/settings.json)
+.claude/settings.local.json
+
+# Local Impeccable critique archive (records local paths)
+.impeccable/critique/

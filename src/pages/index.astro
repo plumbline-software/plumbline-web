@@ -2,8 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import Positioning from '../components/Positioning.astro';
+import ProcessStrip from '../components/ProcessStrip.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import FounderIntro from '../components/FounderIntro.astro';
 import EnterpriseSection from '../components/EnterpriseSection.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
@@ -14,21 +15,21 @@ import { services } from '../data';
 	<Header />
 	<main>
 		<Hero />
-		<Positioning />
-		<section aria-labelledby="services-index-heading" class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-28 lg:px-8">
+		<ProcessStrip />
+		<section aria-labelledby="services-index-heading" class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
 			<SectionHeading
 				id="services-index-heading"
 				heading="What we build"
-				copy="Most projects touch more than one of these at once."
+				copy="Five kinds of work, usually in some combination. Most projects touch more than one."
 			/>
 			<ul class="mt-10 border-b border-rule">
 				{
 					services.map((service) => (
 						<li class="border-t border-rule first:border-t-0">
-							<a href={`/services#${service.slug}`} class="group grid items-center gap-1 py-6 sm:grid-cols-[5fr_6fr_1.5rem] sm:gap-x-8">
-								<span class="display text-3xl sm:text-4xl group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4">{service.name}</span>
-								<span class="text-ink-2">{service.summary}</span>
-								<svg viewBox="0 0 24 24" class="hidden h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 sm:block" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+							<a href={`/services#${service.slug}`} class="group grid grid-cols-[1fr_1.5rem] items-center gap-x-4 gap-y-1 py-6 sm:grid-cols-[5fr_6fr_1.5rem] sm:gap-x-8">
+								<span class="display text-3xl group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4 sm:text-4xl">{service.name}</span>
+								<span class="col-start-1 row-start-2 text-ink-2 sm:col-start-auto sm:row-start-auto">{service.summary}</span>
+								<svg viewBox="0 0 24 24" class="col-start-2 row-start-1 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 sm:col-start-auto sm:row-start-auto" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
 									<path d="M5 12h14M13 6l6 6-6 6" />
 								</svg>
 							</a>
@@ -37,6 +38,7 @@ import { services } from '../data';
 				}
 			</ul>
 		</section>
+		<FounderIntro />
 		<EnterpriseSection />
 		<ContactCTA />
 	</main>

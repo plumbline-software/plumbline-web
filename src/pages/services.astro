@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data';
 import Header from '../components/Header.astro';
 import Services from '../components/Services.astro';
 import Capabilities from '../components/Capabilities.astro';
@@ -8,14 +9,17 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-	title="Services | Northline Technologies"
-	description="Full-stack development, frontend engineering, API and backend development, cloud infrastructure, and technology consulting from Northline Technologies."
+	title={`Web App, API & Cloud Development Services | ${SITE.shortName}`}
+	description={`Full-stack development, frontend engineering, APIs, cloud infrastructure and technology consulting from ${SITE.name} in Vancouver, BC.`}
 >
 	<Header />
 	<main>
 		<Services as="h1" />
 		<Capabilities />
-		<ContactCTA />
+		<ContactCTA
+			heading="Not sure which of these you need?"
+			copy="Describe the problem. You'll hear which kind of work fits, or whether you need any at all."
+		/>
 	</main>
 	<Footer />
 </Layout>

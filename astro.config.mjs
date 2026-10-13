@@ -4,8 +4,9 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import node from '@astrojs/node';
 import vercel from '@astrojs/vercel';
+import react from '@astrojs/react';
 
-// On Vercel the production address comes from the platform (e.g. northline-web.vercel.app),
+// On Vercel the production address comes from the platform (e.g. plumbline.vercel.app),
 // so canonical URLs, the sitemap and robots.txt follow it with no edits. SITE_URL overrides it,
 // for example once a custom domain exists.
 const site =
@@ -22,7 +23,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [sitemap()],
+  // lastmod tells search engines when pages last changed (each deploy rebuilds them).
+  integrations: [sitemap({ lastmod: new Date() }), react()],
 
   // Vercel runs /api/contact as a serverless function; anywhere else it runs on Node.
   adapter: process.env.VERCEL ? vercel() : node({ mode: 'standalone' }),

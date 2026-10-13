@@ -1,4 +1,5 @@
 ---
+import { buttonVariants } from '@/components/ui/button';
 const links = [
 	{ href: '/services', label: 'Services' },
 	{ href: '/approach', label: 'Approach' },
@@ -11,7 +12,7 @@ const links = [
 	type="button"
 	aria-haspopup="dialog"
 	aria-controls="mobile-nav-dialog"
-	class="inline-flex h-10 w-10 items-center justify-center border border-ink text-ink md:hidden"
+	class="inline-flex h-11 w-11 items-center justify-center border border-ink text-ink sm:h-10 sm:w-10 md:hidden"
 >
 	<span class="sr-only">Open menu</span>
 	<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -54,9 +55,9 @@ const links = [
 			<li class="mt-6">
 				<a
 					href="/contact"
-					class="btn btn-ink w-full"
+					class={buttonVariants({ className: 'w-full' })}
 				>
-					Start a project
+					Start a conversation
 				</a>
 			</li>
 		</ul>

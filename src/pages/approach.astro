@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { SITE } from '../data';
 import Header from '../components/Header.astro';
 import Approach from '../components/Approach.astro';
 import ContactCTA from '../components/ContactCTA.astro';
@@ -7,13 +8,13 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-	title="Approach | Northline Technologies"
-	description="How Northline Technologies works with clients: understand, plan, build, and deliver."
+	title={`Our Software Development Process | ${SITE.shortName}`}
+	description={`How ${SITE.name} runs every project: understand, plan, build and deliver, with a clear, written outcome at each stage.`}
 >
 	<Header />
 	<main>
 		<Approach as="h1" />
-		<ContactCTA />
+		<ContactCTA heading="Start with Understand." copy="Send a short note about what you're trying to solve. That's step one." />
 	</main>
 	<Footer />
 </Layout>

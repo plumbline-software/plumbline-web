@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { services, timelines } from '../../data';
+import { SITE, services, timelines } from '../../data';
 
 export const prerender = false;
 
@@ -23,7 +23,7 @@ function inquiryEmail(fields: Record<'name' | 'email' | 'organization' | 'servic
 	return `<!doctype html><html><body style="margin:0;padding:0;background:#f6f6f5">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f6f6f5;padding:32px 16px;font-family:${font}"><tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #d5d7db;overflow:hidden">
-	<tr><td style="background:#10141a;padding:20px 28px;color:#ffffff;font-size:12px;font-weight:600;letter-spacing:.2em">NORTHLINE TECHNOLOGIES</td></tr>
+	<tr><td style="background:#10141a;padding:20px 28px;color:#ffffff;font-size:12px;font-weight:600;letter-spacing:.2em">${escape(SITE.name.toUpperCase())}</td></tr>
 	<tr><td style="padding:28px 28px 8px">
 		<p style="margin:0;color:#5a616c;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase">New project inquiry</p>
 		<h1 style="margin:6px 0 0;color:#10141a;font-size:22px;line-height:1.3">${f.name}${f.organization ? ` <span style="color:#5a616c;font-weight:400">from ${f.organization}</span>` : ''}</h1>
@@ -41,7 +41,7 @@ function inquiryEmail(fields: Record<'name' | 'email' | 'organization' | 'servic
 		<a href="mailto:${f.email}?subject=${encodeURIComponent('Re: your project inquiry')}" style="display:inline-block;background:#10141a;color:#ffffff;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:14px 20px">Reply to ${f.name}</a>
 	</td></tr>
 </table>
-<p style="margin:16px 0 0;color:#5a616c;font-size:12px">Sent from the contact form on the Northline Technologies website.</p>
+<p style="margin:16px 0 0;color:#5a616c;font-size:12px">Sent from the contact form on the ${escape(SITE.name)} website.</p>
 </td></tr></table>
 </body></html>`;
 }
@@ -80,12 +80,12 @@ export const POST: APIRoute = async ({ request }) => {
 	}
 
 	const apiKey = import.meta.env.RESEND_API_KEY;
-	const fromEmail = import.meta.env.RESEND_FROM_EMAIL || 'Northline Technologies <onboarding@resend.dev>';
-	const toEmail = import.meta.env.RESEND_TO_EMAIL || 'northline.technologies@gmail.com';
+	const fromEmail = import.meta.env.RESEND_FROM_EMAIL || `${SITE.name} <onboarding@resend.dev>`;
+	const toEmail = import.meta.env.RESEND_TO_EMAIL || 'plumbline.software@gmail.com';
 
 	if (!apiKey) {
 		console.error('Resend env var missing: RESEND_API_KEY');
-		return Response.json({ ok: false, error: 'Contact form is not configured yet.' }, { status: 500 });
+		return Response.json({ ok: false, error: 'The form is temporarily unavailable.' }, { status: 503 });
 	}
 
 

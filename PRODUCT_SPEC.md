@@ -1,7 +1,7 @@
-# Northline Technologies Marketing Website
+# Plumbline Software Marketing Website
 
 **Document:** `PRODUCT_SPEC.md`
-**Product:** Northline Technologies Marketing Website
+**Product:** Plumbline Software Marketing Website
 **Status:** Draft
 **Version:** 1.2
 **Last Updated:** 2026-10-12
@@ -12,15 +12,15 @@
 
 ## 1.1 Product
 
-The Northline Technologies website is a public-facing marketing website for a software development and technology consulting company based in Vancouver, British Columbia.
+The Plumbline Software website is a public-facing marketing website for a software development and technology consulting company based in Vancouver, British Columbia.
 
 The website's primary purpose is to:
 
-1. Establish a professional digital presence for Northline Technologies.
+1. Establish a professional digital presence for Plumbline Software.
 2. Clearly communicate the company's software engineering capabilities.
-3. Explain the services Northline provides.
+3. Explain the services Plumbline provides.
 4. Build credibility with potential clients.
-5. Position Northline as capable of working with enterprise and public-sector organizations.
+5. Position Plumbline as capable of working with enterprise and public-sector organizations.
 6. Provide a clear path for potential clients to initiate a conversation.
 
 The website is a **marketing website, not a web application**.
@@ -47,7 +47,7 @@ The website must communicate professionalism without relying on fabricated:
 
 ### 2.2 Clarity Over Complexity
 
-Visitors should understand what Northline does within seconds.
+Visitors should understand what Plumbline does within seconds.
 
 ### 2.3 Engineering Quality as the Brand
 
@@ -94,10 +94,10 @@ Organizations looking for:
 
 Their primary questions are:
 
-* What does Northline do?
-* Can Northline solve my problem?
-* What technologies does Northline work with?
-* Does Northline appear professional and reliable?
+* What does Plumbline do?
+* Can Plumbline solve my problem?
+* What technologies does Plumbline work with?
+* Does Plumbline appear professional and reliable?
 * How do I contact them?
 
 ---
@@ -142,7 +142,7 @@ The website must **not claim existing government contracts or credentials unless
 
 Future developers may use the website to understand:
 
-* What Northline does
+* What Plumbline does
 * Technical culture
 * Technology stack
 * Professional positioning
@@ -224,7 +224,7 @@ Deployment platform is intentionally **not specified** by this product specifica
 
 # 6. Information Architecture
 
-The website is a small multi-page site: a homepage that introduces Northline and links out, plus dedicated pages for the topics that warrant more depth than a single scrolling page can give them.
+The website is a small multi-page site: a homepage that introduces Plumbline and links out, plus dedicated pages for the topics that warrant more depth than a single scrolling page can give them.
 
 ```text
 /            Header, Hero, Positioning, Services index (one line per service,
@@ -249,10 +249,10 @@ Primary navigation (header + footer) links to `/services`, `/approach`, `/about`
 
 Within approximately 5 seconds, a visitor should understand:
 
-1. What Northline is.
-2. What Northline does.
-3. Who Northline serves.
-4. How to contact Northline.
+1. What Plumbline is.
+2. What Plumbline does.
+3. Who Plumbline serves.
+4. How to contact Plumbline.
 
 The hero must communicate this without requiring scrolling.
 
@@ -263,7 +263,7 @@ The hero must communicate this without requiring scrolling.
 ```text
 Landing
    ↓
-Understand Northline
+Understand Plumbline
    ↓
 Explore Services
    ↓
@@ -428,7 +428,7 @@ Simple content should remain simple.
 Structure:
 
 ```text
-Northline Technologies
+Plumbline Software
 
 Services
 Capabilities
@@ -451,7 +451,7 @@ Requirements:
 Structure:
 
 ```text
-Northline Technologies       [Menu]
+Plumbline Software       [Menu]
 ```
 
 Opening the menu should reveal navigation links in an accessible manner.
@@ -479,7 +479,7 @@ Headline:
 
 Supporting text:
 
-> Northline Technologies designs and builds web applications, internal tools, APIs, and cloud infrastructure. We optimize for software your own team can still read, extend, and trust long after we've moved on to the next thing.
+> Plumbline Software designs and builds web applications, internal tools, APIs, and cloud infrastructure. We optimize for software your own team can still read, extend, and trust long after we've moved on to the next thing.
 
 Primary CTA:
 
@@ -615,7 +615,7 @@ Deployment pipelines and cloud environments set up so a release is routine, not 
 
 ### Technology Consulting
 
-An outside, technical opinion on the decision you're about to make — before you've committed budget and months to it. Advisory work that stands on its own, whether or not Northline ends up building anything.
+An outside, technical opinion on the decision you're about to make — before you've committed budget and months to it. Advisory work that stands on its own, whether or not Plumbline ends up building anything.
 
 ---
 
@@ -727,7 +727,7 @@ Heading:
 
 Copy:
 
-> Northline Technologies is a Vancouver-based software development and technology consulting company focused on building modern digital products, applications, and internal platforms.
+> Plumbline Software is a Vancouver-based software development and technology consulting company focused on building modern digital products, applications, and internal platforms.
 
 > We believe good software combines thoughtful engineering, clear communication, and a deep understanding of the problem it is meant to solve.
 
@@ -806,11 +806,11 @@ CTA:
 
 The dedicated `/contact` page replaces the banner's link with a real form: Name, Email, Message, plus a hidden honeypot field for basic spam filtering. Client-side JavaScript submits the form via `fetch` to `POST /api/contact` and shows an inline success or error message — no full-page reload, no navigating away.
 
-`/api/contact` is the one server-rendered route in an otherwise fully static site. It validates the input, rejects honeypot-filled submissions silently, and calls the Resend transactional email API (`POST https://api.resend.com/emails`, `Authorization: Bearer <RESEND_API_KEY>`) to deliver the message to Northline's inbox. The API key and optional sender/recipient overrides live in environment variables (`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL`), never in client code.
+`/api/contact` is the one server-rendered route in an otherwise fully static site. It validates the input, rejects honeypot-filled submissions silently, and calls the Resend transactional email API (`POST https://api.resend.com/emails`, `Authorization: Bearer <RESEND_API_KEY>`) to deliver the message to Plumbline's inbox. The API key and optional sender/recipient overrides live in environment variables (`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_TO_EMAIL`), never in client code.
 
 The page also shows brief guidance on what to include (what you're building, what stage you're at, rough timeline) and the plain-text email address as a fallback to the form, for accessibility and directness.
 
-The contact email (`northline.technologies@gmail.com`) is real. Northline has no domain yet, so the sender address defaults to Resend's shared test sender (`onboarding@resend.dev`), which only delivers to the Resend account owner's own inbox — a real constraint that happens to match this site's actual need (submissions go to Northline's own inbox). Once Northline registers and verifies a domain in Resend, `RESEND_FROM_EMAIL` should be set to an address on it.
+The contact email (`plumbline.software@gmail.com`) is real. Plumbline has no domain yet, so the sender address defaults to Resend's shared test sender (`onboarding@resend.dev`), which only delivers to the Resend account owner's own inbox — a real constraint that happens to match this site's actual need (submissions go to Plumbline's own inbox). Once Plumbline registers and verifies a domain in Resend, `RESEND_FROM_EMAIL` should be set to an address on it.
 
 ---
 
@@ -818,7 +818,7 @@ The contact email (`northline.technologies@gmail.com`) is real. Northline has no
 
 Footer content:
 
-**Northline Technologies**
+**Plumbline Software**
 
 Software Development & Technology Consulting
 
@@ -837,7 +837,7 @@ Social:
 
 Copyright:
 
-> © 2026 Northline Technologies. All rights reserved.
+> © 2026 Plumbline Software. All rights reserved.
 
 ---
 
@@ -942,11 +942,11 @@ Implement:
 
 Title:
 
-> Northline Technologies | Software Development & Technology Consulting
+> Plumbline Software | Software Development & Technology Consulting
 
 Description:
 
-> Northline Technologies is a Vancouver-based software development and technology consulting company building modern web applications, digital platforms, APIs, and cloud solutions.
+> Plumbline Software is a Vancouver-based software development and technology consulting company building modern web applications, digital platforms, APIs, and cloud solutions.
 
 ---
 
@@ -1048,13 +1048,13 @@ The website is complete when:
 
 ### Brand
 
-* [ ] Northline Technologies branding is consistent.
+* [ ] Plumbline Software branding is consistent.
 * [ ] Website communicates software development and technology consulting.
 * [ ] No fabricated claims exist.
 
 ### UX
 
-* [ ] Visitor understands what Northline does quickly.
+* [ ] Visitor understands what Plumbline does quickly.
 * [ ] Primary CTA is obvious.
 * [ ] Navigation is intuitive.
 * [ ] Content flows logically from introduction to contact.
@@ -1117,7 +1117,7 @@ The website is complete when:
 
 # 34. Definition of Done
 
-The Northline Technologies marketing website is considered complete when:
+The Plumbline Software marketing website is considered complete when:
 
 1. The full UX/UI described in this specification has been implemented.
 2. The site is fully responsive.
@@ -1138,19 +1138,19 @@ The Northline Technologies marketing website is considered complete when:
 
 The website succeeds if a potential client can visit the homepage and quickly answer:
 
-> **Who is Northline?**
+> **Who is Plumbline?**
 
 A software development and technology consulting company.
 
-> **What does Northline do?**
+> **What does Plumbline do?**
 
 Builds modern applications, APIs, digital platforms, and cloud solutions.
 
-> **Can Northline work on serious projects?**
+> **Can Plumbline work on serious projects?**
 
 The website communicates professional engineering practices and readiness for complex environments.
 
-> **How do I work with Northline?**
+> **How do I work with Plumbline?**
 
 Start a conversation through the primary CTA.
 
@@ -1162,7 +1162,7 @@ The website should accomplish all of this with a **fast, polished, minimal, cred
 
 ## 36.1 Visual identity
 
-* **Brand mark:** a "north line" — a single vertical meridian with a north arrow. It appears small in the header logo and large in the hero, drawn through generated topographic contours (`ContourMap.astro`, build-time SVG, no client JS). The hero label `49.28°N 123.12°W` is Vancouver's real coordinates.
+* **Brand mark:** a single vertical line in the header logo and drawn large in the hero through generated topographic contours. *(Superseded by §38 and §40.)*
 * **Typeface:** Instrument Sans (variable, self-hosted via `@fontsource-variable/instrument-sans`). One family, no third-party font requests.
 * **Palette:** white `#ffffff`, cool paper `#f4f6f8`, navy ink `#0b1a2b` (text and the CTA/footer band), muted `#4a5567`, rule `#dde2e8`, refined blue accent `#2453d4`.
 * **Layout:** section headings are left-aligned on a 12-column grid with a heavy top rule; heading left, supporting copy right on desktop. Card grids use hairline dividers instead of floating shadowed cards.
@@ -1176,7 +1176,7 @@ The website should accomplish all of this with a **fast, polished, minimal, cred
 * Each service on `/services` ends with "Discuss a … project", linking to `/contact?service=<slug>`, which preselects that service in the form.
 * The `/contact` form adds: Organization (optional), What do you need (services + "Not sure yet"), Timeline. The email subject becomes `New inquiry: <service> — <name> (<organization>)` so inquiries can be triaged from the inbox.
 * The honeypot field is renamed from `company` to `website` so it cannot collide with the real Organization field.
-* `/contact` shows the form first, then a three-step "What happens next" list and a short FAQ (native `<details>`, no JS). **Owner must review the FAQ answers** — they describe Northline's policies and must stay true (§30).
+* `/contact` shows the form first, then a three-step "What happens next" list and a short FAQ (native `<details>`, no JS). **Owner must review the FAQ answers** — they describe Plumbline's policies and must stay true (§30).
 
 ## 36.3 Still open
 
@@ -1192,19 +1192,19 @@ The website should accomplish all of this with a **fast, polished, minimal, cred
 
 ## 37.1 Problem
 
-Northline has no client projects of its own yet. Its credibility comes from the founder's engineering track record, including previous employment at Samsung. The site currently presents Northline as an anonymous "we", so visitors can't tell who they would be hiring.
+Plumbline has no client projects of its own yet. Its credibility comes from the founder's engineering track record, including previous employment at Samsung. The site currently presents Plumbline as an anonymous "we", so visitors can't tell who they would be hiring.
 
 ## 37.2 Goal
 
-Within about 5 seconds, a visitor knows that **a named, real engineer runs Northline** and what that engineer has built before. They can also confirm it independently on LinkedIn or GitHub.
+Within about 5 seconds, a visitor knows that **a named, real engineer runs Plumbline** and what that engineer has built before. They can also confirm it independently on LinkedIn or GitHub.
 
 ## 37.3 Content rules (extends §30)
 
-* Past employers are shown as **the founder's experience**, never as Northline clients, projects or case studies.
+* Past employers are shown as **the founder's experience**, never as Plumbline clients, projects or case studies.
 * No employer logos. Employer names appear as plain text in an employment-history context only.
 * Past work is described generically (type of system, scale, role, stack). Nothing confidential or covered by an NDA.
 * Every number (years, users, scale) must be accurate and defensible.
-* Voice: "I" in the founder section, "we" for Northline elsewhere.
+* Voice: "I" in the founder section, "we" for Plumbline elsewhere.
 * Copy that implies a larger team is rewritten. §20 "We work in small, focused teams…" becomes: *"You work directly with the engineer who builds your software — no account managers, no handoffs."*
 
 ## 37.4 Placements
@@ -1212,10 +1212,10 @@ Within about 5 seconds, a visitor knows that **a named, real engineer runs North
 | # | Where | What |
 |---|---|---|
 | 1 | Hero (`Hero.astro`), under the CTAs | *"Founded by {name}, previously {role} at {company}."* Must be visible without scrolling on desktop and mobile. |
-| 2 | `/about`, new "Who you'll work with" section after About | Headshot, name, *Founder & Principal Engineer*, 3–4 fact bullets, one line on why Northline exists, LinkedIn / GitHub links. |
+| 2 | `/about`, new "Who you'll work with" section after About | Headshot, name, *Founder & Principal Engineer*, 3–4 fact bullets, one line on why Plumbline exists, LinkedIn / GitHub links. |
 | 3 | `/contact`, "What happens next" step 2 | "An engineer replies" → *"{first name} replies personally within {replyTime}."* Hero reassurance line and CTA band updated to match. |
 | 4 | Footer | Real LinkedIn / GitHub URLs (the existing filter shows them once set). |
-| 5 | `Layout.astro` `<head>` | JSON-LD: `Organization` (Northline) with `founder` → `Person` (name, jobTitle, `sameAs` LinkedIn/GitHub). This helps search engines connect the name to the company. |
+| 5 | `Layout.astro` `<head>` | JSON-LD: `Organization` (Plumbline) with `founder` → `Person` (name, jobTitle, `sameAs` LinkedIn/GitHub). This helps search engines connect the name to the company. |
 
 ## 37.5 Implementation
 
@@ -1229,7 +1229,7 @@ Within about 5 seconds, a visitor knows that **a named, real engineer runs North
 1. Display name.
 2. Roles: company, title, rough years (e.g. Samsung, Software Engineer, 2021–2025).
 3. 2–3 shareable accomplishments per role (system type, scale, your part, stack).
-4. One sentence on why Northline exists, in your own words.
+4. One sentence on why Plumbline exists, in your own words.
 5. LinkedIn and GitHub URLs.
 6. Headshot (square, at least 400×400, plain background).
 
@@ -1246,9 +1246,9 @@ Within about 5 seconds, a visitor knows that **a named, real engineer runs North
 
 ## 37.8 Off-site (owner, not code)
 
-* LinkedIn: Northline Technologies as current role, linking to the site.
+* LinkedIn: Plumbline Software as current role, linking to the site.
 * GitHub: pin 2–3 repos, including this site.
-* Email signature: *{name}, Founder, Northline Technologies* + site link.
+* Email signature: *{name}, Founder, Plumbline Software* + site link.
 
 ---
 
@@ -1259,7 +1259,7 @@ Supersedes the visual identity in §36.1 and the blue accent in §11. Content, l
 * **Direction:** "Systems Labanotation" from the Impeccable design catalog, chosen by the owner and then pared down at their request ("cleaner"): the score's discipline without its symbols.
 * **Palette:** white paper `#ffffff`, quiet paper `#f6f6f5`, ink `#10141a` (text, primary buttons, CTA band), secondary ink `#353b45`, muted `#5a616c`, rules `#d5d7db`. Blue `#2453d4` is kept only for keyboard focus and the text caret.
 * **Type:** Big Shoulders Display (tall condensed uppercase) for headings; Public Sans (the US Web Design System face) for reading. Both are self-hosted via Fontsource.
-* **Mark:** the north line, one vertical line with a north tick, used as the logo.
+* **Mark:** the plumb line (short bar, vertical string, kite-shaped bob), used as the logo. See §40.
 * **Layout:** ruled rows on a 12-column grid, 1px rules, square corners, no shadows, no card grids. Small tracked caps only for the wordmark, footer column heads and definition terms.
 * **Hero eyebrow (§14):** folded into the first sentence of the lede, because labels above headings are avoided.
 * **Design records:** `PRODUCT.md` (product truth for Impeccable), `.impeccable/surfaces/` (direction contract) and `DESIGN.md` (design system, written from the built site).
@@ -1270,8 +1270,80 @@ Supersedes the visual identity in §36.1 and the blue accent in §11. Content, l
 
 * **Hosting:** Vercel, on its default `*.vercel.app` address. Supersedes "deployment platform not specified" in §5. `@astrojs/vercel` is used on Vercel builds and `@astrojs/node` elsewhere, so the site stays portable.
 * **Site URL:** derived from `VERCEL_PROJECT_PRODUCTION_URL`; `SITE_URL` overrides it for a custom domain. No trailing slashes.
-* **SEO (§28):** `robots.txt` is generated with the live sitemap URL and disallows `/api/`. Every page gets a 1200×630 social preview (`og.png`, `summary_large_image`) and a favicon set (SVG, ICO, Apple touch icon) in the north-line mark. Structured data adds logo, image and area served.
+* **SEO (§28):** `robots.txt` is generated with the live sitemap URL and disallows `/api/`. Every page gets a 1200×630 social preview (`og.png`, `summary_large_image`) and a favicon set (SVG, ICO, Apple touch icon) in the plumb-line mark. Structured data adds logo, image and area served.
 * **Search engines:** optional Google Search Console and Bing verification meta tags come from `PUBLIC_GOOGLE_SITE_VERIFICATION` and `PUBLIC_BING_SITE_VERIFICATION`.
 * **Analytics:** amends §4.2. Vercel Web Analytics only: cookieless page views, loaded only on Vercel builds. No other analytics platform.
 * **Also added:** a styled 404 page, and security and caching headers in `vercel.json`.
 * Setup steps live in README → "Deploying to Vercel" and "Search engines".
+
+---
+
+# 40. Revision 1.5 — Brand name and mark (2026-10-12)
+
+* **Name:** Plumbline Software (short form: Plumbline). A plumb line finds true vertical, the reference everything is checked against. That is the brand promise of "software that still makes sense in two years".
+* **Mark:** the plumb-line mark: a short bar, a vertical string and a kite-shaped plumb bob. It is used for the logo, favicon, Apple touch icon and social preview image.
+* **Single source:** the name lives in `SITE.name` / `SITE.shortName` in `src/data.ts`. Components, page titles, structured data and the inquiry email read it from there.
+* **Contact:** `plumbline.software@gmail.com`. Repository: `plumbline-software/plumbline-web`. Vercel project: `plumbline`, giving `plumbline.vercel.app`.
+* **Before launch:** search CIPO (Canadian trademarks) and the BC Registry for "Plumbline" in software and IT.
+
+---
+
+# 41. Revision 1.6 — Critique fixes (2026-10-12)
+
+From the Impeccable critique (23/36). The owner chose all five priority issues and a founder-led voice.
+
+* **Homepage:** Hero, How an engagement runs (the four stages with "You get"), What we build, You'll work with James Yoo (first person), Ready for complex environments, CTA. The §16 positioning pillars were removed as generic. The hero opening is split into two short sentences, and the founder line now reads "Founder-led: you work directly with James Yoo…".
+* **Plumb line as structure:** a hairline hangs from the header mark down the hero's left edge to the bob. On /approach, the stages hang on the same string. Reduced motion shows the finished line.
+* **Contact form:** fields are required unless marked optional, errors show inline per field (`aria-invalid` plus a message) and focus moves to the first one. On success the form is replaced by a confirmation that names the person and email; on server or network errors visitors see the email fallback and nothing is lost. The h1 is "Start a conversation.", and the field label is "Email".
+* **Accessibility:** service and stage titles are h2, and the step numbers are hidden from screen readers. The header's "Start a project" button shows on phones.
+* **Enterprise section:** four claims, each with a sentence a buyer can check (Accessibility, Security, Documentation & handover, Existing systems).
+* **Copy:** the About headline is "One engineer, from the first question to the handover." The primary action is always "Start a conversation", and each page's closing band has its own heading. Technology Consulting now has bullets.
+
+---
+
+# 42. Revision 1.7 — Anonymous founder (2026-10-12)
+
+Supersedes the founder-visibility parts of §37 and §41: the name in the hero, the "You'll work with James Yoo" section, the experience list, the LinkedIn link, and the founder `Person` in JSON-LD.
+
+* The founder is **not named** anywhere on the site. Copy says "the founder" ("You'll work with the founder", "The founder replies personally").
+* **One general credential only:** "a software engineer with 4+ years at Samsung Canada". No specific projects, products or URLs.
+* No headshot, LinkedIn or GitHub on the site; share profiles privately with qualified leads. Structured data describes the business only.
+* The founder-led promise stays: one engineer, no account managers, no handoffs.
+
+---
+
+# 43. Revision 1.8 — shadcn/ui components (2026-10-12)
+
+* UI primitives are built with **shadcn/ui** via `@astrojs/react`, restyled to the existing look. The shadcn semantic tokens (`background`, `primary`, `muted-foreground`, `border`, `input`, `ring`, `destructive`…) map onto the Plumbline palette in `global.css`, and every radius is 0.
+* **Converted:** buttons and button-styled links (`Button` / `buttonVariants`, with variants `default` (ink), `outline`, `paper`, `link` and sizes `default` / `sm`), plus the contact form's `Label`, `Input`, `Textarea` and `NativeSelect`.
+* **Zero client JavaScript added:** shadcn components render statically, with no hydrated islands.
+* **Kept native:** the FAQ (`<details>`) and mobile menu (`<dialog>`). shadcn Accordion and Sheet would ship React to every page, which conflicts with §29; switching needs owner approval.
+* Grey text uses shadcn's `text-muted-foreground`. The design token `--muted` (#5a616c) feeds it.
+
+---
+
+# 44. Revision 1.9 — Third critique fixes (2026-10-12)
+
+From the Impeccable critique (26/36; the owner chose all five issues). The business has no clients yet.
+
+* **Claims:** past experience is the founder's ("In my years as an engineer…"), never company history. Plumbline ("we") only makes forward-looking promises about process and standards. "For a client" became "on a project".
+* **Enterprise section:** retitled "Built for organizations with real constraints." It now links to the accessibility statement, and appears on the homepage only (removed from /about).
+* **New pages:**
+  * `/how-this-site-was-built`: the site as the case study, with measured Lighthouse scores (homepage 98 / 100 / 100 / 100 on mobile settings; contact 100s), about 122 KB per page, under 1 KB of JavaScript on most pages (about 5 KB on contact), and the documentation set as a sample handover.
+  * `/privacy`: what the form collects, its use, the processors (Resend, Gmail, Vercel), retention, and access or deletion requests.
+  * `/accessibility`: a WCAG 2.2 AA target, the measures in place, how it was checked (including that no screen-reader audit has been done yet), and how to report a problem.
+  * All three are linked from the footer; privacy is also linked under the Send button.
+* **One action name:** "Start a conversation" everywhere, including the header, which hides it on /contact and below 370px wide. "Send message" is used only for submit. Service links read "Discuss <service>".
+* **Mobile contact:** a reassurance line above the form. Field `maxLength`s match the server, and the submit button reads "Sending…" while sending. Touch targets are 44px on phones.
+* **Founder:** /about reads "Founder and sole engineer" and points to the build page as evidence. The homepage founder section links to it too.
+* **Owner to confirm:** the privacy page wording, the reply time, the FAQ answers, and the drafted founder "why" line.
+
+---
+
+# 45. Revision 1.10 — SEO pass (2026-10-12)
+
+* **Titles** lead with what people search for and stay at about 65 characters or fewer. Home is "Vancouver Software Development & Consulting | Plumbline Software"; the other pages follow the same pattern. Descriptions are 100–150 characters (supersedes the titles in §28).
+* **Sitemap:** generated on every build by `@astrojs/sitemap`, with `lastmod`. It lists all 8 public pages; the 404 and `/api/` are excluded. `robots.txt` points to it.
+* **Structured data:** a JSON-LD `@graph` with `ProfessionalService` (Vancouver, BC; areaServed Canada; `hasOfferCatalog` listing the five services, linked to `/services#<slug>`) and `WebSite`. No founder name.
+* **Other:** `lang="en-CA"` and a web app manifest (`/site.webmanifest`).
+* **Off-site, owner:** Google Search Console (verify and submit `sitemap-index.xml`), Google Business Profile (service-area business, Vancouver), directory listings (Clutch, GoodFirms, LinkedIn company page), and a custom domain later (`SITE_URL`).

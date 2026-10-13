@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 @import "@fontsource-variable/public-sans";
 @import "@fontsource-variable/big-shoulders-display";
 
@@ -11,10 +13,41 @@
   --color-band: var(--band);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
-  --color-muted: var(--muted);
   --color-rule: var(--rule);
   --color-field: var(--field);
   --color-now: var(--now);
+  --color-error: var(--error);
+  --font-heading: var(--font-display);
+
+  /* shadcn/ui semantic tokens, mapped onto the Plumbline palette. */
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-card: var(--paper);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--paper);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--paper);
+  --color-secondary: var(--paper-2);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--paper-2);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--band);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--error);
+  --color-border: var(--rule);
+  --color-input: var(--field);
+  --color-ring: var(--now);
+
+  /* Square corners everywhere: every shadcn radius step resolves to 0. */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
 }
 
 /* Score paper and ink. Blue is the playhead: it marks "now" (selection, focus)
@@ -29,6 +62,8 @@
   --rule: #d5d7db;
   --field: #8a909a;
   --now: #2453d4;
+  /* Form errors only; always paired with text, never colour alone. */
+  --error: #b42318;
   color-scheme: light;
 }
 
@@ -87,43 +122,6 @@ a {
     font-weight: 650;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    min-height: 3rem;
-    padding: 0 1.25rem;
-    border: 1px solid var(--ink);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    transition:
-      background-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
-      color 160ms cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .btn-ink {
-    background: var(--ink);
-    color: var(--paper);
-  }
-  .btn-ink:hover {
-    background: var(--ink-2);
-  }
-  .btn-line {
-    background: var(--paper);
-    color: var(--ink);
-  }
-  .btn-line:hover {
-    background: var(--band);
-  }
-  .btn-paper {
-    background: var(--paper);
-    color: var(--ink);
-    border-color: var(--paper);
-  }
-  .btn-paper:hover {
-    background: var(--band);
   }
 
   .link {

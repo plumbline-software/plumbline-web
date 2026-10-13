@@ -11,7 +11,7 @@ const { slug, name, description, detail, bullets } = Astro.props;
 ---
 
 <article id={slug} class="grid scroll-mt-24 gap-5 border-b border-rule py-10 lg:grid-cols-12 lg:gap-10">
-	<h3 class="display text-4xl sm:text-5xl lg:col-span-4">{name}</h3>
+	<h2 class="display text-4xl sm:text-5xl lg:col-span-4">{name}</h2>
 	<div class="lg:col-span-5">
 		<p class="text-lg font-semibold leading-snug text-ink">{description}</p>
 		{detail && <p class="mt-3 leading-relaxed text-ink-2">{detail}</p>}
@@ -29,6 +29,6 @@ const { slug, name, description, detail, bullets } = Astro.props;
 				</ul>
 			)
 		}
-		<a href={`/contact?service=${slug}`} class="link mt-5 inline-block text-sm">Discuss a project like this</a>
+		<a href={`/contact?service=${slug}`} class="link mt-5 inline-block text-sm">Discuss {name.toLowerCase()}</a>
 	</div>
 </article>
