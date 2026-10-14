@@ -12,20 +12,18 @@ import OpsDashboard from '../components/mockups/OpsDashboard.astro';
 import EnterpriseSection from '../components/EnterpriseSection.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
-import { services } from '../data';
+import { getPage, services } from '@/lib/sanity';
+
+const page = await getPage('homePage');
 ---
 
-<Layout>
+<Layout seo={page.seo}>
 	<Header />
 	<main>
-		<Hero />
-		<ProcessStrip />
+		<Hero hero={page.hero} />
+		<ProcessStrip {...page.process} />
 		<section aria-labelledby="services-index-heading" class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
-			<SectionHeading
-				id="services-index-heading"
-				heading="What we build"
-				copy="Four kinds of work, usually in some combination. Most projects touch more than one."
-			/>
+			<SectionHeading id="services-index-heading" heading={page.servicesIntro.heading} copy={page.servicesIntro.copy} />
 			<ul class="mt-10 border-b border-rule">
 				{services.map((service) => (
 					<li class="border-t border-rule first:border-t-0">
@@ -54,25 +52,13 @@ import { services } from '../data';
 					</li>
 				))}
 			</ul>
-			<OpsDashboard
-				class="mt-14"
-				caption="The kind of software we build: an internal tool that replaces a tangle of spreadsheets and email."
-			/>
+			<OpsDashboard class="mt-14" caption={page.servicesIntro.showcaseCaption} />
 		</section>
-		<HandoverSection />
-		<PhotoBand
-			name="skyline"
-			position="center 78%"
-			alt="Downtown Vancouver's skyline under the snow-covered North Shore mountains at dawn"
-			caption="Based in Vancouver, BC. Working with businesses across Canada."
-			credit={{
-				name: 'Anthony Maw',
-				href: 'https://unsplash.com/photos/a-city-with-snow-covered-mountains-GWRuNS8Y0KM',
-			}}
-		/>
-		<FounderIntro />
-		<EnterpriseSection />
-		<ContactCTA />
+		<HandoverSection {...page.handover} />
+		<PhotoBand photo={page.photo} />
+		<FounderIntro {...page.founderIntro} />
+		<EnterpriseSection {...page.enterprise} />
+		<ContactCTA {...page.cta} />
 	</main>
 	<Footer />
 </Layout>

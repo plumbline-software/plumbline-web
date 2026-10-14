@@ -1,17 +1,19 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
 	title: string;
-	icon?: any;
+	icon?: string;
 	copy: string;
 	detail?: string;
 }
 
-const { title, copy, detail, icon: Icon } = Astro.props;
+const { title, copy, detail, icon } = Astro.props;
 ---
 
 <div class="grid gap-3 border-b border-rule py-8 lg:grid-cols-12 lg:gap-10">
 	<h3 class="display flex items-center gap-4 text-4xl lg:col-span-4">
-		{Icon && <Icon className="size-9 shrink-0" strokeWidth={1.5} aria-hidden="true" />}
+		<Icon name={icon} class="size-9 shrink-0" />
 		{title}
 	</h3>
 	<div class="lg:col-span-8">

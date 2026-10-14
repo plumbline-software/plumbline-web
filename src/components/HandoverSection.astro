@@ -1,39 +1,33 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import HandoverPack from './HandoverPack.astro';
+import RichText from './RichText.astro';
+
+interface Props {
+	heading: string;
+	copy: string;
+	pack: any;
+	points: { title: string; body?: any[] }[];
+}
+
+const { heading, copy, pack, points } = Astro.props;
 ---
 
 <section aria-labelledby="handover-heading" class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
-	<SectionHeading
-		id="handover-heading"
-		heading="What you get at the end"
-		copy="Not just a login and a repository. Software that still makes sense in two years needs the documents that explain it."
-	/>
+	<SectionHeading id="handover-heading" {heading} {copy} />
 	<div class="mt-12 grid gap-10 lg:grid-cols-12 lg:items-center">
 		<div class="lg:col-span-7">
-			<HandoverPack />
+			<HandoverPack {...pack} />
 		</div>
 		<ul class="space-y-6 lg:col-span-5">
-			<li>
-				<p class="display text-2xl">You own everything</p>
-				<p class="mt-1 text-ink-2">Code, infrastructure definitions and documentation, handed over in full.</p>
-			</li>
-			<li>
-				<p class="display text-2xl">Anyone can pick it up</p>
-				<p class="mt-1 text-ink-2">
-					Written so a new engineer, yours or another firm's, can run and change it without us.
-				</p>
-			</li>
-			<li>
-				<p class="display text-2xl">See a real example</p>
-				<p class="mt-1 text-ink-2">
-					This site ships with the same set.{' '}
-					<a href="/how-this-site-was-built" class="link text-ink">
-						See how it was built
-					</a>
-					.
-				</p>
-			</li>
+			{points.map((point) => (
+				<li>
+					<p class="display text-2xl">{point.title}</p>
+					<div class="mt-1 text-ink-2">
+						<RichText value={point.body} />
+					</div>
+				</li>
+			))}
 		</ul>
 	</div>
 </section>

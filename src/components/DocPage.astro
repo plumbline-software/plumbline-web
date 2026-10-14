@@ -1,0 +1,30 @@
+---
+// A reading page (Privacy, Accessibility, How this site was built), all from one Sanity document.
+import Layout from '../layouts/Layout.astro';
+import Header from './Header.astro';
+import SectionHeading from './SectionHeading.astro';
+import DocSection from './DocSection.astro';
+import ContactCTA from './ContactCTA.astro';
+import Footer from './Footer.astro';
+import Flow from './Flow.astro';
+import { getPage } from '@/lib/sanity';
+
+interface Props {
+	id: string;
+}
+
+const page = await getPage(Astro.props.id);
+---
+
+<Layout seo={page.seo}>
+	<Header />
+	<main class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+		<SectionHeading as="h1" id="page-heading" heading={page.heading} copy={page.intro} />
+		{page.flow && <Flow class="mt-12" {...page.flow} />}
+		{(page.sections ?? []).map((section: any) => (
+			<DocSection {...section} />
+		))}
+	</main>
+	{page.cta?.heading && <ContactCTA {...page.cta} />}
+	<Footer />
+</Layout>

@@ -1,0 +1,15 @@
+---
+// Renders a Lucide icon chosen by name in Sanity, statically (no client JavaScript).
+import { icons } from 'lucide-react';
+
+interface Props {
+	name?: string;
+	class?: string;
+	strokeWidth?: number;
+}
+
+const { name, class: className, strokeWidth = 1.5 } = Astro.props;
+const Lucide = name ? icons[name as keyof typeof icons] : undefined;
+---
+
+{Lucide && <Lucide className={className} strokeWidth={strokeWidth} aria-hidden="true" />}

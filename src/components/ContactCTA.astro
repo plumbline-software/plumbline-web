@@ -1,14 +1,15 @@
 ---
 import { buttonVariants } from '@/components/ui/button';
-import { SITE } from '../data';
+import { settings as SITE } from '@/lib/sanity';
 
 interface Props {
-	heading?: string;
-	copy?: string;
+	heading?: string | null;
+	copy?: string | null;
 }
 
-const { heading = 'Have a project in mind?', copy = "Tell us what you're trying to build, improve, or solve." } =
-	Astro.props;
+// Pages without their own wording fall back to the default in Site settings.
+const heading = Astro.props.heading || SITE.cta.heading;
+const copy = Astro.props.copy || SITE.cta.copy;
 ---
 
 <section aria-labelledby="cta-heading" class="bg-ink text-paper">

@@ -3,9 +3,10 @@
 // left-to-right on wide screens and top-to-bottom on phones. Icons are Lucide (shadcn's set),
 // rendered statically with no client JavaScript.
 import { ArrowRight } from 'lucide-react';
+import Icon from './Icon.astro';
 
 interface Step {
-	icon: any;
+	icon: string;
 	title: string;
 	note: string;
 }
@@ -25,10 +26,9 @@ const cols =
 <figure class:list={['border border-ink bg-paper', className]}>
 	<ol class:list={['grid', cols]}>
 		{steps.map((step, i) => {
-			const Icon = step.icon;
 			return (
 				<li class="relative border-b border-ink p-6 last:border-b-0 md:border-b-0 md:border-l md:first:border-l-0">
-					<Icon className="size-9 text-ink" strokeWidth={1.5} aria-hidden="true" />
+					<Icon name={step.icon} class="size-9 text-ink" />
 					<p class="display mt-5 text-2xl">{step.title}</p>
 					<p class="mt-2 text-sm leading-relaxed text-ink-2">{step.note}</p>
 					{i < steps.length - 1 && (

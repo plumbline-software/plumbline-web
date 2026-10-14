@@ -1,6 +1,8 @@
 ---
 import Mark from './Mark.astro';
-import { SITE, FOUNDER } from '../data';
+import { settings as SITE } from '@/lib/sanity';
+
+const FOUNDER = SITE.founder;
 
 const navLinks = [
 	{ href: '/services', label: 'Services' },
@@ -23,7 +25,7 @@ const socialLinks = [
 				<Mark class="h-12 w-auto shrink-0" />
 				<div>
 					<p class="label text-[0.75rem] tracking-[0.2em]">{SITE.name}</p>
-					<p class="mt-2 text-sm text-muted-foreground">Software Development &amp; Technology Consulting</p>
+					<p class="mt-2 text-sm text-muted-foreground">{SITE.tagline}</p>
 					<p class="text-sm text-muted-foreground">{SITE.location}</p>
 				</div>
 			</div>

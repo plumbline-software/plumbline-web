@@ -1,41 +1,22 @@
 ---
 import SectionHeading from './SectionHeading.astro';
-import { SITE, stages } from '../data';
+import { settings as SITE, stages } from '@/lib/sanity';
 import Flow from './Flow.astro';
-import { FileSearch, ClipboardList, Hammer, FolderOpen } from 'lucide-react';
+import Icon from './Icon.astro';
 
 interface Props {
 	as?: 'h1' | 'h2';
+	heading: string;
+	copy: string;
+	flow?: { steps: any[]; caption?: string };
 }
 
-const { as = 'h2' } = Astro.props;
-const stageIcons = [FileSearch, ClipboardList, Hammer, FolderOpen];
-const rows = stages.map((stage, i) => ({ ...stage, Icon: stageIcons[i] }));
+const { as = 'h2', heading, copy, flow } = Astro.props;
 ---
 
 <section id="approach" aria-labelledby="approach-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-	<SectionHeading
-		as={as}
-		id="approach-heading"
-		heading="How we work"
-		copy="The same four-stage process on every engagement — not reinvented each time, and not skipped under deadline pressure."
-	/>
-	{as === 'h1' && (
-		<Flow
-			class="mt-12"
-			steps={[
-				{
-					icon: FileSearch,
-					title: 'Brief',
-					note: 'Understand: the problem, the users and what success looks like, written down.',
-				},
-				{ icon: ClipboardList, title: 'Plan', note: 'Plan: scope, architecture outline and a realistic timeline.' },
-				{ icon: Hammer, title: 'Releases', note: 'Build: working software at regular intervals you can try.' },
-				{ icon: FolderOpen, title: 'Handover', note: 'Deliver: code, documentation and a runbook, all yours.' },
-			]}
-			caption="What each stage leaves you with."
-		/>
-	)}
+	<SectionHeading as={as} id="approach-heading" {heading} {copy} />
+	{as === 'h1' && flow && <Flow class="mt-12" {...flow} />}
 	<ol class="relative mt-6 pl-12 sm:pl-16">
 		<span class="absolute bottom-10 left-[0.9375rem] top-10 w-px bg-ink" aria-hidden="true"></span>
 		<svg
@@ -46,7 +27,7 @@ const rows = stages.map((stage, i) => ({ ...stage, Icon: stageIcons[i] }));
 		>
 			<path d="M4 0 7.5 4.5 4 14 .5 4.5z" />
 		</svg>
-		{rows.map((stage, i) => (
+		{stages.map((stage: any, i: number) => (
 			<li class="relative grid gap-6 border-b border-rule py-10 lg:grid-cols-12 lg:gap-10">
 				<span
 					class="absolute -left-12 top-10 flex h-8 w-8 items-center justify-center border border-ink bg-paper font-display text-base font-semibold sm:-left-16"
@@ -69,7 +50,7 @@ const rows = stages.map((stage, i) => ({ ...stage, Icon: stageIcons[i] }));
 					</dl>
 				</div>
 				<div class="lg:col-span-3">
-					<stage.Icon className="mb-3 size-8 text-ink" strokeWidth={1.5} aria-hidden="true" />
+					<Icon name={stage.icon} class="mb-3 size-8 text-ink" />
 					<p class="label text-muted-foreground">You get</p>
 					<p class="mt-1.5 text-lg font-semibold leading-snug text-ink">{stage.outcome}</p>
 				</div>

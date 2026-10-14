@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE } from '../data';
 import Header from '../components/Header.astro';
 import About from '../components/About.astro';
 import PhotoBand from '../components/PhotoBand.astro';
@@ -8,30 +7,19 @@ import Founder from '../components/Founder.astro';
 import Principles from '../components/Principles.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
+import { getPage } from '@/lib/sanity';
+
+const page = await getPage('aboutPage');
 ---
 
-<Layout
-	title={`Founder-Led Software Engineering in Vancouver | ${SITE.shortName}`}
-	description={`${SITE.name} is a founder-led software consultancy in Vancouver, BC. Work directly with the engineer who scopes and builds your software.`}
->
+<Layout seo={page.seo}>
 	<Header />
 	<main>
-		<About />
-		<PhotoBand
-			name="bridge"
-			alt="The Lions Gate Bridge crossing Burrard Inlet towards North Vancouver at golden hour"
-			caption="Vancouver, BC. Local to the Lower Mainland, working with teams across Canada."
-			credit={{
-				name: 'Anthony Maw',
-				href: 'https://unsplash.com/photos/suspension-bridge-over-water-with-mountains-and-city-skyline-IhBQGiMtPVo',
-			}}
-		/>
-		<Founder />
-		<Principles />
-		<ContactCTA
-			heading="Talk to the engineer directly."
-			copy="Tell us what you're trying to build, improve, or solve."
-		/>
+		<About heading={page.heading} intro={page.intro} flow={page.flow} />
+		<PhotoBand photo={page.photo} />
+		<Founder {...page.founder} />
+		<Principles {...page.principles} />
+		<ContactCTA {...page.cta} />
 	</main>
 	<Footer />
 </Layout>

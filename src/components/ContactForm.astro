@@ -1,68 +1,31 @@
 ---
-import { SITE, services, timelines } from '../data';
+import { settings as SITE, services } from '@/lib/sanity';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import SelectField from './SelectField';
 import Flow from './Flow.astro';
-import { Send, Reply, PhoneCall } from 'lucide-react';
 
-// TODO(owner): review these answers — they describe how Plumbline works, so they must stay true.
-const faqs = [
-	{
-		q: 'Can you work on an existing codebase?',
-		a: 'Yes. Plenty of useful work starts with reading what is already there, stabilising it, and extending it rather than rewriting it.',
-	},
-	{
-		q: 'Do you only build, or can you advise?',
-		a: 'Both. Technology consulting stands on its own — a second opinion on an architecture or vendor decision, whether or not we build anything afterwards.',
-	},
-	{
-		q: 'Can my team update the content themselves?',
-		a: 'Yes. Sites can be built on a CMS such as Builder.io or Sanity, so your team edits pages, text and images without waiting on a developer.',
-	},
-	{
-		q: 'Who owns the code?',
-		a: 'You do. Code, infrastructure definitions, and documentation are handed over so your team can carry on without us.',
-	},
-	{
-		q: 'Where are you based?',
-		a: `${SITE.location}, on Pacific Time.`,
-	},
-];
+interface Props {
+	heading: string;
+	copy: string;
+	flow: { steps: any[]; caption?: string };
+	faqs: { question: string; answer: string }[];
+}
+
+const { heading, copy, flow, faqs } = Astro.props;
+const timelines: string[] = SITE.timelines ?? [];
 ---
 
 <section aria-labelledby="contact-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
 	<div class="grid gap-5 border-b border-ink pb-10 lg:grid-cols-12 lg:gap-10 lg:pb-14">
 		<h1 id="contact-heading" class="display text-[clamp(3.5rem,11vw,6rem)] lg:col-span-7">
-			Start a conversation.
+			{heading}
 		</h1>
-		<p class="max-w-xl text-lg leading-relaxed text-ink-2 lg:col-span-5 lg:self-end">
-			Tell us what you're trying to build, improve, or solve. You don't need a spec — rough is fine.
-		</p>
+		<p class="max-w-xl text-lg leading-relaxed text-ink-2 lg:col-span-5 lg:self-end">{copy}</p>
 	</div>
-	<Flow
-		class="mt-10"
-		steps={[
-			{
-				icon: Send,
-				title: 'You send a note',
-				note: 'What you are building or fixing, and roughly when. A few sentences is plenty.',
-			},
-			{
-				icon: Reply,
-				title: 'The founder replies',
-				note: `Personally, within ${SITE.replyTime}, with questions or a time to talk. No sales handoff.`,
-			},
-			{
-				icon: PhoneCall,
-				title: 'A short call',
-				note: 'Talk the problem through and leave with an honest view of what it would take.',
-			},
-		]}
-		caption="These steps come before stage 1 of how an engagement runs."
-	/>
+	<Flow class="mt-10" {...flow} />
 	<div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-10">
 		<div class="lg:col-span-7">
 			<form
@@ -194,7 +157,7 @@ const faqs = [
 				{faqs.map((faq) => (
 					<details class="group py-4">
 						<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink [&::-webkit-details-marker]:hidden">
-							{faq.q}
+							{faq.question}
 							<svg
 								viewBox="0 0 16 16"
 								class="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180"
@@ -206,7 +169,7 @@ const faqs = [
 								<path d="m3 6 5 5 5-5" />
 							</svg>
 						</summary>
-						<p class="mt-2 text-sm leading-relaxed text-ink-2">{faq.a}</p>
+						<p class="mt-2 text-sm leading-relaxed text-ink-2">{faq.answer}</p>
 					</details>
 				))}
 			</div>

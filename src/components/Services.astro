@@ -1,35 +1,22 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import ServiceCard from './ServiceCard.astro';
-import { services } from '../data';
+import { services } from '@/lib/sanity';
 import Flow from './Flow.astro';
-import { Monitor, Code, Database } from 'lucide-react';
 
 interface Props {
 	as?: 'h1' | 'h2';
+	heading: string;
+	copy: string;
+	flow?: { steps: any[]; caption?: string };
 }
 
-const { as = 'h2' } = Astro.props;
+const { as = 'h2', heading, copy, flow } = Astro.props;
 ---
 
 <section id="services" aria-labelledby="services-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-	<SectionHeading
-		as={as}
-		id="services-heading"
-		heading="What we build"
-		copy="Four kinds of work, usually in some combination. Most projects touch more than one."
-	/>
-	{as === 'h1' && (
-		<Flow
-			class="mt-12"
-			steps={[
-				{ icon: Monitor, title: 'Interface', note: 'What people see and use: a web app, portal or internal tool.' },
-				{ icon: Code, title: 'API', note: 'The rules, integrations and services behind it.' },
-				{ icon: Database, title: 'Data', note: 'Stored safely and modelled around how it is actually used.' },
-			]}
-			caption="Most projects touch several of these layers. Each service below covers one or more."
-		/>
-	)}
+	<SectionHeading as={as} id="services-heading" {heading} {copy} />
+	{as === 'h1' && flow && <Flow class="mt-12" {...flow} />}
 	<div class="mt-2">
 		{services.map((service) => (
 			<ServiceCard {...service} />

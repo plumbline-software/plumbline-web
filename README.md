@@ -9,12 +9,13 @@ contact form. See `PRODUCT_SPEC.md` for the full product spec.
 
 ```text
 /
-├── public/                  favicons, apple-touch-icon, og.png (social preview)
+├── public/                  favicons, apple-touch-icon
+├── studio-plumbline-software/  Sanity Studio: the content model and editing UI
 ├── src
 │   ├── components/          one Astro component per section/UI piece
 │   ├── layouts/Layout.astro SEO meta, global <html> shell
 │   ├── styles/global.css    Tailwind entry + color tokens (single light theme)
-│   ├── data.ts              shared content: contact, founder, services, stages
+│   ├── lib/sanity.ts        Sanity queries and image URLs (all page content comes from here)
 │   └── pages/
 │       ├── index.astro         home
 │       ├── services|approach|about|contact.astro
@@ -101,12 +102,18 @@ one at <https://business.google.com> as a service-area business (Vancouver, no p
 address) and link the site. This is done in Google's UI, not in code.
 
 **Check social previews** after deploying: LinkedIn Post Inspector
-(<https://www.linkedin.com/post-inspector/>) re-fetches the `og.png` card.
+(<https://www.linkedin.com/post-inspector/>) re-fetches the social share card (set in Sanity → Site settings).
 
 ## Notes
 
-- No database, CMS, or general backend — content lives directly in the
-  `.astro` components; the only server code is the contact-form route.
-- `src/data.ts` holds the content shared across pages (contact details, founder,
-  services, the four stages). Edit it there, not in components.
+- All text and photos are edited in Sanity (project `1wwmdgze`, dataset
+  `production`). Run the Studio with `cd studio-plumbline-software && bun run dev`.
+  Pages are prerendered, so published edits appear on the **next deploy**; add a
+  Sanity webhook that calls a Vercel deploy hook to make that automatic.
+- Each page is one fixed document in the Studio (Home, About, …, Site settings);
+  services and process stages are lists. Navigation, form labels, the drawn
+  illustrations and UI mockups stay in code.
+- The only server code is the contact-form route. It looks up service and timeline
+  names in Sanity at request time and falls back to "Not sure yet" / "No fixed date"
+  if Sanity is unreachable, so a message is never lost.
 - Design system: `DESIGN.md`. Product context for design work: `PRODUCT.md`.

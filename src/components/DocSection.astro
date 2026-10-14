@@ -1,20 +1,37 @@
 ---
 // One ruled row of a reading page: the heading on the left, its content on the right.
+import Icon from './Icon.astro';
+import RichText from './RichText.astro';
+import HandoverPack from './HandoverPack.astro';
 
 interface Props {
 	heading: string;
-	icon?: any;
+	icon?: string;
+	stats?: { label: string; value: string }[];
+	body?: any[];
+	handoverPack?: any;
 }
 
-const { heading, icon: Icon } = Astro.props;
+const { heading, icon, stats, body, handoverPack } = Astro.props;
 ---
 
 <section class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12 lg:gap-10">
 	<div class="lg:col-span-4">
-		{Icon && <Icon className="mb-4 size-8 text-ink" strokeWidth={1.5} aria-hidden="true" />}
+		<Icon name={icon} class="mb-4 size-8 text-ink" />
 		<h2 class="display text-3xl">{heading}</h2>
 	</div>
 	<div class="max-w-2xl space-y-4 leading-relaxed text-ink-2 lg:col-span-8 [&_a]:text-ink [&_li]:pl-1 [&_strong]:text-ink [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
-		<slot />
+		{stats?.length ? (
+			<dl class="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-5">
+				{stats.map((s) => (
+					<div class="border-t border-ink pt-3">
+						<dt class="text-sm text-muted-foreground">{s.label}</dt>
+						<dd class="display mt-1 text-5xl text-ink">{s.value}</dd>
+					</div>
+				))}
+			</dl>
+		) : null}
+		<RichText value={body} />
+		{handoverPack && <HandoverPack {...handoverPack} />}
 	</div>
 </section>

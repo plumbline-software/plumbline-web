@@ -1,18 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE } from '../data';
 import Header from '../components/Header.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
+import { getPage } from '@/lib/sanity';
+
+const page = await getPage('contactPage');
 ---
 
-<Layout
-	title={`Contact ${SITE.name} | Start a Conversation`}
-	description={`Tell ${SITE.name} what you're building or fixing. The founder replies personally within ${SITE.replyTime}, with no sales handoff.`}
->
+<Layout seo={page.seo}>
 	<Header />
 	<main>
-		<ContactForm />
+		<ContactForm heading={page.heading} copy={page.copy} flow={page.flow} faqs={page.faqs ?? []} />
 	</main>
 	<Footer />
 </Layout>

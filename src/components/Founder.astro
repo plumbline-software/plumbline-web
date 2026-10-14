@@ -1,5 +1,16 @@
 ---
-import { FOUNDER, SITE } from '../data';
+import { settings } from '@/lib/sanity';
+import RichText from './RichText.astro';
+
+interface Props {
+	heading: string;
+	role: string;
+	credential: string;
+	evidence?: any[];
+	disclaimer: string;
+}
+
+const { heading, role, credential, evidence, disclaimer } = Astro.props;
 ---
 
 <section
@@ -8,25 +19,19 @@ import { FOUNDER, SITE } from '../data';
 	class="mx-auto max-w-7xl scroll-mt-24 px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8"
 >
 	<h2 id="founder-heading" class="display border-t border-ink pt-5 text-[clamp(2.5rem,6vw,4rem)]">
-		Who you'll work with
+		{heading}
 	</h2>
 	<div class="mt-10 grid gap-8 lg:grid-cols-12 lg:gap-10">
 		<div class="lg:col-span-5">
-			<h3 class="display text-4xl">Founder and sole engineer</h3>
-			<p class="mt-2 text-ink-2">Software engineer, 4+ years at Samsung</p>
-			<p class="mt-6 text-sm leading-relaxed text-ink-2">
-				The clearest evidence of the work is the site you're reading:{' '}
-				<a href="/how-this-site-was-built" class="link text-ink">
-					see how it was built
-				</a>
-				.
-			</p>
+			<h3 class="display text-4xl">{role}</h3>
+			<p class="mt-2 text-ink-2">{credential}</p>
+			<div class="mt-6 text-sm leading-relaxed text-ink-2">
+				<RichText value={evidence} />
+			</div>
 		</div>
 		<div class="lg:col-span-7">
-			<p class="text-xl font-medium leading-relaxed text-ink">{FOUNDER.why}</p>
-			<p class="mt-6 text-xs text-muted-foreground">
-				Past employment is personal experience. {SITE.shortName} has no affiliation with Samsung.
-			</p>
+			<p class="text-xl font-medium leading-relaxed text-ink">{settings.founder.why}</p>
+			<p class="mt-6 text-xs text-muted-foreground">{disclaimer}</p>
 		</div>
 	</div>
 </section>

@@ -1,0 +1,13 @@
+---
+// Portable Text from Sanity: paragraphs, bullet lists, bold and links.
+import { PortableText } from 'astro-portabletext';
+import RichTextLink from './RichTextLink.astro';
+
+interface Props {
+	value?: any[];
+}
+
+const { value } = Astro.props;
+---
+
+{value?.length ? <PortableText value={value} components={{ mark: { link: RichTextLink } }} /> : null}

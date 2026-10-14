@@ -33,7 +33,7 @@ Visitors arrive comparing consultancies, often on a phone first and a desktop la
 - A single light theme.
 - CMS experience (owner-confirmed): Builder.io, Sanity and other headless CMSs.
 - Services: Full-Stack Development, Frontend Engineering, API & Backend Development, Technology Consulting. (Cloud & Infrastructure was removed as a service on 2026-10-13.)
-- Content shared across pages lives in `src/data.ts` (contact, founder, services, timelines). Full requirements are in `PRODUCT_SPEC.md`.
+- All page content (text, photos, services, stages, contact details) is edited in Sanity; see `studio-plumbline-software/`. Full requirements are in `PRODUCT_SPEC.md`.
 
 ## Brand Commitments
 

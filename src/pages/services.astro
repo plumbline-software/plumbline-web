@@ -1,25 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE } from '../data';
 import Header from '../components/Header.astro';
 import Services from '../components/Services.astro';
 import Capabilities from '../components/Capabilities.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
+import { getPage } from '@/lib/sanity';
+
+const page = await getPage('servicesPage');
 ---
 
-<Layout
-	title={`Web App & API Development Services | ${SITE.shortName}`}
-	description={`Full-stack development, frontend engineering, APIs and technology consulting from ${SITE.name} in Vancouver, BC.`}
->
+<Layout seo={page.seo}>
 	<Header />
 	<main>
-		<Services as="h1" />
-		<Capabilities />
-		<ContactCTA
-			heading="Not sure which of these you need?"
-			copy="Describe the problem. You'll hear which kind of work fits, or whether you need any at all."
-		/>
+		<Services as="h1" heading={page.heading} copy={page.copy} flow={page.flow} />
+		<Capabilities {...page.capabilities} />
+		<ContactCTA {...page.cta} />
 	</main>
 	<Footer />
 </Layout>

@@ -1,12 +1,12 @@
 ---
 import { buttonVariants } from '@/components/ui/button';
 import Layout from '../layouts/Layout.astro';
-import { SITE } from '../data';
+import { settings as SITE } from '@/lib/sanity';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title={`Page not found | ${SITE.name}`} description="This page doesn't exist.">
+<Layout seo={{ title: `Page not found | ${SITE.name}`, description: SITE.notFound.heading }}>
 	<Header />
 	<main class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
 		<div class="grid gap-8 border-b border-ink pb-12 lg:grid-cols-12 lg:gap-10">
@@ -19,12 +19,10 @@ import Footer from '../components/Footer.astro';
 						<path d="M80 120l8 11-8 22-8-22z" fill="currentColor" />
 					</g>
 				</svg>
-				<h1 class="display text-[clamp(3.5rem,11vw,6rem)]">This page doesn't exist.</h1>
+				<h1 class="display text-[clamp(3.5rem,11vw,6rem)]">{SITE.notFound.heading}</h1>
 			</div>
 			<div class="lg:col-span-5 lg:self-end">
-				<p class="text-lg leading-relaxed text-ink-2">
-					The link may be old, or the address mistyped. Start from the homepage, or tell us what you were looking for.
-				</p>
+				<p class="text-lg leading-relaxed text-ink-2">{SITE.notFound.body}</p>
 				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
 					<a href="/" class={buttonVariants()}>
 						Go to the homepage

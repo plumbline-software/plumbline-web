@@ -1,23 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE } from '../data';
 import Header from '../components/Header.astro';
 import Approach from '../components/Approach.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
+import { getPage } from '@/lib/sanity';
+
+const page = await getPage('approachPage');
 ---
 
-<Layout
-	title={`Our Software Development Process | ${SITE.shortName}`}
-	description={`How ${SITE.name} runs every project: understand, plan, build and deliver, with a clear, written outcome at each stage.`}
->
+<Layout seo={page.seo}>
 	<Header />
 	<main>
-		<Approach as="h1" />
-		<ContactCTA
-			heading="Start with Understand."
-			copy="Send a short note about what you're trying to solve. That's step one."
-		/>
+		<Approach as="h1" heading={page.heading} copy={page.copy} flow={page.flow} />
+		<ContactCTA {...page.cta} />
 	</main>
 	<Footer />
 </Layout>

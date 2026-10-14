@@ -5,6 +5,9 @@ dist/
 node_modules/
 bun.lock
 
+# Standalone Sanity Studio has its own Prettier config
+studio-plumbline-software/
+
 # Tooling installed from elsewhere (reinstall rather than reformat)
 .claude/
 .impeccable/

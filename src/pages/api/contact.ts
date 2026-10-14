@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { SITE, services, timelines } from '../../data';
+import { sanityClient } from 'sanity:client';
 
 export const prerender = false;
 
@@ -15,6 +15,7 @@ const escape = (value: string) =>
 // Email clients ignore <style> and web fonts unevenly, so everything is inline
 // styles on a single 560px table — the layout that survives Gmail and Outlook.
 function inquiryEmail(
+	siteName: string,
 	fields: Record<'name' | 'email' | 'organization' | 'service' | 'timeline' | 'message', string>,
 ): string {
 	const f = Object.fromEntries(Object.entries(fields).map(([k, v]) => [k, escape(v)])) as typeof fields;
@@ -25,7 +26,7 @@ function inquiryEmail(
 	return `<!doctype html><html><body style="margin:0;padding:0;background:#f6f6f5">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f6f6f5;padding:32px 16px;font-family:${font}"><tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border:1px solid #d5d7db;overflow:hidden">
-	<tr><td style="background:#10141a;padding:20px 28px;color:#ffffff;font-size:12px;font-weight:600;letter-spacing:.2em">${escape(SITE.name.toUpperCase())}</td></tr>
+	<tr><td style="background:#10141a;padding:20px 28px;color:#ffffff;font-size:12px;font-weight:600;letter-spacing:.2em">${escape(siteName.toUpperCase())}</td></tr>
 	<tr><td style="padding:28px 28px 8px">
 		<p style="margin:0;color:#5a616c;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase">New project inquiry</p>
 		<h1 style="margin:6px 0 0;color:#10141a;font-size:22px;line-height:1.3">${f.name}${f.organization ? ` <span style="color:#5a616c;font-weight:400">from ${f.organization}</span>` : ''}</h1>
@@ -43,7 +44,7 @@ function inquiryEmail(
 		<a href="mailto:${f.email}?subject=${encodeURIComponent('Re: your project inquiry')}" style="display:inline-block;background:#10141a;color:#ffffff;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:14px 20px">Reply to ${f.name}</a>
 	</td></tr>
 </table>
-<p style="margin:16px 0 0;color:#5a616c;font-size:12px">Sent from the contact form on the ${escape(SITE.name)} website.</p>
+<p style="margin:16px 0 0;color:#5a616c;font-size:12px">Sent from the contact form on the ${escape(siteName)} website.</p>
 </td></tr></table>
 </body></html>`;
 }
@@ -61,8 +62,20 @@ export const POST: APIRoute = async ({ request }) => {
 	const message = String(body.message ?? '').trim();
 	const organization = String(body.organization ?? '').trim();
 	// Unknown values are dropped rather than rejected — they are only context for the reply.
-	const service = services.find((s) => s.slug === body.service)?.name ?? 'Not sure yet';
-	const timeline = timelines.find((t) => t === body.timeline) ?? 'No fixed date';
+	// A Sanity outage must not lose the message, so a failed lookup falls back like an unknown value.
+	const content = await sanityClient
+		.fetch<{ siteName?: string; service?: string; timeline?: string }>(
+			`{
+				"siteName": *[_id == "siteSettings"][0].name,
+				"service": *[_type == "service" && slug.current == $service][0].name,
+				"timeline": *[_id == "siteSettings"][0].timelines[@ == $timeline][0]
+			}`,
+			{ service: String(body.service ?? ''), timeline: String(body.timeline ?? '') },
+		)
+		.catch(() => ({}) as { siteName?: string; service?: string; timeline?: string });
+	const siteName = content.siteName ?? 'Plumbline Software';
+	const service = content.service ?? 'Not sure yet';
+	const timeline = content.timeline ?? 'No fixed date';
 	// Honeypot: real users never fill this hidden field in; bots often do.
 	const website = String(body.website ?? '').trim();
 
@@ -82,7 +95,7 @@ export const POST: APIRoute = async ({ request }) => {
 	}
 
 	const apiKey = import.meta.env.RESEND_API_KEY;
-	const fromEmail = import.meta.env.RESEND_FROM_EMAIL || `${SITE.name} <onboarding@resend.dev>`;
+	const fromEmail = import.meta.env.RESEND_FROM_EMAIL || `${siteName} <onboarding@resend.dev>`;
 	const toEmail = import.meta.env.RESEND_TO_EMAIL || 'plumbline.software@gmail.com';
 
 	if (!apiKey) {
@@ -101,7 +114,7 @@ export const POST: APIRoute = async ({ request }) => {
 			to: [toEmail],
 			reply_to: email,
 			subject: `New inquiry: ${service} — ${name}${organization ? ` (${organization})` : ''}`.replace(/\s+/g, ' '),
-			html: inquiryEmail({ name, email, organization, service, timeline, message }),
+			html: inquiryEmail(siteName, { name, email, organization, service, timeline, message }),
 			text: `Name: ${name}\nEmail: ${email}\nOrganization: ${organization || '—'}\nService: ${service}\nTimeline: ${timeline}\n\n${message}`,
 		}),
 	});

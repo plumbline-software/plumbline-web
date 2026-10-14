@@ -1,47 +1,20 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import PrincipleCard from './PrincipleCard.astro';
-import { Wrench, Compass, MessageSquare, GitBranch } from 'lucide-react';
 
-const principles = [
-	{
-		title: 'Engineering First',
-		icon: Wrench,
-		copy: 'Build maintainable systems rather than short-term solutions.',
-		detail:
-			"A feature that ships fast but can't be touched again without breaking something else isn't actually finished.",
-	},
-	{
-		title: 'Practical Technology',
-		icon: Compass,
-		copy: 'Choose technology based on the problem rather than trends.',
-		detail:
-			"The newest framework isn't automatically the right one. In my years as an engineer, the software that lasted was usually built on unglamorous, extremely reliable technology.",
-	},
-	{
-		title: 'Clear Communication',
-		icon: MessageSquare,
-		copy: 'Keep technical decisions understandable and aligned with organizational goals.',
-		detail:
-			"If we can't explain a decision in plain language, that's usually a sign we haven't thought it through enough.",
-	},
-	{
-		title: 'Built to Evolve',
-		icon: GitBranch,
-		copy: 'Design systems that can adapt as requirements change.',
-		detail: "Requirements change. Software that assumes they won't is software you'll be rewriting within a year.",
-	},
-];
+interface Props {
+	heading: string;
+	copy: string;
+	items: { icon?: string; title: string; copy: string; detail?: string }[];
+}
+
+const { heading, copy, items } = Astro.props;
 ---
 
 <section aria-labelledby="principles-heading" class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8">
-	<SectionHeading
-		id="principles-heading"
-		heading="What we hold ourselves to"
-		copy="Four principles behind every technical decision on a project."
-	/>
+	<SectionHeading id="principles-heading" {heading} {copy} />
 	<div class="mt-4">
-		{principles.map((principle) => (
+		{items.map((principle) => (
 			<PrincipleCard {...principle} />
 		))}
 	</div>

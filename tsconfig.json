@@ -1,8 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
+  "exclude": ["dist", "studio-plumbline-software"],
   "compilerOptions": {
+    "types": ["@sanity/astro/module"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": ".",
