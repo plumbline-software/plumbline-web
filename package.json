@@ -6,7 +6,7 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "bun run build:studio && astro dev",
     "build": "bun run build:studio && astro build",
     "build:studio": "cd studio-plumbline-software && bun install --frozen-lockfile && SANITY_STUDIO_BASEPATH=/admin bunx sanity build ../public/admin --yes",
     "preview": "astro preview",

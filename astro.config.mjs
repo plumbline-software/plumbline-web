@@ -12,6 +12,18 @@ import { defineConfig } from 'astro/config';
 // for example once a custom domain exists.
 const site = process.env.SITE_URL || 'https://plumbline-software.vercel.app';
 
+// Local mirror of the /admin rewrite in vercel.json: the Studio (built into public/admin by
+// `bun run build:studio`) is a single-page app, so every /admin URL without a file extension gets its index.html.
+const studioDevRewrite = {
+	name: 'studio-dev-rewrite',
+	configureServer(server) {
+		server.middlewares.use((req, _res, next) => {
+			if (req.url && /^\/admin(\/[^.]*)?(\?.*)?$/.test(req.url)) req.url = '/admin/index.html';
+			next();
+		});
+	},
+};
+
 // https://astro.build/config
 export default defineConfig({
 	site,
@@ -19,7 +31,7 @@ export default defineConfig({
 	trailingSlash: 'never',
 
 	vite: {
-		plugins: [tailwindcss()],
+		plugins: [tailwindcss(), studioDevRewrite],
 	},
 
 	// lastmod tells search engines when pages last changed (each deploy rebuilds them).
