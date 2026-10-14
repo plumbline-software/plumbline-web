@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# Sanity Studio, built into the site at /admin by `bun run build:studio`
+public/admin/
+
 # generated types
 .astro/
 

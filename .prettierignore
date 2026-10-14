@@ -7,6 +7,7 @@ bun.lock
 
 # Standalone Sanity Studio has its own Prettier config
 studio-plumbline-software/
+public/admin/
 
 # Tooling installed from elsewhere (reinstall rather than reformat)
 .claude/

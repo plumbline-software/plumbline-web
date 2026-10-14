@@ -15,5 +15,6 @@
       "source": "/_astro/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/admin/:path*", "destination": "/admin/index.html" }]
 }
