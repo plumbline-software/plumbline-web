@@ -33,6 +33,7 @@ export const services = [
 			'React, TypeScript & Node.js as the default stack',
 			'Data models designed around how the data is actually used',
 			'One engineer end to end, so nothing gets lost in a handoff',
+			'Content your team edits themselves, through a CMS such as Builder.io or Sanity',
 		],
 	},
 	{

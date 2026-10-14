@@ -11,12 +11,13 @@ import Flow from '../components/Flow.astro';
 import { FileText, Globe, Monitor, Server, Gauge, Layers, Accessibility, BookOpen } from 'lucide-react';
 
 // Re-measure and update these when the site changes (Lighthouse, mobile settings, production build).
-const measuredOn = 'October 12, 2026';
+const measuredOn = 'October 13, 2026';
 const scores = [
-	{ label: 'Performance', value: '98' },
+	{ label: 'Performance', value: '100' },
 	{ label: 'Accessibility', value: '100' },
 	{ label: 'Best practices', value: '100' },
 	{ label: 'SEO', value: '100' },
+	{ label: 'Agentic browsing', value: '2/2' },
 ];
 ---
 
@@ -38,14 +39,14 @@ const scores = [
 			steps={[
 				{ icon: FileText, title: 'Built ahead', note: 'Every page is turned into plain HTML before anyone visits.' },
 				{ icon: Globe, title: 'Served nearby', note: "Vercel's network sends it from a location close to you." },
-				{ icon: Monitor, title: 'Your browser', note: 'About 122 KB per page, and almost no JavaScript to run.' },
+				{ icon: Monitor, title: 'Your browser', note: 'About 150 KB per page, and almost no JavaScript to run.' },
 				{ icon: Server, title: 'One function', note: 'The only server code: checking and sending the contact form.' },
 			]}
 			caption="This site's whole architecture, start to finish."
 		/>
 
 		<DocSection heading="Measured" icon={Gauge}>
-			<dl class="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
+			<dl class="grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-5">
 				{scores.map((s) => (
 					<div class="border-t border-ink pt-3">
 						<dt class="text-sm text-muted-foreground">{s.label}</dt>
@@ -54,7 +55,7 @@ const scores = [
 				))}
 			</dl>
 			<p>
-				Lighthouse scores for the homepage on Google's mobile settings (a mid-range phone on a slow 4G connection),
+				Lighthouse scores for the live homepage on Google's mobile settings (a mid-range phone on a slow 4G connection),
 				measured {measuredOn}. Run the same test on any page with Chrome DevTools or{' '}
 				<a href="https://pagespeed.web.dev" class="link" rel="noopener" target="_blank">
 					PageSpeed Insights
@@ -63,7 +64,7 @@ const scores = [
 			</p>
 			<ul>
 				<li>
-					<strong>About 122 KB</strong> to load the homepage, including both typefaces.
+					<strong>About 150 KB</strong> to load the homepage, including both typefaces and every illustration.
 				</li>
 				<li>
 					<strong>Under 1 KB of JavaScript</strong> on most pages; about 5 KB on the contact page, for form validation.
