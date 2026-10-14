@@ -14,7 +14,9 @@ const escape = (value: string) =>
 
 // Email clients ignore <style> and web fonts unevenly, so everything is inline
 // styles on a single 560px table — the layout that survives Gmail and Outlook.
-function inquiryEmail(fields: Record<'name' | 'email' | 'organization' | 'service' | 'timeline' | 'message', string>): string {
+function inquiryEmail(
+	fields: Record<'name' | 'email' | 'organization' | 'service' | 'timeline' | 'message', string>,
+): string {
 	const f = Object.fromEntries(Object.entries(fields).map(([k, v]) => [k, escape(v)])) as typeof fields;
 	const font = "-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif";
 	const row = (label: string, value: string) =>
@@ -88,7 +90,6 @@ export const POST: APIRoute = async ({ request }) => {
 		return Response.json({ ok: false, error: 'The form is temporarily unavailable.' }, { status: 503 });
 	}
 
-
 	const resendResponse = await fetch('https://api.resend.com/emails', {
 		method: 'POST',
 		headers: {
@@ -108,7 +109,10 @@ export const POST: APIRoute = async ({ request }) => {
 	if (!resendResponse.ok) {
 		const detail = await resendResponse.text().catch(() => '');
 		console.error('Resend API error', resendResponse.status, detail);
-		return Response.json({ ok: false, error: 'Could not send your message. Please try again shortly.' }, { status: 502 });
+		return Response.json(
+			{ ok: false, error: 'Could not send your message. Please try again shortly.' },
+			{ status: 502 },
+		);
 	}
 
 	return Response.json({ ok: true });

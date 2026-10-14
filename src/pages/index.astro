@@ -5,6 +5,10 @@ import Hero from '../components/Hero.astro';
 import ProcessStrip from '../components/ProcessStrip.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import FounderIntro from '../components/FounderIntro.astro';
+import HandoverSection from '../components/HandoverSection.astro';
+import ServiceIcon from '../components/ServiceIcon.astro';
+import PhotoBand from '../components/PhotoBand.astro';
+import OpsDashboard from '../components/mockups/OpsDashboard.astro';
 import EnterpriseSection from '../components/EnterpriseSection.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Footer from '../components/Footer.astro';
@@ -20,24 +24,52 @@ import { services } from '../data';
 			<SectionHeading
 				id="services-index-heading"
 				heading="What we build"
-				copy="Five kinds of work, usually in some combination. Most projects touch more than one."
+				copy="Four kinds of work, usually in some combination. Most projects touch more than one."
 			/>
 			<ul class="mt-10 border-b border-rule">
-				{
-					services.map((service) => (
-						<li class="border-t border-rule first:border-t-0">
-							<a href={`/services#${service.slug}`} class="group grid grid-cols-[1fr_1.5rem] items-center gap-x-4 gap-y-1 py-6 sm:grid-cols-[5fr_6fr_1.5rem] sm:gap-x-8">
-								<span class="display text-3xl group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4 sm:text-4xl">{service.name}</span>
-								<span class="col-start-1 row-start-2 text-ink-2 sm:col-start-auto sm:row-start-auto">{service.summary}</span>
-								<svg viewBox="0 0 24 24" class="col-start-2 row-start-1 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 sm:col-start-auto sm:row-start-auto" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-									<path d="M5 12h14M13 6l6 6-6 6" />
-								</svg>
-							</a>
-						</li>
-					))
-				}
+				{services.map((service) => (
+					<li class="border-t border-rule first:border-t-0">
+						<a
+							href={`/services#${service.slug}`}
+							class="group grid grid-cols-[2.5rem_1fr_1.5rem] items-center gap-x-4 gap-y-1 py-6 sm:grid-cols-[3rem_5fr_6fr_1.5rem] sm:gap-x-8"
+						>
+							<ServiceIcon slug={service.slug} class="row-span-2 h-10 w-10 sm:row-span-1 sm:h-12 sm:w-12" />
+							<span class="display text-3xl group-hover:underline group-hover:decoration-2 group-hover:underline-offset-4 sm:text-4xl">
+								{service.name}
+							</span>
+							<span class="col-start-2 row-start-2 text-ink-2 sm:col-start-auto sm:row-start-auto">
+								{service.summary}
+							</span>
+							<svg
+								viewBox="0 0 24 24"
+								class="col-start-3 row-start-1 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 sm:col-start-auto sm:row-start-auto"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								aria-hidden="true"
+							>
+								<path d="M5 12h14M13 6l6 6-6 6" />
+							</svg>
+						</a>
+					</li>
+				))}
 			</ul>
+			<OpsDashboard
+				class="mt-14"
+				caption="The kind of software we build: an internal tool that replaces a tangle of spreadsheets and email."
+			/>
 		</section>
+		<HandoverSection />
+		<PhotoBand
+			name="skyline"
+			position="center 78%"
+			alt="Downtown Vancouver's skyline under the snow-covered North Shore mountains at dawn"
+			caption="Based in Vancouver, BC. Working with businesses across Canada."
+			credit={{
+				name: 'Anthony Maw',
+				href: 'https://unsplash.com/photos/a-city-with-snow-covered-mountains-GWRuNS8Y0KM',
+			}}
+		/>
 		<FounderIntro />
 		<EnterpriseSection />
 		<ContactCTA />

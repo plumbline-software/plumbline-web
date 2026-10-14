@@ -1,0 +1,95 @@
+---
+import MockFrame from './MockFrame.astro';
+interface Props {
+	caption?: string;
+	class?: string;
+}
+const { caption = 'An internal operations tool: orders, status and assignments in one place.', class: className } =
+	Astro.props;
+const rows = [
+	['#1042', 'Harbourline Supply', 'Burnaby', 'In transit', 'R. Singh'],
+	['#1041', 'Granville Print Co.', 'Vancouver', 'Packed', 'M. Chen'],
+	['#1040', 'North Shore Clinic', 'N. Vancouver', 'Delivered', 'A. Patel'],
+	['#1039', 'Fraser Valley Farms', 'Abbotsford', 'Delayed', 'J. Lee'],
+	['#1038', 'Kits Bike Works', 'Vancouver', 'Delivered', 'R. Singh'],
+	['#1037', 'Lonsdale Dental', 'N. Vancouver', 'Packed', 'M. Chen'],
+];
+const pill = (s: string) =>
+	s === 'Delivered'
+		? 'bg-ink text-paper border-ink'
+		: s === 'Delayed'
+			? 'border-error text-error'
+			: 'border-ink text-ink';
+---
+
+<MockFrame
+	height={520}
+	label="Illustrative screenshot of an internal operations dashboard listing orders with their status"
+	url="ops.example.com/orders"
+	caption={caption}
+	class={className}
+>
+	<div class="flex h-full">
+		<aside class="w-48 shrink-0 border-r border-ink p-4 text-[13px]">
+			<p class="display text-xl">Ops</p>
+			<ul class="mt-5 space-y-1">
+				<li class="bg-ink px-3 py-2 text-paper">Orders</li>
+				<li class="px-3 py-2">Routes</li>
+				<li class="px-3 py-2">Customers</li>
+				<li class="px-3 py-2">Reports</li>
+				<li class="px-3 py-2">Settings</li>
+			</ul>
+		</aside>
+		<main class="flex-1 p-6">
+			<div class="flex items-end justify-between">
+				<div>
+					<p class="display text-3xl">Orders</p>
+					<p class="mt-1 text-[12px] text-muted-foreground">142 open this week</p>
+				</div>
+				<div class="flex gap-2 text-[12px]">
+					<span class="border border-input px-3 py-1.5">Status: All</span>
+					<span class="border border-input px-3 py-1.5">This week</span>
+					<span class="bg-ink px-3 py-1.5 text-paper">New order</span>
+				</div>
+			</div>
+			<div class="mt-5 grid grid-cols-3 gap-3 text-[12px]">
+				<div class="border border-ink p-3">
+					<p class="text-muted-foreground">In transit</p>
+					<p class="display mt-1 text-3xl">38</p>
+				</div>
+				<div class="border border-ink p-3">
+					<p class="text-muted-foreground">Packed</p>
+					<p class="display mt-1 text-3xl">21</p>
+				</div>
+				<div class="border border-ink p-3">
+					<p class="text-muted-foreground">Delayed</p>
+					<p class="display mt-1 text-3xl">4</p>
+				</div>
+			</div>
+			<table class="mt-5 w-full border-collapse text-left text-[12px]">
+				<thead>
+					<tr class="border-b border-ink text-muted-foreground">
+						<th class="py-2 font-medium">Order</th>
+						<th class="font-medium">Customer</th>
+						<th class="font-medium">City</th>
+						<th class="font-medium">Status</th>
+						<th class="font-medium">Assigned</th>
+					</tr>
+				</thead>
+				<tbody>
+					{rows.map((r) => (
+						<tr class="border-b border-rule">
+							<td class="py-2.5 font-mono">{r[0]}</td>
+							<td>{r[1]}</td>
+							<td class="text-ink-2">{r[2]}</td>
+							<td>
+								<span class:list={['border px-2 py-0.5 text-[11px]', pill(r[3])]}>{r[3]}</span>
+							</td>
+							<td class="text-ink-2">{r[4]}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</main>
+	</div>
+</MockFrame>

@@ -3,13 +3,13 @@ import '../styles/global.css';
 import { SITE, services } from '../data';
 
 interface Props {
-  title?: string;
-  description?: string;
+	title?: string;
+	description?: string;
 }
 
 const {
-  title = `Vancouver Software Development & Consulting | ${SITE.name}`,
-  description = 'Founder-led software development and technology consulting in Vancouver, BC: web apps, internal tools, APIs and cloud infrastructure built to last.',
+	title = `Vancouver Software Development & Consulting | ${SITE.name}`,
+	description = 'Founder-led software development in Vancouver, BC for small businesses and startups: web apps, internal tools and APIs built to last.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -39,7 +39,7 @@ const structuredData = {
 			email: SITE.email,
 			address: { '@type': 'PostalAddress', addressLocality: 'Vancouver', addressRegion: 'BC', addressCountry: 'CA' },
 			areaServed: 'Canada',
-			knowsAbout: ['Web application development', 'Frontend engineering', 'API development', 'Cloud infrastructure', 'Technology consulting'],
+			knowsAbout: ['Web application development', 'Frontend engineering', 'API development', 'Technology consulting'],
 			hasOfferCatalog: {
 				'@type': 'OfferCatalog',
 				name: 'Software development services',
@@ -99,14 +99,18 @@ const structuredData = {
 		{googleVerification && <meta name="google-site-verification" content={googleVerification} />}
 		{bingVerification && <meta name="msvalidate.01" content={bingVerification} />}
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-		{
-			vercelAnalytics && (
-				<Fragment>
-					<script is:inline>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
-					<script is:inline defer src="/_vercel/insights/script.js"></script>
-				</Fragment>
-			)
-		}
+		{vercelAnalytics && (
+			<Fragment>
+				<script is:inline>
+					window.va =
+						window.va ||
+						function () {
+							(window.vaq = window.vaq || []).push(arguments);
+						};
+				</script>
+				<script is:inline defer src="/_vercel/insights/script.js"></script>
+			</Fragment>
+		)}
 	</head>
 	<body class="bg-paper font-sans text-ink">
 		<slot />

@@ -32,3 +32,7 @@ Build UI with shadcn/ui (`npx shadcn@latest add <component>`). Components live i
 ## Astro whitespace gotcha
 
 When a line of text in a template ends and the next line starts with an element or expression (`<a …>`, `{…}`), Astro drops the space between them ("or<a>PageSpeed" renders as "orPageSpeed"). Put `{' '}` at the end of the text line, or keep the text and the element on one line.
+
+## Formatting
+
+Prettier formats the code (tabs, single quotes, 120 columns, Tailwind classes sorted). Run `bun run format` after editing and `bun run format:check` before committing. Markdown documents and `.claude/` / `.impeccable/` are excluded (see `.prettierignore`).

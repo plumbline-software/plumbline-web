@@ -1,5 +1,7 @@
 ---
 import { SITE } from '../data';
+import Flow from './Flow.astro';
+import { Users, User, Package } from 'lucide-react';
 ---
 
 <section id="about" aria-labelledby="about-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -9,18 +11,26 @@ import { SITE } from '../data';
 		</h1>
 		<div class="space-y-5 text-lg leading-relaxed text-ink-2 lg:col-span-5 lg:self-end">
 			<p>
-				{SITE.name} is a founder-led software development and technology consulting practice in
-				Vancouver, BC, building web applications, internal tools, APIs and cloud infrastructure.
+				{SITE.name} is a founder-led software development and technology consulting practice in Vancouver, BC, building
+				web applications, internal tools and APIs.
 			</p>
 			<p>
-				Good software comes from careful engineering, plain communication, and understanding the problem it
-				has to solve before writing any of it.
+				Good software comes from careful engineering, plain communication, and understanding the problem it has to solve
+				before writing any of it.
 			</p>
 			<p class="font-semibold text-ink">
-				You work directly with the engineer who builds your software — no account managers, no
-				handoffs. The person who scopes your project is the person writing the code, so context stays
-				intact and decisions stay fast.
+				You work directly with the engineer who builds your software — no account managers, no handoffs. The person who
+				scopes your project is the person writing the code, so context stays intact and decisions stay fast.
 			</p>
 		</div>
 	</div>
+	<Flow
+		class="mt-14"
+		steps={[
+			{ icon: Users, title: 'You', note: 'Your team, your users and the problem you need solved.' },
+			{ icon: User, title: 'The founder', note: 'Scopes it, builds it and explains every decision.' },
+			{ icon: Package, title: 'Your software', note: 'Documented, tested and handed over in full.' },
+		]}
+		caption="No account managers and no handoffs: the person you talk to is the person who writes the code."
+	/>
 </section>

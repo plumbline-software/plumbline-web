@@ -1,0 +1,16 @@
+# Build output and generated files
+dist/
+.astro/
+.vercel/
+node_modules/
+bun.lock
+
+# Tooling installed from elsewhere (reinstall rather than reformat)
+.claude/
+.impeccable/
+
+# Written documents keep their own formatting
+*.md
+
+# Image provenance sidecars
+public/images/*.json

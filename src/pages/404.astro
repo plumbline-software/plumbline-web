@@ -10,14 +10,28 @@ import Footer from '../components/Footer.astro';
 	<Header />
 	<main class="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
 		<div class="grid gap-8 border-b border-ink pb-12 lg:grid-cols-12 lg:gap-10">
-			<h1 class="display text-[clamp(3.5rem,11vw,6rem)] lg:col-span-7">This page doesn't exist.</h1>
+			<div class="lg:col-span-7">
+				<svg viewBox="0 0 160 170" class="mb-8 h-40 w-auto text-ink" aria-hidden="true">
+					<path d="M60 10h40" stroke="currentColor" stroke-width="1.5" />
+					<path d="M80 10v150" stroke="currentColor" stroke-width="1" stroke-dasharray="3 5" opacity="0.4" />
+					<g transform="rotate(-24 80 10)">
+						<path d="M80 10v112" stroke="currentColor" stroke-width="1.5" />
+						<path d="M80 120l8 11-8 22-8-22z" fill="currentColor" />
+					</g>
+				</svg>
+				<h1 class="display text-[clamp(3.5rem,11vw,6rem)]">This page doesn't exist.</h1>
+			</div>
 			<div class="lg:col-span-5 lg:self-end">
 				<p class="text-lg leading-relaxed text-ink-2">
 					The link may be old, or the address mistyped. Start from the homepage, or tell us what you were looking for.
 				</p>
 				<div class="mt-8 flex flex-col gap-3 sm:flex-row">
-					<a href="/" class={buttonVariants()}>Go to the homepage</a>
-					<a href="/contact" class={buttonVariants({ variant: 'outline' })}>Start a conversation</a>
+					<a href="/" class={buttonVariants()}>
+						Go to the homepage
+					</a>
+					<a href="/contact" class={buttonVariants({ variant: 'outline' })}>
+						Start a conversation
+					</a>
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,60 @@
+---
+import MockFrame from './MockFrame.astro';
+interface Props {
+	caption?: string;
+	class?: string;
+}
+const {
+	caption = 'An architecture review: findings, risks and a recommendation you can act on with any team.',
+	class: className,
+} = Astro.props;
+const risks = [
+	['High', 'Single database with no tested backup restore'],
+	['Medium', 'Payment logic duplicated in three services'],
+	['Low', 'Front end ships 1.2 MB of unused JavaScript'],
+];
+---
+
+<MockFrame
+	label="Illustrative screenshot of a written architecture review with a risk table and recommendation"
+	url="docs.example.com/architecture-review.pdf"
+	caption={caption}
+	class={className}
+>
+	<div class="flex h-full justify-center bg-paper-2 py-6">
+		<div class="w-[620px] border border-ink bg-paper px-10 py-8 text-[12px]">
+			<p class="label text-muted-foreground">Architecture review</p>
+			<p class="display mt-2 text-3xl">Should we rebuild the booking platform?</p>
+			<p class="mt-3 leading-relaxed text-ink-2">
+				Summary: no. The core is sound. Three targeted fixes remove most of the risk at a fraction of the cost of a
+				rewrite.
+			</p>
+			<p class="mt-5 font-semibold">Risks found</p>
+			<table class="mt-2 w-full border-collapse text-left">
+				<tbody>
+					{risks.map((r) => (
+						<tr class="border-b border-rule">
+							<td class="w-20 py-2">
+								<span
+									class:list={[
+										'border px-2 py-0.5 text-[11px]',
+										r[0] === 'High' ? 'border-ink bg-ink text-paper' : 'border-ink',
+									]}
+								>
+									{r[0]}
+								</span>
+							</td>
+							<td class="text-ink-2">{r[1]}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+			<p class="mt-5 font-semibold">Recommendation</p>
+			<ol class="mt-2 list-decimal space-y-1 pl-5 text-ink-2">
+				<li>Automate backups and test a restore every month.</li>
+				<li>Move payment logic into one shared service.</li>
+				<li>Remove unused front-end code before adding features.</li>
+			</ol>
+		</div>
+	</div>
+</MockFrame>

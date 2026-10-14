@@ -1,0 +1,39 @@
+---
+// A full-width photograph band (black and white, to match the palette) with its credit.
+// Photos are from Unsplash under the Unsplash License; credit is given even though it isn't required.
+interface Props {
+	name: 'skyline' | 'bridge';
+	alt: string;
+	caption: string;
+	credit: { name: string; href: string };
+	/** CSS object-position, to keep the subject in frame when cropped. */
+	position?: string;
+}
+
+const { name, alt, caption, credit, position = 'center' } = Astro.props;
+---
+
+<figure class="m-0 border-y border-ink">
+	<img
+		src={`/images/vancouver-${name}-2000.webp`}
+		srcset={`/images/vancouver-${name}-1000.webp 1000w, /images/vancouver-${name}-2000.webp 2000w`}
+		sizes="100vw"
+		width="2000"
+		height="1333"
+		alt={alt}
+		loading="lazy"
+		decoding="async"
+		class="block h-[42vh] max-h-[560px] min-h-64 w-full object-cover sm:h-[55vh]"
+		style={`object-position: ${position}`}
+	/>
+	<figcaption class="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 text-sm text-ink-2 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
+		<span>{caption}</span>
+		<span class="text-xs text-muted-foreground">
+			Photo:{' '}
+			<a href={credit.href} class="link" rel="noopener" target="_blank">
+				{credit.name}
+			</a>{' '}
+			on Unsplash
+		</span>
+	</figcaption>
+</figure>

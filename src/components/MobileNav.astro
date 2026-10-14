@@ -1,5 +1,6 @@
 ---
 import { buttonVariants } from '@/components/ui/button';
+
 const links = [
 	{ href: '/services', label: 'Services' },
 	{ href: '/approach', label: 'Approach' },
@@ -40,23 +41,15 @@ const links = [
 	</div>
 	<nav>
 		<ul class="flex flex-col border-t border-ink">
-			{
-				links.map((link) => (
-					<li>
-						<a
-							href={link.href}
-							class="display block border-b border-rule py-4 text-3xl hover:bg-paper-2"
-						>
-							{link.label}
-						</a>
-					</li>
-				))
-			}
+			{links.map((link) => (
+				<li>
+					<a href={link.href} class="display block border-b border-rule py-4 text-3xl hover:bg-paper-2">
+						{link.label}
+					</a>
+				</li>
+			))}
 			<li class="mt-6">
-				<a
-					href="/contact"
-					class={buttonVariants({ className: 'w-full' })}
-				>
+				<a href="/contact" class={buttonVariants({ className: 'w-full' })}>
 					Start a conversation
 				</a>
 			</li>

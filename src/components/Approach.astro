@@ -1,12 +1,16 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import { SITE, stages } from '../data';
+import Flow from './Flow.astro';
+import { FileSearch, ClipboardList, Hammer, FolderOpen } from 'lucide-react';
 
 interface Props {
 	as?: 'h1' | 'h2';
 }
 
 const { as = 'h2' } = Astro.props;
+const stageIcons = [FileSearch, ClipboardList, Hammer, FolderOpen];
+const rows = stages.map((stage, i) => ({ ...stage, Icon: stageIcons[i] }));
 ---
 
 <section id="approach" aria-labelledby="approach-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -16,35 +20,60 @@ const { as = 'h2' } = Astro.props;
 		heading="How we work"
 		copy="The same four-stage process on every engagement — not reinvented each time, and not skipped under deadline pressure."
 	/>
+	{as === 'h1' && (
+		<Flow
+			class="mt-12"
+			steps={[
+				{
+					icon: FileSearch,
+					title: 'Brief',
+					note: 'Understand: the problem, the users and what success looks like, written down.',
+				},
+				{ icon: ClipboardList, title: 'Plan', note: 'Plan: scope, architecture outline and a realistic timeline.' },
+				{ icon: Hammer, title: 'Releases', note: 'Build: working software at regular intervals you can try.' },
+				{ icon: FolderOpen, title: 'Handover', note: 'Deliver: code, documentation and a runbook, all yours.' },
+			]}
+			caption="What each stage leaves you with."
+		/>
+	)}
 	<ol class="relative mt-6 pl-12 sm:pl-16">
 		<span class="absolute bottom-10 left-[0.9375rem] top-10 w-px bg-ink" aria-hidden="true"></span>
-		<svg viewBox="0 0 8 14" class="absolute bottom-3 left-[0.6875rem] h-6 w-[0.5625rem] text-ink" fill="currentColor" aria-hidden="true"><path d="M4 0 7.5 4.5 4 14 .5 4.5z" /></svg>
-		{
-			stages.map((stage, i) => (
-				<li class="relative grid gap-6 border-b border-rule py-10 lg:grid-cols-12 lg:gap-10">
-					<span class="absolute -left-12 top-10 flex h-8 w-8 items-center justify-center border border-ink bg-paper font-display text-base font-semibold sm:-left-16" aria-hidden="true">
-						{i + 1}
-					</span>
-					<h2 class="display text-5xl lg:col-span-4">{stage.title}</h2>
-					<div class="lg:col-span-5">
-						<p class="text-lg leading-relaxed text-ink-2">{stage.copy}</p>
-						<dl class="mt-6 grid gap-4 text-sm sm:grid-cols-2">
-							<div>
-								<dt class="label text-muted-foreground">You</dt>
-								<dd class="mt-1.5 leading-relaxed text-ink-2">{stage.you}</dd>
-							</div>
-							<div>
-								<dt class="label text-muted-foreground">{SITE.shortName}</dt>
-								<dd class="mt-1.5 leading-relaxed text-ink-2">{stage.us}</dd>
-							</div>
-						</dl>
-					</div>
-					<div class="lg:col-span-3">
-						<p class="label text-muted-foreground">You get</p>
-						<p class="mt-1.5 text-lg font-semibold leading-snug text-ink">{stage.outcome}</p>
-					</div>
-				</li>
-			))
-		}
+		<svg
+			viewBox="0 0 8 14"
+			class="absolute bottom-3 left-[0.6875rem] h-6 w-[0.5625rem] text-ink"
+			fill="currentColor"
+			aria-hidden="true"
+		>
+			<path d="M4 0 7.5 4.5 4 14 .5 4.5z" />
+		</svg>
+		{rows.map((stage, i) => (
+			<li class="relative grid gap-6 border-b border-rule py-10 lg:grid-cols-12 lg:gap-10">
+				<span
+					class="absolute -left-12 top-10 flex h-8 w-8 items-center justify-center border border-ink bg-paper font-display text-base font-semibold sm:-left-16"
+					aria-hidden="true"
+				>
+					{i + 1}
+				</span>
+				<h2 class="display text-5xl lg:col-span-4">{stage.title}</h2>
+				<div class="lg:col-span-5">
+					<p class="text-lg leading-relaxed text-ink-2">{stage.copy}</p>
+					<dl class="mt-6 grid gap-4 text-sm sm:grid-cols-2">
+						<div>
+							<dt class="label text-muted-foreground">You</dt>
+							<dd class="mt-1.5 leading-relaxed text-ink-2">{stage.you}</dd>
+						</div>
+						<div>
+							<dt class="label text-muted-foreground">{SITE.shortName}</dt>
+							<dd class="mt-1.5 leading-relaxed text-ink-2">{stage.us}</dd>
+						</div>
+					</dl>
+				</div>
+				<div class="lg:col-span-3">
+					<stage.Icon className="mb-3 size-8 text-ink" strokeWidth={1.5} aria-hidden="true" />
+					<p class="label text-muted-foreground">You get</p>
+					<p class="mt-1.5 text-lg font-semibold leading-snug text-ink">{stage.outcome}</p>
+				</div>
+			</li>
+		))}
 	</ol>
 </section>

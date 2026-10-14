@@ -1,0 +1,47 @@
+---
+// A drawn flow diagram in real HTML (readable at any width): boxed steps joined by arrows,
+// left-to-right on wide screens and top-to-bottom on phones. Icons are Lucide (shadcn's set),
+// rendered statically with no client JavaScript.
+import { ArrowRight } from 'lucide-react';
+
+interface Step {
+	icon: any;
+	title: string;
+	note: string;
+}
+
+interface Props {
+	steps: Step[];
+	caption?: string;
+	class?: string;
+}
+
+const { steps, caption, class: className = '' } = Astro.props;
+const cols =
+	{ 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4', 5: 'md:grid-cols-5' }[steps.length] ??
+	'md:grid-cols-4';
+---
+
+<figure class:list={['border border-ink bg-paper', className]}>
+	<ol class:list={['grid', cols]}>
+		{steps.map((step, i) => {
+			const Icon = step.icon;
+			return (
+				<li class="relative border-b border-ink p-6 last:border-b-0 md:border-b-0 md:border-l md:first:border-l-0">
+					<Icon className="size-9 text-ink" strokeWidth={1.5} aria-hidden="true" />
+					<p class="display mt-5 text-2xl">{step.title}</p>
+					<p class="mt-2 text-sm leading-relaxed text-ink-2">{step.note}</p>
+					{i < steps.length - 1 && (
+						<span
+							class="absolute -bottom-3.5 left-6 z-10 flex size-7 items-center justify-center border border-ink bg-paper md:-right-3.5 md:bottom-auto md:left-auto md:top-7"
+							aria-hidden="true"
+						>
+							<ArrowRight className="size-4 rotate-90 md:rotate-0" strokeWidth={1.75} />
+						</span>
+					)}
+				</li>
+			);
+		})}
+	</ol>
+	{caption && <figcaption class="border-t border-ink px-6 py-3 text-sm text-ink-2">{caption}</figcaption>}
+</figure>

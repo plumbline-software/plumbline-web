@@ -1,0 +1,98 @@
+---
+// Hero drawing: a typical system "hanging true", web app → API → database → deploy,
+// with notes pointing at the documents that keep it understandable. Illustrative, not a client project.
+---
+
+<svg viewBox="0 0 480 560" class="h-auto w-full" role="img" aria-labelledby="hero-ill-title">
+	<title id="hero-ill-title">Diagram of a web application, its API, database and deployment pipeline, each documented and tested</title>
+	<defs>
+		<pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+			<path d="M0 0v6" stroke="var(--rule)" stroke-width="2" />
+		</pattern>
+	</defs>
+	<g fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="square">
+		<!-- spine -->
+		<path d="M240 0v26M240 126v40M240 246v34M240 372v38" />
+
+		<!-- web app: a browser window -->
+		<rect x="110" y="26" width="260" height="100" fill="var(--paper)" />
+		<path d="M110 46h260" />
+		<path d="M122 36h2M130 36h2M138 36h2" />
+		<rect x="126" y="58" width="96" height="10" fill="var(--ink)" stroke="none" />
+		<path d="M126 80h86M126 90h70M126 100h78" stroke="var(--field)" />
+		<rect x="238" y="58" width="116" height="52" fill="url(#hatch)" />
+
+		<!-- API -->
+		<rect x="140" y="166" width="200" height="80" fill="var(--ink)" stroke="none" />
+
+		<!-- database -->
+		<path d="M184 292c0-8 25-12 56-12s56 4 56 12v68c0 8-25 12-56 12s-56-4-56-12z" fill="var(--paper)" />
+		<path d="M184 292c0 8 25 12 56 12s56-4 56-12M184 316c0 8 25 12 56 12s56-4 56-12M184 340c0 8 25 12 56 12s56-4 56-12" />
+
+		<!-- pipeline: build → test → deploy on a level line -->
+		<path d="M40 470h400" />
+		<rect x="70" y="410" width="90" height="40" fill="var(--paper)" />
+		<rect x="195" y="410" width="90" height="40" fill="var(--paper)" />
+		<rect x="320" y="410" width="90" height="40" fill="var(--paper)" />
+		<path d="M160 430h35M285 430h35M187 425l8 5-8 5M312 425l8 5-8 5" />
+
+		<!-- leader lines to the notes -->
+		<path d="M110 76H62v-30M340 206h82v-30M184 326h-62v40M296 326h62v40" stroke="var(--field)" />
+	</g>
+
+	<!-- the bob that keeps it true -->
+	<path d="M240 482l7 9-7 17-7-17z" fill="var(--ink)" />
+	<path d="M240 470v12" stroke="var(--ink)" stroke-width="1.5" />
+
+	<g font-family="var(--font-display)" font-weight="560" fill="var(--ink)" letter-spacing="0.03em">
+		<text x="240" y="196" text-anchor="middle" fill="var(--paper)" font-size="22">
+			API
+		</text>
+		<text
+			x="306"
+			y="296"
+			text-anchor="start"
+			font-size="13"
+			fill="var(--muted)"
+			font-family="var(--font-sans)"
+			font-weight="500"
+			letter-spacing="0"
+		>
+			Database
+		</text>
+		<text x="115" y="435" text-anchor="middle" font-size="16">
+			BUILD
+		</text>
+		<text x="240" y="435" text-anchor="middle" font-size="16">
+			TEST
+		</text>
+		<text x="365" y="435" text-anchor="middle" font-size="16">
+			DEPLOY
+		</text>
+	</g>
+	<g font-family="var(--font-sans)" font-size="12" fill="var(--paper)">
+		<text x="240" y="216" text-anchor="middle" opacity="0.85">
+			GET /projects, POST /inquiries
+		</text>
+		<text x="240" y="232" text-anchor="middle" opacity="0.6">
+			versioned and documented
+		</text>
+	</g>
+	<g font-family="var(--font-sans)" font-size="12" fill="var(--ink-2)">
+		<text x="62" y="38" text-anchor="middle">
+			README.md
+		</text>
+		<text x="422" y="168" text-anchor="middle">
+			architecture.md
+		</text>
+		<text x="122" y="382" text-anchor="middle">
+			tests/
+		</text>
+		<text x="358" y="382" text-anchor="middle">
+			runbook.md
+		</text>
+		<text x="240" y="540" text-anchor="middle" fill="var(--muted)">
+			Every layer documented, tested and handed over.
+		</text>
+	</g>
+</svg>

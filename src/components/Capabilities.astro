@@ -1,13 +1,24 @@
 ---
 import SectionHeading from './SectionHeading.astro';
+import { Monitor, Server, FlaskConical } from 'lucide-react';
 
 const groups = [
-	{ title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS'] },
-	{ title: 'Backend', items: ['Node.js', 'REST APIs', 'API Design', 'Authentication', 'Database Integration'] },
-	{ title: 'Cloud & Infrastructure', items: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions'] },
+	{ title: 'Frontend', icon: Monitor, items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML', 'CSS'] },
+	{
+		title: 'Backend',
+		icon: Server,
+		items: ['Node.js', 'REST APIs', 'API Design', 'Authentication', 'Database Integration'],
+	},
 	{
 		title: 'Engineering',
-		items: ['Automated Testing', 'Performance Optimization', 'Internationalization', 'Application Architecture', 'Code Quality'],
+		icon: FlaskConical,
+		items: [
+			'Automated Testing',
+			'Performance Optimization',
+			'Internationalization',
+			'Application Architecture',
+			'Code Quality',
+		],
 	},
 ];
 ---
@@ -20,18 +31,21 @@ const groups = [
 			copy="The technologies and practices we reach for by default — not because they're trendy, but because they hold up in production."
 		/>
 		<dl class="mt-12 border-b border-rule">
-			{
-				groups.map((group) => (
-					<div class="grid gap-3 border-t border-rule py-5 sm:grid-cols-12 sm:gap-8">
-						<dt class="label pt-1 sm:col-span-4 lg:col-span-3">{group.title}</dt>
-						<dd class="sm:col-span-8 lg:col-span-9">
-							<ul class="flex flex-wrap gap-x-7 gap-y-2 text-ink-2">
-								{group.items.map((item) => <li>{item}</li>)}
-							</ul>
-						</dd>
-					</div>
-				))
-			}
+			{groups.map((group) => (
+				<div class="grid gap-3 border-t border-rule py-5 sm:grid-cols-12 sm:gap-8">
+					<dt class="label flex items-center gap-3 pt-1 sm:col-span-4 lg:col-span-3">
+						<group.icon className="size-5 shrink-0 text-ink" strokeWidth={1.5} aria-hidden="true" />
+						{group.title}
+					</dt>
+					<dd class="sm:col-span-8 lg:col-span-9">
+						<ul class="flex flex-wrap gap-x-7 gap-y-2 text-ink-2">
+							{group.items.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</dd>
+				</div>
+			))}
 		</dl>
 	</div>
 </section>

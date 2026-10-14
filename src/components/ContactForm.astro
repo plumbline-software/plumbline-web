@@ -5,12 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import SelectField from './SelectField';
-
-const nextSteps = [
-	{ title: 'You send a short note', copy: 'What you are building or fixing, and roughly when. A few sentences is plenty.' },
-	{ title: 'The founder replies personally', copy: `Within ${SITE.replyTime}, with questions or a time to talk. No sales handoff.` },
-	{ title: 'A short call to scope it', copy: 'We talk through the problem and you leave with an honest view of what it would take.' },
-];
+import Flow from './Flow.astro';
+import { Send, Reply, PhoneCall } from 'lucide-react';
 
 // TODO(owner): review these answers — they describe how Plumbline works, so they must stay true.
 const faqs = [
@@ -31,16 +27,38 @@ const faqs = [
 		a: `${SITE.location}, on Pacific Time.`,
 	},
 ];
-
 ---
 
 <section aria-labelledby="contact-heading" class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
 	<div class="grid gap-5 border-b border-ink pb-10 lg:grid-cols-12 lg:gap-10 lg:pb-14">
-		<h1 id="contact-heading" class="display text-[clamp(3.5rem,11vw,6rem)] lg:col-span-7">Start a conversation.</h1>
+		<h1 id="contact-heading" class="display text-[clamp(3.5rem,11vw,6rem)] lg:col-span-7">
+			Start a conversation.
+		</h1>
 		<p class="max-w-xl text-lg leading-relaxed text-ink-2 lg:col-span-5 lg:self-end">
 			Tell us what you're trying to build, improve, or solve. You don't need a spec — rough is fine.
 		</p>
 	</div>
+	<Flow
+		class="mt-10"
+		steps={[
+			{
+				icon: Send,
+				title: 'You send a note',
+				note: 'What you are building or fixing, and roughly when. A few sentences is plenty.',
+			},
+			{
+				icon: Reply,
+				title: 'The founder replies',
+				note: `Personally, within ${SITE.replyTime}, with questions or a time to talk. No sales handoff.`,
+			},
+			{
+				icon: PhoneCall,
+				title: 'A short call',
+				note: 'Talk the problem through and leave with an honest view of what it would take.',
+			},
+		]}
+		caption="These steps come before stage 1 of how an engagement runs."
+	/>
 	<div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-10">
 		<div class="lg:col-span-7">
 			<form
@@ -50,10 +68,6 @@ const faqs = [
 				data-email={SITE.email}
 				data-reply={SITE.replyTime}
 			>
-				<p class="mb-6 border-b border-rule pb-5 text-sm leading-relaxed text-ink lg:hidden">
-					The founder replies personally within {SITE.replyTime}. No sales handoff. Prefer email?
-					<a href={`mailto:${SITE.email}`} class="link">{SITE.email}</a>
-				</p>
 				<p class="mb-6 text-sm text-ink-2">All fields are required unless marked optional.</p>
 				<div class="hidden" aria-hidden="true">
 					<label for="website">Website</label>
@@ -68,22 +82,50 @@ const faqs = [
 					</div>
 					<div>
 						<Label htmlFor="email">Email</Label>
-						<Input type="email" id="email" name="email" required autoComplete="email" maxLength={200} className="mt-2" />
+						<Input
+							type="email"
+							id="email"
+							name="email"
+							required
+							autoComplete="email"
+							maxLength={200}
+							className="mt-2"
+						/>
 						<p id="email-error" class="mt-1.5 text-sm font-medium text-error" hidden></p>
 					</div>
 					<div class="sm:col-span-2">
 						<Label htmlFor="organization">
 							Organization <span class="font-normal text-muted-foreground">(optional)</span>
 						</Label>
-						<Input type="text" id="organization" name="organization" autoComplete="organization" maxLength={200} className="mt-2" />
+						<Input
+							type="text"
+							id="organization"
+							name="organization"
+							autoComplete="organization"
+							maxLength={200}
+							className="mt-2"
+						/>
 					</div>
 					<div>
 						<Label htmlFor="service">What do you need?</Label>
-						<SelectField id="service" name="service" className="mt-2" options={[{ value: '', label: 'Not sure yet' }, ...services.map((s) => ({ value: s.slug, label: s.name }))]} />
+						<SelectField
+							id="service"
+							name="service"
+							className="mt-2"
+							options={[
+								{ value: '', label: 'Not sure yet' },
+								...services.map((s) => ({ value: s.slug, label: s.name })),
+							]}
+						/>
 					</div>
 					<div>
 						<Label htmlFor="timeline">Timeline</Label>
-						<SelectField id="timeline" name="timeline" className="mt-2" options={[{ value: '', label: 'No fixed date' }, ...timelines.map((t) => ({ value: t, label: t }))]} />
+						<SelectField
+							id="timeline"
+							name="timeline"
+							className="mt-2"
+							options={[{ value: '', label: 'No fixed date' }, ...timelines.map((t) => ({ value: t, label: t }))]}
+						/>
 					</div>
 					<div class="sm:col-span-2">
 						<Label htmlFor="message">Project details</Label>
@@ -102,63 +144,67 @@ const faqs = [
 
 				<div class="mt-8">
 					<p id="contact-form-status" class="mb-4 text-sm" role="status" aria-live="polite" hidden></p>
-					<Button type="submit" className="w-full">Send message</Button>
+					<Button type="submit" className="w-full">
+						Send message
+					</Button>
 					<p class="mt-3 text-center text-xs text-muted-foreground">
-						Your details are only used to reply to you. <a href="/privacy" class="link">Privacy</a>
+						Your details are only used to reply to you.{' '}
+						<a href="/privacy" class="link">
+							Privacy
+						</a>
 					</p>
 				</div>
 			</form>
 
 			<div id="contact-success" class="border border-ink p-6 sm:p-10" hidden>
-				<h2 class="display text-5xl" tabindex="-1">Message sent.</h2>
+				<h2 class="display text-5xl" tabindex="-1">
+					Message sent.
+				</h2>
 				<p class="mt-4 text-lg leading-relaxed text-ink">
 					Thanks, <span data-out="name"></span>. You'll get a personal reply at{' '}
 					<span data-out="email" class="font-semibold"></span> within <span data-out="reply"></span>.
 				</p>
 				<p class="mt-4 leading-relaxed text-ink-2">
-					While you wait, see <a href="/approach" class="link text-ink">how an engagement runs</a>.
+					While you wait, see{' '}
+					<a href="/approach" class="link text-ink">
+						how an engagement runs
+					</a>
+					.
 				</p>
-				<Button type="button" id="contact-again" variant="outline" className="mt-8">Send another message</Button>
+				<Button type="button" id="contact-again" variant="outline" className="mt-8">
+					Send another message
+				</Button>
 			</div>
 		</div>
 
 		<aside class="lg:col-span-5">
-			<h2 class="border-b border-ink pb-3 font-semibold">What happens next</h2>
-			<p class="mt-4 text-sm text-ink-2">These steps come before stage 1 of <a href="/approach" class="link text-ink">how an engagement runs</a>.</p>
-			<ol class="relative mt-6 space-y-7 pl-12">
-				<span class="absolute bottom-1 left-[0.95rem] top-1 w-0.5 bg-ink" aria-hidden="true"></span>
-				{
-					nextSteps.map((step, i) => (
-						<li class="relative">
-							<span class="absolute -left-12 top-0 flex h-8 w-8 items-center justify-center border border-ink bg-paper font-display text-base font-semibold" aria-hidden="true">
-								{i + 1}
-							</span>
-							<p class="font-semibold text-ink">{step.title}</p>
-							<p class="mt-1 text-sm leading-relaxed text-ink-2">{step.copy}</p>
-						</li>
-					))
-				}
-			</ol>
-
-			<p class="mt-10 text-sm text-ink-2">
-				Prefer email? <a href={`mailto:${SITE.email}`} class="link text-ink">{SITE.email}</a>
+			<p class="text-sm text-ink-2">
+				Prefer email?{' '}
+				<a href={`mailto:${SITE.email}`} class="link text-ink">
+					{SITE.email}
+				</a>
 			</p>
 
 			<h2 class="mt-12 border-b border-ink pb-3 font-semibold">Common questions</h2>
 			<div class="divide-y divide-rule border-b border-rule">
-				{
-					faqs.map((faq) => (
-						<details class="group py-4">
-							<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink [&::-webkit-details-marker]:hidden">
-								{faq.q}
-								<svg viewBox="0 0 16 16" class="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-									<path d="m3 6 5 5 5-5" />
-								</svg>
-							</summary>
-							<p class="mt-2 text-sm leading-relaxed text-ink-2">{faq.a}</p>
-						</details>
-					))
-				}
+				{faqs.map((faq) => (
+					<details class="group py-4">
+						<summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-ink [&::-webkit-details-marker]:hidden">
+							{faq.q}
+							<svg
+								viewBox="0 0 16 16"
+								class="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								aria-hidden="true"
+							>
+								<path d="m3 6 5 5 5-5" />
+							</svg>
+						</summary>
+						<p class="mt-2 text-sm leading-relaxed text-ink-2">{faq.a}</p>
+					</details>
+				))}
 			</div>
 		</aside>
 	</div>
@@ -182,7 +228,11 @@ const faqs = [
 		const checks = {
 			name: (v) => (v ? '' : 'Enter your name.'),
 			email: (v, el) =>
-				!v ? 'Enter your email address.' : el.validity.typeMismatch ? 'Enter an email address like name@company.com.' : '',
+				!v
+					? 'Enter your email address.'
+					: el.validity.typeMismatch
+						? 'Enter an email address like name@company.com.'
+						: '',
 			message: (v) => (v ? '' : 'Tell us a little about the project. A few sentences is enough.'),
 		};
 
@@ -264,10 +314,18 @@ const faqs = [
 				} else if (response.status < 500 && result.error) {
 					showStatus(result.error, 'error');
 				} else {
-					showStatus("The form couldn't send your message. Nothing you typed is lost: copy it and email ", 'error', true);
+					showStatus(
+						"The form couldn't send your message. Nothing you typed is lost: copy it and email ",
+						'error',
+						true,
+					);
 				}
 			} catch {
-				showStatus("Your connection dropped before the message sent. Nothing you typed is lost: try again, or email ", 'error', true);
+				showStatus(
+					'Your connection dropped before the message sent. Nothing you typed is lost: try again, or email ',
+					'error',
+					true,
+				);
 			} finally {
 				submitButton.disabled = false;
 				submitButton.textContent = 'Send message';

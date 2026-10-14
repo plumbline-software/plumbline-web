@@ -15,7 +15,7 @@ THESIS: A quiet rendition of Systems Labanotation: the score's discipline withou
 
 OWN-WORLD: White paper #ffffff, quiet paper #f6f6f5, ink #10141a, secondary ink #353b45, muted #5a616c, rules #d5d7db. Blue #2453d4 marks focus and caret only. Big Shoulders Display for titles (uppercase, tight leading); Public Sans for reading; small tracked caps labels used sparingly; 1px rules, square corners, no shadows, no cards-as-structure; ink primary button, outline secondary.
 
-STORY: Visitor reads the promise, sees the five kinds of work and the four-stage process in plain rows, learns they will work directly with an anonymous founder (one credential: 4+ years as a software engineer at Samsung Canada), checks the evidence (this site: how it was built, privacy, accessibility), and starts a conversation.
+STORY: Visitor reads the promise, sees the five kinds of work and the four-stage process in plain rows, learns they will work directly with an anonymous founder (one credential: 4+ years as a software engineer at Samsung), checks the evidence (this site: how it was built, privacy, accessibility), and starts a conversation.
 
 FIRST VIEWPORT: Headline across seven columns at display scale. Right five columns, bottom-aligned: lede (including "Software development & technology consulting in Vancouver, BC"), ink "Start a conversation" and outline "See what we build" buttons, founder line above a hairline. Sticky header with the plumb-line mark and a "Start a project" outline button.
 

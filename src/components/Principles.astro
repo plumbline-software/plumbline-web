@@ -1,25 +1,33 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import PrincipleCard from './PrincipleCard.astro';
+import { Wrench, Compass, MessageSquare, GitBranch } from 'lucide-react';
 
 const principles = [
 	{
 		title: 'Engineering First',
+		icon: Wrench,
 		copy: 'Build maintainable systems rather than short-term solutions.',
-		detail: "A feature that ships fast but can't be touched again without breaking something else isn't actually finished.",
+		detail:
+			"A feature that ships fast but can't be touched again without breaking something else isn't actually finished.",
 	},
 	{
 		title: 'Practical Technology',
+		icon: Compass,
 		copy: 'Choose technology based on the problem rather than trends.',
-		detail: "The newest framework isn't automatically the right one. In my years as an engineer, the software that lasted was usually built on unglamorous, extremely reliable technology.",
+		detail:
+			"The newest framework isn't automatically the right one. In my years as an engineer, the software that lasted was usually built on unglamorous, extremely reliable technology.",
 	},
 	{
 		title: 'Clear Communication',
+		icon: MessageSquare,
 		copy: 'Keep technical decisions understandable and aligned with organizational goals.',
-		detail: "If we can't explain a decision in plain language, that's usually a sign we haven't thought it through enough.",
+		detail:
+			"If we can't explain a decision in plain language, that's usually a sign we haven't thought it through enough.",
 	},
 	{
 		title: 'Built to Evolve',
+		icon: GitBranch,
 		copy: 'Design systems that can adapt as requirements change.',
 		detail: "Requirements change. Software that assumes they won't is software you'll be rewriting within a year.",
 	},
@@ -33,6 +41,8 @@ const principles = [
 		copy="Four principles behind every technical decision on a project."
 	/>
 	<div class="mt-4">
-		{principles.map((principle) => <PrincipleCard {...principle} />)}
+		{principles.map((principle) => (
+			<PrincipleCard {...principle} />
+		))}
 	</div>
 </section>

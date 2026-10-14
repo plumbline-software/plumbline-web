@@ -1,0 +1,58 @@
+---
+// The tangible end of an engagement, drawn as the folder a client receives.
+// Mirrors the documents this site's own repository has (see /how-this-site-was-built).
+
+interface Props {
+	folder?: string;
+	tag?: string;
+	files?: { name: string; note: string }[];
+	caption?: string;
+}
+
+const {
+	folder = 'your-project/',
+	tag = 'Handover',
+	files = [
+		{ name: 'README.md', note: 'How to run, configure and deploy it' },
+		{ name: 'docs/architecture.md', note: 'How it fits together, and why' },
+		{ name: 'docs/decisions/', note: 'Every major decision, dated, with the reason' },
+		{ name: 'docs/runbook.md', note: 'How to release, roll back and recover' },
+		{ name: 'tests/', note: 'What is checked automatically on every change' },
+		{ name: '.env.example', note: 'Every setting the system needs, no secrets' },
+	],
+	caption = 'Your code, your repository, and the documents your next engineer will need.',
+} = Astro.props;
+---
+
+<figure class="border border-ink bg-paper" aria-labelledby={`${folder}-caption`}>
+	<div class="flex items-center justify-between border-b border-ink px-4 py-3">
+		<span class="flex items-center gap-2.5 text-sm font-semibold text-ink">
+			<svg viewBox="0 0 20 16" class="h-4 w-5" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+				<path d="M1 2h6l2 2h10v11H1z" />
+			</svg>
+			{folder}
+		</span>
+		<span class="label text-muted-foreground">{tag}</span>
+	</div>
+	<ul class="divide-y divide-rule">
+		{files.map((f) => (
+			<li class="grid grid-cols-[1.25rem_1fr] items-start gap-3 px-4 py-3 sm:grid-cols-[1.25rem_12rem_1fr]">
+				<svg
+					viewBox="0 0 16 20"
+					class="mt-0.5 h-5 w-4 text-ink"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="1.5"
+					aria-hidden="true"
+				>
+					{f.name.endsWith('/') ? <path d="M1 4h5l2 2h7v11H1z" /> : <path d="M1 1h9l5 5v13H1zM10 1v5h5" />}
+				</svg>
+				<span class="font-mono text-sm text-ink">{f.name}</span>
+				<span class="col-start-2 text-sm text-ink-2 sm:col-start-auto">{f.note}</span>
+			</li>
+		))}
+	</ul>
+	<figcaption id={`${folder}-caption`} class="border-t border-ink px-4 py-3 text-sm text-ink-2">
+		{caption}
+	</figcaption>
+</figure>

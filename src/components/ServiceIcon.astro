@@ -1,0 +1,49 @@
+---
+// One drawn mark per service, in the plumb-line stroke: 1.5px ink, square ends, no fills except the bob.
+
+interface Props {
+	slug: string;
+	class?: string;
+}
+
+const { slug, class: className = '' } = Astro.props;
+---
+
+<svg
+	viewBox="0 0 48 48"
+	class={className}
+	fill="none"
+	stroke="currentColor"
+	stroke-width="1.5"
+	stroke-linecap="square"
+	aria-hidden="true"
+>
+	{slug === 'full-stack' && (
+		<Fragment>
+			<rect x="8" y="8" width="32" height="8" />
+			<rect x="8" y="20" width="32" height="8" />
+			<rect x="8" y="32" width="32" height="8" />
+			<path d="M24 16v4M24 28v4" />
+		</Fragment>
+	)}
+	{slug === 'frontend' && (
+		<Fragment>
+			<rect x="6" y="9" width="36" height="30" />
+			<path d="M6 16h36M10 12.5h1M14 12.5h1M18 12.5h1M11 21h14M11 26h10M30 21h8v12h-8z" />
+		</Fragment>
+	)}
+	{slug === 'api' && (
+		<Fragment>
+			<rect x="5" y="17" width="12" height="14" />
+			<rect x="31" y="17" width="12" height="14" />
+			<path d="M17 21h14M27 18l4 3-4 3M31 27H17M21 24l-4 3 4 3" />
+		</Fragment>
+	)}
+	{slug === 'consulting' && (
+		<Fragment>
+			<path d="M24 5v24" />
+			<path d="M24 28.5l4 5-4 9-4-9z" fill="currentColor" stroke="none" />
+			<path d="M8 42h32M14 14h-4M38 14h-4" />
+		</Fragment>
+	)}
+</svg>

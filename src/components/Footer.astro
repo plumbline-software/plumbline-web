@@ -30,29 +30,53 @@ const socialLinks = [
 			<nav aria-label="Footer" class="sm:col-span-3">
 				<p class="label text-muted-foreground">Pages</p>
 				<ul class="mt-3 space-y-2 text-sm">
-					{navLinks.map((link) => <li><a href={link.href} class="hover:underline">{link.label}</a></li>)}
+					{navLinks.map((link) => (
+						<li>
+							<a href={link.href} class="hover:underline">
+								{link.label}
+							</a>
+						</li>
+					))}
 				</ul>
 			</nav>
 			<div class="text-sm sm:col-span-4">
 				<p class="label text-muted-foreground">Contact</p>
-				<a href={`mailto:${SITE.email}`} class="link mt-3 inline-block break-all">{SITE.email}</a>
-				{
-					socialLinks.length > 0 && (
-						<ul class="mt-3 flex gap-6">
-							{socialLinks.map((link) => (
-								<li><a href={link.href} rel="me noopener" target="_blank" class="hover:underline">{link.label}</a></li>
-							))}
-						</ul>
-					)
-				}
+				<a href={`mailto:${SITE.email}`} class="link mt-3 inline-block break-all">
+					{SITE.email}
+				</a>
+				{socialLinks.length > 0 && (
+					<ul class="mt-3 flex gap-6">
+						{socialLinks.map((link) => (
+							<li>
+								<a href={link.href} rel="me noopener" target="_blank" class="hover:underline">
+									{link.label}
+								</a>
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 		</div>
 		<div class="flex flex-col gap-3 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-			<p>© {new Date().getFullYear()} {SITE.name}, {SITE.location}. All rights reserved.</p>
+			<p>
+				© {new Date().getFullYear()} {SITE.name}, {SITE.location}. All rights reserved.
+			</p>
 			<ul class="flex flex-wrap gap-x-5 gap-y-2">
-				<li><a href="/how-this-site-was-built" class="hover:text-foreground hover:underline">How this site was built</a></li>
-				<li><a href="/privacy" class="hover:text-foreground hover:underline">Privacy</a></li>
-				<li><a href="/accessibility" class="hover:text-foreground hover:underline">Accessibility</a></li>
+				<li>
+					<a href="/how-this-site-was-built" class="hover:text-foreground hover:underline">
+						How this site was built
+					</a>
+				</li>
+				<li>
+					<a href="/privacy" class="hover:text-foreground hover:underline">
+						Privacy
+					</a>
+				</li>
+				<li>
+					<a href="/accessibility" class="hover:text-foreground hover:underline">
+						Accessibility
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>

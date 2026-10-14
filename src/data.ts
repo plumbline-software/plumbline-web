@@ -13,9 +13,9 @@ export const SITE = {
 // The experience is the founder's own — never present it as Plumbline clients or projects.
 export const FOUNDER = {
 	title: 'Founder',
-	background: 'a software engineer with 4+ years at Samsung Canada',
+	background: 'a software engineer with 4+ years at Samsung',
 	// TODO(owner): drafted for you — rewrite in your own words if it doesn't sound like you.
-	why: 'After four years as a software engineer at Samsung Canada, I started Plumbline to bring the same standard (tested, documented, built to be maintained) to organizations that need software done properly without building a full engineering team first.',
+	why: 'After four years as a software engineer at Samsung, I started Plumbline to bring the same standard (tested, documented, built to be maintained) to organizations that need software done properly without building a full engineering team first.',
 	// Left empty on purpose; links render only when set. Share profiles privately with real leads.
 	linkedin: '',
 	github: '',
@@ -29,40 +29,46 @@ export const services = [
 		description: 'End-to-end web applications, from the database up to the interface people use every day.',
 		detail:
 			'Most projects start as one problem area (a customer portal, an internal ops tool, a booking system) and grow from there. We build the whole stack as one coherent system instead of a frontend team and a backend team talking past each other.',
-		bullets: ['React, TypeScript & Node.js as the default stack', 'Data models designed around how the data is actually used', 'One engineer end to end, so nothing gets lost in a handoff'],
+		bullets: [
+			'React, TypeScript & Node.js as the default stack',
+			'Data models designed around how the data is actually used',
+			'One engineer end to end, so nothing gets lost in a handoff',
+		],
 	},
 	{
 		slug: 'frontend',
 		name: 'Frontend Engineering',
 		summary: 'Fast, accessible interfaces that hold up on any device and any input.',
-		description: "Interfaces that load fast, work on any device, and don't fall apart the first time someone tabs through them.",
+		description:
+			"Interfaces that load fast, work on any device, and don't fall apart the first time someone tabs through them.",
 		detail:
 			'We treat accessibility and performance as part of the build, not a separate pass at the end. A slow or confusing interface is a bug, same as broken logic.',
-		bullets: ['Built responsive from 320px up, not scaled down from desktop', 'Keyboard and screen-reader tested, not just visually reviewed', 'No unnecessary JavaScript shipped to the browser'],
+		bullets: [
+			'Built responsive from 320px up, not scaled down from desktop',
+			'Keyboard and screen-reader tested, not just visually reviewed',
+			'No unnecessary JavaScript shipped to the browser',
+		],
 	},
 	{
 		slug: 'api',
 		name: 'API & Backend Development',
 		summary: 'Documented, versioned services designed to be integrated with.',
-		description: 'Services and APIs designed to be integrated with: by your other systems, a partner, or a future team.',
+		description:
+			'Services and APIs designed to be integrated with: by your other systems, a partner, or a future team.',
 		detail:
 			'An API is a promise to whoever calls it next. We document what we build, version what changes, and design around the failure cases as much as the happy path.',
-		bullets: ['REST APIs with clear versioning and documentation', 'Authentication and authorization built in from day one', 'Schemas designed to not need a rewrite at 10x the data'],
-	},
-	{
-		slug: 'cloud',
-		name: 'Cloud & Infrastructure',
-		summary: 'Pipelines and environments that make every release routine.',
-		description: 'Deployment pipelines and cloud environments set up so a release is routine, not a Friday-afternoon gamble.',
-		detail:
-			"Infrastructure is code here, checked into the same repository as the application. If it isn't reproducible from a fresh environment, we don't consider it done.",
-		bullets: ['CI/CD pipelines that run tests before every deploy', 'Containerized environments that match dev to production', 'Infrastructure defined in code, not clicked together by hand'],
+		bullets: [
+			'REST APIs with clear versioning and documentation',
+			'Authentication and authorization built in from day one',
+			'Schemas designed to not need a rewrite at 10x the data',
+		],
 	},
 	{
 		slug: 'consulting',
 		name: 'Technology Consulting',
 		summary: 'An outside technical opinion before you commit budget and months.',
-		description: "An outside, technical opinion on the decision you're about to make, before you've committed budget and months to it.",
+		description:
+			"An outside, technical opinion on the decision you're about to make, before you've committed budget and months to it.",
 		detail:
 			'Sometimes the most useful thing we can do is tell you what not to build, or point to a cheaper path to the same outcome. This is advisory work. It stands on its own, whether or not Plumbline ends up building anything.',
 		bullets: [

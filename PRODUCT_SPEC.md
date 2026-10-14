@@ -1283,7 +1283,7 @@ Supersedes the visual identity in §36.1 and the blue accent in §11. Content, l
 * **Name:** Plumbline Software (short form: Plumbline). A plumb line finds true vertical, the reference everything is checked against. That is the brand promise of "software that still makes sense in two years".
 * **Mark:** the plumb-line mark: a short bar, a vertical string and a kite-shaped plumb bob. It is used for the logo, favicon, Apple touch icon and social preview image.
 * **Single source:** the name lives in `SITE.name` / `SITE.shortName` in `src/data.ts`. Components, page titles, structured data and the inquiry email read it from there.
-* **Contact:** `plumbline.software@gmail.com`. Repository: `plumbline-software/plumbline-web`. Vercel project: `plumbline`, giving `plumbline.vercel.app`.
+* **Contact:** `plumbline.software@gmail.com`. Repository: `plumbline-software/plumbline-web`. Vercel project: `plumbline`, giving `plumbline-software.vercel.app`.
 * **Before launch:** search CIPO (Canadian trademarks) and the BC Registry for "Plumbline" in software and IT.
 
 ---
@@ -1306,7 +1306,7 @@ From the Impeccable critique (23/36). The owner chose all five priority issues a
 Supersedes the founder-visibility parts of §37 and §41: the name in the hero, the "You'll work with James Yoo" section, the experience list, the LinkedIn link, and the founder `Person` in JSON-LD.
 
 * The founder is **not named** anywhere on the site. Copy says "the founder" ("You'll work with the founder", "The founder replies personally").
-* **One general credential only:** "a software engineer with 4+ years at Samsung Canada". No specific projects, products or URLs.
+* **One general credential only:** "a software engineer with 4+ years at Samsung". No specific projects, products or URLs.
 * No headshot, LinkedIn or GitHub on the site; share profiles privately with qualified leads. Structured data describes the business only.
 * The founder-led promise stays: one engineer, no account managers, no handoffs.
 
@@ -1347,3 +1347,23 @@ From the Impeccable critique (26/36; the owner chose all five issues). The busin
 * **Structured data:** a JSON-LD `@graph` with `ProfessionalService` (Vancouver, BC; areaServed Canada; `hasOfferCatalog` listing the five services, linked to `/services#<slug>`) and `WebSite`. No founder name.
 * **Other:** `lang="en-CA"` and a web app manifest (`/site.webmanifest`).
 * **Off-site, owner:** Google Search Console (verify and submit `sitemap-index.xml`), Google Business Profile (service-area business, Vancouver), directory listings (Clutch, GoodFirms, LinkedIn company page), and a custom domain later (`SITE_URL`).
+
+---
+
+# 46. Revision 1.11 — Visuals and audience (2026-10-13)
+
+* **Audience:** small and medium businesses and startups, confirmed by the owner. Named in the hero and the homepage meta description.
+* **Visuals:** drawn inline SVG only (no stock photos, no JavaScript), in the plumb-line stroke:
+  * a custom icon per service (homepage rows and /services);
+  * square stage markers on a drawn line in "How an engagement runs";
+  * a "What you get at the end" section with an illustrated handover folder (README, architecture, decision log, runbook, tests, `.env.example`), mirroring this site's own documentation.
+* **Production URL:** the default site address is `https://plumbline-software.vercel.app`, and `SITE_URL` still overrides it.
+* **Public sector (planned):** the owner intends to bid on government contracts. This needs a public-sector page with a downloadable capability statement once the business number, GST and insurance are in place. Bids cannot be anonymous, even though the site is.
+* **Hero illustration (2026-10-13):** an inline-SVG technical drawing beside the headline, at the owner's request (a drawn illustration, not a photo). It shows a typical system "hanging true": web app → API → database → build / test / deploy, with notes pointing to README.md, architecture.md, tests/ and runbook.md, ending in the plumb bob. Illustrative, not a client project.
+* **A diagram on every page (2026-10-13):** a shared `Flow` component draws boxed steps joined by arrows, in real HTML with Lucide icons rendered statically, so it stays readable on phones (top to bottom) and desktop (left to right). Services: interface → API → data → cloud. Approach: brief → plan → releases → handover. About: you → the founder → your software. Contact: note → reply → call (it replaces the old side list). How this site was built: its architecture. Privacy: where form data goes. Accessibility: the four checks. The 404 page has a plumb bob swung off its true line.
+* **More icons and drawings (2026-10-13):** Lucide icons on each enterprise commitment, each principle, each technology group, each "You get" card on /approach, and each reading-page section (privacy, accessibility, how this site was built). The homepage founder section has a four-cell role row (scopes, writes the code, documents, stays reachable). The build page shows a file-tree drawing of this site's real documentation (`HandoverPack` now takes props). All static; no client JavaScript.
+* **Product mockups and photography (2026-10-13):**
+  * **Mockups:** five interface "screenshots" drawn in HTML inside a scalable SVG frame (`src/components/mockups/`): an ops dashboard, a responsive booking screen on laptop and phone, API docs, a deployment pipeline and an architecture review. Each is captioned "Illustrative example" with fictional data and is not client work. One sits under each service on /services, and the ops dashboard also appears on the homepage after "What we build".
+  * **Photos:** two black-and-white Vancouver photos by Anthony Maw on Unsplash (Unsplash License), credited in the caption. The skyline is on the homepage before the founder section; the Lions Gate Bridge is on /about. They are WebP at 1000/2000px (31–230 KB), lazy-loaded, with height capped at 560px.
+  * This supersedes §15's "avoid stock imagery" for these two supporting bands, at the owner's request. The hero stays a drawn illustration.
+* **Cloud & Infrastructure removed (2026-10-13, owner's decision):** the site now offers four services (Full-Stack, Frontend, API & Backend, Technology Consulting). Removed: the service and its pipeline mockup and icon, the "Cloud" layer in the /services diagram, the "Cloud & Infrastructure" technology group, and cloud mentions in the hero, About, meta descriptions, the /services title and the structured data. Deployment still appears as part of building software (hero diagram, handover runbook).

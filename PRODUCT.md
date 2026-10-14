@@ -10,7 +10,7 @@ web
 
 ## Users
 
-Organizations looking for an outside engineering partner to build or fix web software: web applications, internal tools, APIs, cloud infrastructure, or a technical second opinion. Secondary audiences named in the spec: enterprise and public-sector stakeholders evaluating an external partner on security, accessibility, documentation and delivery discipline, plus future contractors and developers. *(Primary-audience weighting inferred from spec §3.)*
+Small and medium businesses and startups (confirmed by the owner) looking for an outside engineering partner to build or fix web software: web applications, internal tools, APIs, or a technical second opinion. Secondary audiences named in the spec: enterprise and public-sector stakeholders evaluating an external partner on security, accessibility, documentation and delivery discipline, plus future contractors and developers. *(Primary-audience weighting inferred from spec §3.)*
 
 Their questions, in order: what does Plumbline do, can it do what I need, how does it work, can I trust it, how do I get in touch.
 
@@ -31,7 +31,7 @@ Visitors arrive comparing consultancies, often on a phone first and a desktop la
 - Astro + TypeScript + Tailwind CSS v4. Every route is static except `POST /api/contact`, which runs as a Vercel serverless function (`@astrojs/vercel`; `@astrojs/node` elsewhere). Hosted on Vercel's default `*.vercel.app` address.
 - Minimal client JavaScript. No CMS, accounts, or booking. Analytics are limited to cookieless Vercel Web Analytics.
 - A single light theme.
-- Services: Full-Stack Development, Frontend Engineering, API & Backend Development, Cloud & Infrastructure, Technology Consulting.
+- Services: Full-Stack Development, Frontend Engineering, API & Backend Development, Technology Consulting. (Cloud & Infrastructure was removed as a service on 2026-10-13.)
 - Content shared across pages lives in `src/data.ts` (contact, founder, services, timelines). Full requirements are in `PRODUCT_SPEC.md`.
 
 ## Brand Commitments
@@ -45,9 +45,9 @@ Visitors arrive comparing consultancies, often on a phone first and a desktop la
 ## Evidence on Hand
 
 - No Plumbline client projects, testimonials, case studies, certifications or metrics exist. Never fabricate them.
-- Founder experience is real and may be shown as personal experience only, and only in general terms: "a software engineer with 4+ years at Samsung Canada". No specific projects.
+- Founder experience is real and may be shown as personal experience only, and only in general terms: "a software engineer with 4+ years at Samsung". No specific projects.
 - No Samsung logos and no implied affiliation.
-- Anonymous by choice: no name, headshot, LinkedIn, GitHub or specific projects on the public site, and no founder in structured data. The one credential is Samsung Canada.
+- Anonymous by choice: no name, headshot, LinkedIn, GitHub or specific projects on the public site, and no founder in structured data. The one credential is Samsung.
 
 ## Product Principles
 

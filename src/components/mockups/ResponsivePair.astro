@@ -1,0 +1,92 @@
+---
+// Same booking screen on a laptop and a phone, drawn side by side.
+interface Props {
+	caption?: string;
+	class?: string;
+}
+const {
+	caption = 'One interface that works on a laptop and a phone, by keyboard or by touch.',
+	class: className = '',
+} = Astro.props;
+const slots = ['9:00', '9:30', '10:00', '11:30', '13:00', '14:30'];
+---
+
+<figure class:list={['m-0', className]}>
+	<svg
+		viewBox="0 0 960 560"
+		class="block h-auto w-full"
+		role="img"
+		aria-label="Illustrative drawing of the same booking screen on a laptop and on a phone"
+	>
+		<foreignObject x="0" y="0" width="960" height="560">
+			<div aria-hidden="true" class="relative font-sans text-ink" style="width:960px;height:560px">
+				<div class="absolute left-0 top-0 border border-ink bg-paper" style="width:700px;height:470px">
+					<div class="flex h-9 items-center border-b border-ink px-4 text-[11px] text-muted-foreground">
+						book.example.com
+					</div>
+					<div class="grid grid-cols-2 gap-8 p-8">
+						<div>
+							<p class="display text-4xl">Book a fitting</p>
+							<p class="mt-2 text-[13px] text-ink-2">
+								Pick a time that suits you. Changes are free up to a day before.
+							</p>
+							<p class="mt-6 text-[12px] font-semibold">Thursday, 14 November</p>
+							<div class="mt-2 grid grid-cols-3 gap-2 text-[12px]">
+								{slots.map((s, i) => (
+									<span
+										class:list={[
+											'border px-2 py-2 text-center',
+											i === 2 ? 'border-ink bg-ink text-paper' : 'border-input',
+										]}
+									>
+										{s}
+									</span>
+								))}
+							</div>
+						</div>
+						<div class="space-y-4 text-[12px]">
+							<div>
+								<p class="font-semibold">Name</p>
+								<div class="mt-1 h-9 border border-input"></div>
+							</div>
+							<div>
+								<p class="font-semibold">Email</p>
+								<div class="mt-1 h-9 border-2 border-ink outline outline-2 outline-offset-2 outline-now"></div>
+								<p class="mt-1 text-[11px] text-muted-foreground">Keyboard focus, clearly visible</p>
+							</div>
+							<div class="flex h-10 items-center justify-center bg-ink font-semibold text-paper">Confirm 10:00</div>
+						</div>
+					</div>
+				</div>
+				<div class="absolute bottom-0 right-6 border-2 border-ink bg-paper p-3" style="width:230px;height:470px">
+					<div class="mx-auto mb-3 h-1.5 w-14 bg-ink"></div>
+					<p class="display text-2xl">Book a fitting</p>
+					<p class="mt-1 text-[11px] text-ink-2">Thursday, 14 November</p>
+					<div class="mt-3 grid grid-cols-2 gap-1.5 text-[11px]">
+						{slots.map((s, i) => (
+							<span
+								class:list={[
+									'border px-2 py-2.5 text-center',
+									i === 2 ? 'border-ink bg-ink text-paper' : 'border-input',
+								]}
+							>
+								{s}
+							</span>
+						))}
+					</div>
+					<div class="mt-4 space-y-2 text-[11px]">
+						<div class="h-9 border border-input"></div>
+						<div class="h-9 border border-input"></div>
+					</div>
+					<div class="mt-4 flex h-11 items-center justify-center bg-ink text-[12px] font-semibold text-paper">
+						Confirm 10:00
+					</div>
+				</div>
+			</div>
+		</foreignObject>
+	</svg>
+	<figcaption class="mt-3 flex items-baseline justify-between gap-4 text-sm text-ink-2">
+		<span>{caption}</span>
+		<span class="label shrink-0 text-muted-foreground">Illustrative example</span>
+	</figcaption>
+</figure>

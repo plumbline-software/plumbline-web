@@ -1,14 +1,19 @@
 ---
 // One ruled row of a reading page: the heading on the left, its content on the right.
+
 interface Props {
 	heading: string;
+	icon?: any;
 }
 
-const { heading } = Astro.props;
+const { heading, icon: Icon } = Astro.props;
 ---
 
 <section class="grid gap-4 border-b border-rule py-10 lg:grid-cols-12 lg:gap-10">
-	<h2 class="display text-3xl lg:col-span-4">{heading}</h2>
+	<div class="lg:col-span-4">
+		{Icon && <Icon className="mb-4 size-8 text-ink" strokeWidth={1.5} aria-hidden="true" />}
+		<h2 class="display text-3xl">{heading}</h2>
+	</div>
 	<div class="max-w-2xl space-y-4 leading-relaxed text-ink-2 lg:col-span-8 [&_a]:text-ink [&_li]:pl-1 [&_strong]:text-ink [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
 		<slot />
 	</div>
